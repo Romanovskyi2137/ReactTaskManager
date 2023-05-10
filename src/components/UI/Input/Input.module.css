@@ -1,0 +1,12 @@
+.Input {
+    min-width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px 0;
+    height: 25px;
+    padding: 5px;
+}
+.Input__radio{
+    margin:  5px 5px;
+    
+}
