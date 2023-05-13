@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Input from "./UI/Input/Input";
 import TextArea from "./UI/TextArea/TextArea";
 import Button from "./UI/Button/Button";
+import PriorPicker from "./UI/PriorPicker/PriorPicker";
 
 function TaskForm ({setNewTask, onTaskCreate, newTask}) {
     const [prior, setPrior] = useState("");
@@ -26,19 +27,10 @@ function TaskForm ({setNewTask, onTaskCreate, newTask}) {
               placeholder="Description of the task"  
             />
             <div>
+            {/* <i class="fi fi-ss-flame"></i> */}
 
-              <div>
-                <Input type="radio" name="prior" value="1" onClick={e => onPriorClick(e)}/>
-                <span> - 1 priority</span>
-              </div>
-              <div>
-                <Input type="radio" name="prior" value="2" onClick={e => onPriorClick(e)}/>
-                <span> - 2 priority</span>
-              </div>
-              <div>
-                <Input type="radio" name="prior" value="3" onClick={e => onPriorClick(e)}/>
-                <span> - 3 priority</span>
-              </div>
+            <PriorPicker/>
+      
 
             </div>
 
