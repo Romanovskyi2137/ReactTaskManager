@@ -24,13 +24,13 @@ function App() {
     }
   ]);
   const [CTModalVisible, setCTModalVisible] = useState(false);
-  const [newTask, setNewTask] = useState({title: "", body: ""})
+  const [newTask, setNewTask] = useState({title: "", body: "", prior: ""})
   
 
   function onTaskCreate () {
     setTasks([newTask, ...tasks])
     setCTModalVisible(false)
-    setNewTask({title: "", body: ""})
+    setNewTask({title: "", body: "", prior: ""})
   }
 
   function onTaskDelete (title) {

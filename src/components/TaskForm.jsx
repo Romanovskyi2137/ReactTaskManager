@@ -5,11 +5,7 @@ import Button from "./UI/Button/Button";
 import PriorPicker from "./UI/PriorPicker/PriorPicker";
 
 function TaskForm ({setNewTask, onTaskCreate, newTask}) {
-    const [prior, setPrior] = useState("");
-    function onPriorClick (e) {
-      setPrior(e.target.value);
-      setNewTask({...newTask, prior: prior});
-    }
+
 
     return (
         <form 
@@ -27,9 +23,8 @@ function TaskForm ({setNewTask, onTaskCreate, newTask}) {
               placeholder="Description of the task"  
             />
             <div>
-            {/* <i class="fi fi-ss-flame"></i> */}
 
-            <PriorPicker/>
+            <PriorPicker getPrior={prior => setNewTask(...newTask, prior)}/>
       
 
             </div>
