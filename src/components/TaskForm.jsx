@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import Input from "./UI/Input/Input";
 import TextArea from "./UI/TextArea/TextArea";
 import Button from "./UI/Button/Button";
 import PriorPicker from "./UI/PriorPicker/PriorPicker";
 
 function TaskForm ({setNewTask, onTaskCreate, newTask}) {
-
+    const getPrior = ({number, iconClass}) => {
+      setNewTask({...newTask, prior: number, iconClassName: iconClass});
+      }
 
     return (
         <form 
@@ -24,7 +26,8 @@ function TaskForm ({setNewTask, onTaskCreate, newTask}) {
             />
             <div>
 
-            <PriorPicker getPrior={prior => setNewTask(...newTask, prior)}/>
+            <PriorPicker getPrior={getPrior} 
+            />
       
 
             </div>

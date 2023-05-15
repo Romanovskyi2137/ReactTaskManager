@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TaskItem from './components/TaskIItem';
 import CreateTaskModal from './components/CreateTaskModal/CreateTaskModal';
 import Button from './components/UI/Button/Button';
@@ -10,27 +10,37 @@ function App() {
     {
       title: "title of the task 1",
       body: "body of the task",
-      prior: "1"
+      prior: "1",
+      iconClassName: "fi fi-rs-flame"
     },
     {
       title: "title of the task 2",
       body: "body of the task",
-      prior: "3"
+      prior: "3",
+      iconClassName: "fi fi-ss-flame"
     },
     {
       title: "title of the task 3",
       body: "body of the task",
-      prior: "2"
+      prior: "2",
+      iconClassName: "fi fi-bs-flame"
     }
   ]);
   const [CTModalVisible, setCTModalVisible] = useState(false);
-  const [newTask, setNewTask] = useState({title: "", body: "", prior: ""})
-  
+  const [newTask, setNewTask] = useState({title: "", body: "", prior: "", iconClassName: ""})
 
   function onTaskCreate () {
+    if (newTask.title === "") {
+      alert("Вкажіть назву задачі.");
+      return
+    }
+    if (newTask.prior === ""){
+      alert("Виберіть пріорітет задачі.")
+      return
+    }
     setTasks([newTask, ...tasks])
     setCTModalVisible(false)
-    setNewTask({title: "", body: "", prior: ""})
+    setNewTask({title: "", body: "", prior: "", iconClassName: ""})
   }
 
   function onTaskDelete (title) {
