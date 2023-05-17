@@ -1,11 +1,12 @@
 .Button {
-    height: 30px;
+    min-height: 30px;
     border: 1px solid black;
     border-radius: 5px;
     background: transparent;
     padding: 5px;
+    word-break: keep-all;
 }
 .Button:hover {
     box-shadow: 0 0 3px black;
-    transition: all 0.3s linear;
+    transition: all 0.3s ease;
 }

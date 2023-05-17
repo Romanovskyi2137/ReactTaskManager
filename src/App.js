@@ -27,7 +27,8 @@ function App() {
     }
   ]);
   const [CTModalVisible, setCTModalVisible] = useState(false);
-  const [newTask, setNewTask] = useState({title: "", body: "", prior: "", iconClassName: ""})
+  const [newTask, setNewTask] = useState({title: "", body: "", prior: "", iconClassName: ""});
+  
 
   function onTaskCreate () {
     if (newTask.title === "") {
@@ -56,6 +57,7 @@ function App() {
               setNewTask={setNewTask}
               onTaskCreate={onTaskCreate}
               newTask={newTask}
+              visible={CTModalVisible}
             />
           </CreateTaskModal>
           <div className="tasks__list_header">

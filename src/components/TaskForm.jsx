@@ -4,7 +4,7 @@ import TextArea from "./UI/TextArea/TextArea";
 import Button from "./UI/Button/Button";
 import PriorPicker from "./UI/PriorPicker/PriorPicker";
 
-function TaskForm ({setNewTask, onTaskCreate, newTask}) {
+function TaskForm ({setNewTask, onTaskCreate, newTask, visible}) {
     const getPrior = ({number, iconClass}) => {
       setNewTask({...newTask, prior: number, iconClassName: iconClass});
       }
@@ -26,7 +26,9 @@ function TaskForm ({setNewTask, onTaskCreate, newTask}) {
             />
             <div>
 
-            <PriorPicker getPrior={getPrior} 
+            <PriorPicker 
+              getPrior={getPrior}
+              visible={visible} 
             />
       
 
