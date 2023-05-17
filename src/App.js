@@ -4,6 +4,9 @@ import TaskItem from './components/TaskIItem';
 import CreateTaskModal from './components/CreateTaskModal/CreateTaskModal';
 import Button from './components/UI/Button/Button';
 import TaskForm from './components/TaskForm';
+import TaskList from './components/TaskList';
+
+
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -36,16 +39,12 @@ function App() {
       return
     }
     if (newTask.prior === ""){
-      alert("Виберіть пріорітет задачі.")
+      alert("Виберіть пріорітет задачі.");
       return
     }
     setTasks([newTask, ...tasks])
     setCTModalVisible(false)
     setNewTask({title: "", body: "", prior: "", iconClassName: ""})
-  }
-
-  function onTaskDelete (title) {
-    setTasks(tasks.filter(task => task.title !== title))
   }
 
   return (
@@ -70,8 +69,8 @@ function App() {
           </div>
           
           <hr style={{margin: "30px 0"}}/>
-
-        {tasks.map(task => <TaskItem task={task}  key={task.title} onTaskDelete={onTaskDelete}/>)}
+          
+          <TaskList tasks={tasks} setTasks={setTasks}/>
 
         </div>
       </div>

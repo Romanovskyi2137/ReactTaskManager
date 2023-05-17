@@ -10,3 +10,8 @@
     box-shadow: 0 0 3px black;
     transition: all 0.3s ease;
 }
+.Button:active {
+    background-color: #16471daf;
+    transform: scale(1.050, 1.050);
+    transition: all 0;
+}
