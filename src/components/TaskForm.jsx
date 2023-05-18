@@ -39,7 +39,7 @@ function TaskForm ({setNewTask, onTaskCreate, newTask, visible}) {
                 type= "submit"
                 onClick={e => onTaskCreate()}
               >
-                Create task
+                Створити задачу
               </Button>
             </div>
 

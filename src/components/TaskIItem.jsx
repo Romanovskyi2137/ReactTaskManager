@@ -12,12 +12,12 @@ function TaskItem (props) {
                 <p>{props.task.body}</p>
             </div>
             <div className="taskItem__btns">
-                <Button>Complete task</Button>  
+                <Button>До виконаних</Button>  
                 <Button 
                     style={{marginTop: "10px"}}
                     onClick={() => props.onTaskDelete(props.task.title)}    
                 >
-                    Delete task
+                    Видалити
                 </Button>
             </div>
         </div>

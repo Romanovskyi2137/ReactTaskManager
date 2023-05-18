@@ -5,6 +5,8 @@ import CreateTaskModal from './components/CreateTaskModal/CreateTaskModal';
 import Button from './components/UI/Button/Button';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
+import TaskFilter from './components/TaskFilter';
+import { useList } from './myHooks/useList';
 
 
 
@@ -31,6 +33,9 @@ function App() {
   ]);
   const [CTModalVisible, setCTModalVisible] = useState(false);
   const [newTask, setNewTask] = useState({title: "", body: "", prior: "", iconClassName: ""});
+  const [filter, setFilter] = useState({sort: null, query: ""});
+
+  const filteredTasks = useList(tasks, filter.sort, filter.query)
   
 
   function onTaskCreate () {
@@ -60,17 +65,24 @@ function App() {
             />
           </CreateTaskModal>
           <div className="tasks__list_header">
-            <h2>list title</h2>
+            <h2>Список 1</h2>
             <Button
               onClick={e => setCTModalVisible(true)}
             >
-              Create task
+              Створити задачу
             </Button>
           </div>
           
           <hr style={{margin: "30px 0"}}/>
+
+          <TaskFilter
+            filter={filter}
+            setFilter={setFilter}
+          />
+
+          <hr style={{margin: "30px 0"}}/>
           
-          <TaskList tasks={tasks} setTasks={setTasks}/>
+          <TaskList tasks={filteredTasks} setTasks={setTasks}/>
 
         </div>
       </div>
