@@ -6,7 +6,7 @@ import { useMemo } from "react";
 export const useSortedList = (list, sort) => {
     const sortedList = useMemo(() => {
         if (sort) {
-          return [...list].sort((b, a) => a[sort].localeCompare(b[sort]))
+          return [...list].sort((a, b) => a[sort].localeCompare(b[sort]))
         }
         return list
       }, [sort, list]);

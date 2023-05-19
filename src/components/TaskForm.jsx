@@ -17,12 +17,12 @@ function TaskForm ({setNewTask, onTaskCreate, newTask, visible}) {
               type="text"
               value={newTask.title}
               onChange={e => setNewTask({...newTask, title: e.target.value})}
-              placeholder="Title of the task"  
+              placeholder="Назва"  
             />
              <TextArea 
               value={newTask.body}
               onChange={e => setNewTask({...newTask, body: e.target.value})}
-              placeholder="Description of the task"  
+              placeholder="Опис"  
             />
             <div>
 

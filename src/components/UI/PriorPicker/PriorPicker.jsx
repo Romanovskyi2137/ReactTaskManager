@@ -24,7 +24,7 @@ function PriorPicker (props) {
     return (
         <div style={{marginLeft: "10px"}}> 
             <i className="chose_prior_btn fi fi-ss-flame"
-                onClick={e => iOnClick(e, "3", e.target.className)}
+                onClick={e => iOnClick(e, "1", e.target.className)}
             />
      
             <i className="chose_prior_btn fi fi-bs-flame" 
@@ -32,7 +32,7 @@ function PriorPicker (props) {
             />
            
             <i className="chose_prior_btn fi fi-rs-flame"
-                onClick={e => iOnClick(e, "1", e.target.className)}
+                onClick={e => iOnClick(e, "3", e.target.className)}
             />
          
         </div>

@@ -21,7 +21,7 @@ function TaskFilter ({filter, setFilter}) {
                     {value: "prior", name: "За пріорітетом"},
                     {value: "title", name: "За назвою"},
                 ]}
-                defaultValue={"Сортувати по..."}
+                defaultValue={"Сортувати за..."}
                 onChange={value => setFilter({...filter, sort: value})}
             />
 

@@ -15,13 +15,13 @@ function App() {
     {
       title: "title of the task 1",
       body: "body of the task",
-      prior: "1",
+      prior: "3",
       iconClassName: "fi fi-rs-flame"
     },
     {
       title: "title of the task 2",
       body: "body of the task",
-      prior: "3",
+      prior: "1",
       iconClassName: "fi fi-ss-flame"
     },
     {
@@ -35,7 +35,7 @@ function App() {
   const [newTask, setNewTask] = useState({title: "", body: "", prior: "", iconClassName: ""});
   const [filter, setFilter] = useState({sort: null, query: ""});
 
-  const filteredTasks = useList(tasks, filter.sort, filter.query)
+  const filteredTasks = useList(tasks, filter.sort, filter.query);
   
 
   function onTaskCreate () {
