@@ -1,4 +1,4 @@
-.CTModal{
+.Modal{
     position: fixed;
     top: 0;
     bottom: 0;
@@ -9,16 +9,18 @@
     z-index: 2;
 }
 
-.CTModalContent{
+.ModalContent{
     padding: 25px;
     background: white;
     border-radius: 16px;
     min-width: 250px;
+    max-height: 90vh;
+    overflow: scroll;
 }
 
 
 
-.CTModal.active {
+.Modal.active {
     display: flex;
     justify-content: center;
     align-items: center;

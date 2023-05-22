@@ -1,10 +1,10 @@
 import React from "react";
-import cl from './CreateTaskModal.module.css';
+import cl from './ModalWindow.module.css';
 
 
 
-function CreateTaskModal ({children, visible, setVisible}) {
-    const rootClasses = [cl.CTModal]
+function ModalWindow ({children, visible, setVisible}) {
+    const rootClasses = [cl.Modal]
 
     if(visible) {
         rootClasses.push(cl.active)
@@ -13,7 +13,7 @@ function CreateTaskModal ({children, visible, setVisible}) {
     return (
 
                 <div className={rootClasses.join(" ")} onClick={() => setVisible(false)}>
-                    <div className={cl.CTModalContent} onClick={e => {
+                    <div className={cl.ModalContent} onClick={e => {
                         e.stopPropagation()
                     }}>
                         {children}
@@ -22,4 +22,4 @@ function CreateTaskModal ({children, visible, setVisible}) {
     )
 }
 
-export default CreateTaskModal
+export default ModalWindow
