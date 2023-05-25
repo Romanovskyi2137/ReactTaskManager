@@ -14,7 +14,11 @@ function TaskItem (props) {
                         <p>{props.task.body}</p>
                     </div>
                     <div className="taskItem__btns">
-                        <Button>До виконаних</Button>  
+                        <Button
+                            onClick={() => props.toComplete(props.task)}
+                        >
+                            До виконаних
+                        </Button>  
                         <Button 
                             style={{marginTop: "10px"}}
                             onClick={() => props.onTaskDelete(props.task.title)}    
@@ -33,7 +37,11 @@ function TaskItem (props) {
                         <p>{props.task.body}</p>
                     </div>
                     <div className="taskItem__btns">
-                        <Button>До поточних</Button>  
+                        <Button
+                            onClick={() => props.toCurrent(props.task)}
+                        >
+                            До поточних
+                        </Button>  
                         <Button 
                             style={{marginTop: "10px"}}
                             onClick={() => props.onTaskDelete(props.task.title)}    

@@ -4,22 +4,38 @@ import TaskItem from "./TaskIItem";
 
 
 function TaskList (props) {
-    const {tasks, setTasks, setVisible, listType} = props;
+    const {curTasks, setCurTasks, setVisible, listType, complTasks, setComplTask} = props;
 
     function onTaskDelete (title) {
-        setTasks(tasks.filter(task => task.title !== title))
+      setCurTasks(curTasks.filter(task => task.title !== title))
+    }
+    const toCompleteReplace = (task) => {
+      setComplTask([task, ...complTasks]);
+      onTaskDelete(task.title)
+    }
+
+    function toCurrentReplace (task) {
+      setCurTasks([task, ...curTasks])
+      // onTaskDelete(task.title)
+      console.log(task)
+      console.log(complTasks)
+      // setComplTask(complTasks.filter(task => task.title !== title))
+    }
+    if(curTasks.length === 0){
+      return (<h3 style={{textAlign: "center"}}>Список пустий.</h3>)
+    }
+
+    if(setVisible){
+      if(complTasks.length === 0){
+        setVisible(false);
+        return
       }
-      if(setVisible){
-        if(tasks.length === 0){
-          setVisible(false);
-          return
-        }
-      }
+    }
 
     
-      if(listType === "current"){
+    if(listType === "current"){
         return (<TransitionGroup>
-                  {tasks.map(task => 
+                  {curTasks.map(task => 
                     <CSSTransition
                     key={task.title}
                     classNames="task"
@@ -29,13 +45,14 @@ function TaskList (props) {
                         task={task} 
                         onTaskDelete={onTaskDelete}
                         itemType={listType}
+                        toComplete={toCompleteReplace}
                       />
                     </CSSTransition>            
                   )}
                 </TransitionGroup>)
       }else if(listType === "completed"){
         return (<TransitionGroup>
-                  {tasks.map(task => 
+                  {complTasks.map(task => 
                     <CSSTransition
                     key={task.title}
                     classNames="task"
@@ -45,6 +62,7 @@ function TaskList (props) {
                         task={task} 
                         onTaskDelete={onTaskDelete}
                         itemType={listType}
+                        toCurrent={toCurrentReplace}
                       />
                     </CSSTransition>            
                   )}

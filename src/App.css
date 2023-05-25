@@ -1,6 +1,8 @@
 @import "~@flaticon/flaticon-uicons/css/all/all";
 
-
+body{
+  overflow: hidden;
+}
 
 #root{
   min-width: 100vw;

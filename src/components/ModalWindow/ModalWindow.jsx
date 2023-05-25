@@ -13,10 +13,12 @@ function ModalWindow ({children, visible, setVisible}) {
     return (
 
                 <div className={rootClasses.join(" ")} onClick={() => setVisible(false)}>
-                    <div className={cl.ModalContent} onClick={e => {
-                        e.stopPropagation()
-                    }}>
-                        {children}
+                    <div className={cl.Modal__wrapper}>
+                        <div className={cl.ModalContent} onClick={e => {
+                            e.stopPropagation()
+                        }}>
+                            {children}
+                        </div>
                     </div>
                 </div>
     )

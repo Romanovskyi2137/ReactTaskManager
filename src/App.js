@@ -51,42 +51,6 @@ function App() {
       prior: "2",
       iconClassName: "fi fi-bs-flame"
     },
-    {
-      title: "title of the completed task 4",
-      body: "body of the task",
-      prior: "3",
-      iconClassName: "fi fi-rs-flame"
-    },
-    {
-      title: "title of the the completed task 5",
-      body: "body of the task",
-      prior: "1",
-      iconClassName: "fi fi-ss-flame"
-    },
-    {
-      title: "title of the the completed task 6",
-      body: "body of the task",
-      prior: "2",
-      iconClassName: "fi fi-bs-flame"
-    },
-    {
-      title: "title of the completed task 7",
-      body: "body of the task",
-      prior: "3",
-      iconClassName: "fi fi-rs-flame"
-    },
-    {
-      title: "title of the the completed task 8",
-      body: "body of the task",
-      prior: "1",
-      iconClassName: "fi fi-ss-flame"
-    },
-    {
-      title: "title of the the completed task 9",
-      body: "body of the task",
-      prior: "2",
-      iconClassName: "fi fi-bs-flame"
-    },
   ])
   const [CTModalVisible, setCTModalVisible] = useState(false);
   const [completedTaskModalVisible, setcompletedTaskModalVisible] = useState(false);
@@ -132,15 +96,18 @@ function App() {
               type="text"
               value={completedTaskSearchQuery}
               onChange={e => setCompletedTaskSearchQuery(e.target.value)}
+              placeholder="Пошук..."
             />
             <hr
               style={{margin: "15px 0", }}
             />
             <TaskList 
-              tasks={filteredCompletedTasks} 
-              setTasks={setCompletedTasks} 
+              curTasks={filteredCompletedTasks} 
+              setCurTasks={setCompletedTasks} 
               setVisible={setcompletedTaskModalVisible}
               listType="completed"
+              complTasks={completedTasks}
+              setComplTask={setCompletedTasks}
             />
           </ModalWindow>
           <div className="tasks__list_header">
@@ -170,9 +137,11 @@ function App() {
           <hr style={{margin: "30px 0"}}/>
           
           <TaskList 
-            tasks={filteredTasks} 
-            setTasks={setTasks} 
+            curTasks={filteredTasks} 
+            setCurTasks={setTasks} 
             listType="current"
+            complTasks={completedTasks}
+            setComplTask={setCompletedTasks}
           />
 
         </div>
