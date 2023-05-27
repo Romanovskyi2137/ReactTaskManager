@@ -2,6 +2,7 @@ import React from "react";
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import TaskItem from "./TaskIItem";
 
+// переробити компонент, навіщо вкидати одночасно усі масиви через пропси у все підряд? це тупо.
 
 function TaskList (props) {
     const {curTasks, setCurTasks, setVisible, listType, complTasks, setComplTask} = props;
@@ -16,9 +17,7 @@ function TaskList (props) {
 
     function toCurrentReplace (task) {
       setCurTasks([task, ...curTasks])
-      // onTaskDelete(task.title)
-      console.log(task)
-      console.log(complTasks)
+      onTaskDelete(task.title)
       // setComplTask(complTasks.filter(task => task.title !== title))
     }
     if(curTasks.length === 0){

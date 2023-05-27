@@ -38,7 +38,7 @@ function TaskItem (props) {
                     </div>
                     <div className="taskItem__btns">
                         <Button
-                            onClick={() => props.toCurrent(props.task)}
+                            onClick={() => props.toCurrent(props.task, props.curTasks)}
                         >
                             До поточних
                         </Button>  
