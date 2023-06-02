@@ -109,10 +109,10 @@ function App() {
               placeholder="Пошук..."
             />
             <hr
-              style={{margin: "15px 0", }}
+              style={{margin: "15px 0"}}
             />
             <TaskList 
-              tasks={completedTasks}
+              tasks={filteredCompletedTasks}
               setTasks={setCompletedTasks}
               setVisible={setcompletedTaskModalVisible}
               btnType="До поточних"
@@ -120,7 +120,7 @@ function App() {
             />
           </ModalWindow>
           <div className="tasks__list_header">
-            <h2>Список 1</h2>
+            <h2>React Task Manager</h2>
             <div className='header__btns'>
               <Button
                 onClick={e => setcompletedTaskModalVisible(true)}
@@ -146,7 +146,7 @@ function App() {
           <hr style={{margin: "30px 0"}}/>
           
           <TaskList 
-            tasks={tasks}
+            tasks={filteredTasks}
             setTasks={setTasks}
             btnType="До виконаних"
             onTaskReplace={toCompleteReplace}
