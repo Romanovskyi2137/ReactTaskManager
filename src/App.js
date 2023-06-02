@@ -75,6 +75,16 @@ function App() {
     setCTModalVisible(false)
     setNewTask({title: "", body: "", prior: "", iconClassName: ""})
   }
+ 
+  const toCompleteReplace = (task) => {
+    setCompletedTasks([task, ...completedTasks]);
+    setTasks(tasks.filter(t => t.title !== task.title))
+  }
+
+  function toCurrentReplace (task) {
+    setTasks([task, ...tasks])
+    setCompletedTasks(completedTasks.filter(t => t.title !== task.title))
+  }
 
   return (
     <div className="App">
@@ -102,12 +112,11 @@ function App() {
               style={{margin: "15px 0", }}
             />
             <TaskList 
-              curTasks={filteredCompletedTasks} 
-              setCurTasks={setCompletedTasks} 
+              tasks={completedTasks}
+              setTasks={setCompletedTasks}
               setVisible={setcompletedTaskModalVisible}
-              listType="completed"
-              complTasks={completedTasks}
-              setComplTask={setCompletedTasks}
+              btnType="До поточних"
+              onTaskReplace={toCurrentReplace}
             />
           </ModalWindow>
           <div className="tasks__list_header">
@@ -137,11 +146,10 @@ function App() {
           <hr style={{margin: "30px 0"}}/>
           
           <TaskList 
-            curTasks={filteredTasks} 
-            setCurTasks={setTasks} 
-            listType="current"
-            complTasks={completedTasks}
-            setComplTask={setCompletedTasks}
+            tasks={tasks}
+            setTasks={setTasks}
+            btnType="До виконаних"
+            onTaskReplace={toCompleteReplace}
           />
 
         </div>

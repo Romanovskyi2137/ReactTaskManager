@@ -4,8 +4,6 @@ import Button from './UI/Button/Button';
 
 function TaskItem (props) {
 
-    
-        if(props.itemType === "current"){
             return (
                 <div className="task__item">
                     <div style={{maxWidth: "75%"}}>
@@ -15,9 +13,9 @@ function TaskItem (props) {
                     </div>
                     <div className="taskItem__btns">
                         <Button
-                            onClick={() => props.toComplete(props.task)}
+                            onClick={() => props.onTaskReplace(props.task)}
                         >
-                            До виконаних
+                            {props.btnType}
                         </Button>  
                         <Button 
                             style={{marginTop: "10px"}}
@@ -26,34 +24,8 @@ function TaskItem (props) {
                             Видалити
                         </Button>
                     </div>
-            </div>
+                 </div>
             )
-        } else if (props.itemType === "completed"){
-            return (
-                <div className="task__item">
-                    <div style={{maxWidth: "75%"}}>
-                        <i className={props.task.iconClassName} style={{marginBottom: "10px", marginRight: "20px"}}></i>
-                        <h3 style={{marginBottom: "12px", display: "inline-block"}}>{props.task.title}</h3>
-                        <p>{props.task.body}</p>
-                    </div>
-                    <div className="taskItem__btns">
-                        <Button
-                            onClick={() => props.toCurrent(props.task, props.curTasks)}
-                        >
-                            До поточних
-                        </Button>  
-                        <Button 
-                            style={{marginTop: "10px"}}
-                            onClick={() => props.onTaskDelete(props.task.title)}    
-                        >
-                            Видалити
-                        </Button>
-                    </div>
-            </div>
-            )
-        }
-        
-        
     
 }
 
