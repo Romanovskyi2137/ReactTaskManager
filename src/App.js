@@ -9,7 +9,9 @@ import { useList } from './myHooks/useList';
 import ModalWindow from './components/ModalWindow/ModalWindow';
 import Input from './components/UI/Input/Input';
 
-
+// примітка на майбутнє: щоб створити окремі списки задач, як і планувалося спочатку, потрібно створити компонент у який через двусторонній зв'язок
+//  буде пропсами передаватись назва списку задач. Тобто буде компонент Апп, у якому буде по дефолту відображатись "список 1", такожє кнопка створення нового списку,
+// а в умовному компоненті "таскліст", який потребуватиме доопрацювання, будуть уже відображатися задачі, назва списку і функціонал додавання/видалення, переносу. 
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -17,7 +19,9 @@ function App() {
       title: "title of the task 1",
       body: "body of the task",
       prior: "3",
-      iconClassName: "fi fi-rs-flame"
+      iconClassName: "fi fi-rs-flame",
+      startPoint: null,
+      endPoint: null
     },
     {
       title: "title of the task 2",

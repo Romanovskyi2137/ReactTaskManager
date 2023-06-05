@@ -34,6 +34,8 @@ function TaskList (props) {
                   onTaskDelete={onTaskDelete}
                   btnType={btnType}
                   onTaskReplace={onTaskReplace}
+                  startPoint={null}
+                  endPoint={null}
                   />
               </CSSTransition>            
             )}
