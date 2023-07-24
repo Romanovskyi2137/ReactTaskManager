@@ -8,10 +8,7 @@ import TaskFilter from './components/TaskFilter';
 import { useList } from './myHooks/useList';
 import ModalWindow from './components/ModalWindow/ModalWindow';
 import Input from './components/UI/Input/Input';
-
-// примітка на майбутнє: щоб створити окремі списки задач, як і планувалося спочатку, потрібно створити компонент у який через двусторонній зв'язок
-//  буде пропсами передаватись назва списку задач. Тобто буде компонент Апп, у якому буде по дефолту відображатись "список 1", такожє кнопка створення нового списку,
-// а в умовному компоненті "таскліст", який потребуватиме доопрацювання, будуть уже відображатися задачі, назва списку і функціонал додавання/видалення, переносу. 
+import Error from './components/UI/Error/Error'
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -92,6 +89,9 @@ function App() {
 
   return (
     <div className="App">
+
+      {/* тут має бути компонент, з реєстрацією/авторизацією користувача */}
+
       <div className="tasks">
         <div className="tasks__list">
           <ModalWindow visible={CTModalVisible} setVisible={setCTModalVisible}>
@@ -102,6 +102,7 @@ function App() {
               visible={CTModalVisible}
             />
           </ModalWindow>
+
           <ModalWindow 
             visible={completedTaskModalVisible} 
             setVisible={setcompletedTaskModalVisible}
@@ -123,6 +124,7 @@ function App() {
               onTaskReplace={toCurrentReplace}
             />
           </ModalWindow>
+
           <div className="tasks__list_header">
             <h2>React Task Manager</h2>
             <div className='header__btns'>
@@ -145,6 +147,9 @@ function App() {
           <TaskFilter
             filter={filter}
             setFilter={setFilter}
+          />
+          <Error
+            message={"error text"}
           />
 
           <hr style={{margin: "30px 0"}}/>

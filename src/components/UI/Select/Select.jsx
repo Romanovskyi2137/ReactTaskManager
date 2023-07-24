@@ -8,7 +8,7 @@ function Select ({options, defaultValue, onChange, value}) {
         value={value}
         onChange={e => onChange(e.target.value)}
         >
-            <option value="" selected disabled>{defaultValue}</option>
+            <option value="" disabled>{defaultValue}</option>
 
             {options.map(option => {
                 return <option value={option.value} key={option.value}>{option.name}</option>
