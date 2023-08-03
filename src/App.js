@@ -1,6 +1,5 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import TaskItem from './components/TaskIItem';
 import Button from './components/UI/Button/Button';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
