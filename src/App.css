@@ -5,9 +5,13 @@ body{
 }
 
 #root{
+  /* background: url(../src/Media/Backgrounds/default_workspace.jpg) center/cover no-repeat fixed; */
   min-width: 100vw;
   min-height: 100vh;
-  /* background: url(../src/Media/Backgrounds/default_workspace.jpg) center/cover no-repeat fixed; */
+}
+
+.main {
+  
 }
 .App{
   min-width: 100vw;
@@ -70,3 +74,50 @@ body{
 }
 
 /*  */
+
+.reg_form_wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.startpage_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.startpage_container {
+  display: flex;
+  flex-direction: column;
+  /* margin-top: 50px; */
+  
+}
+
+.startpage_interactive__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.startpage_interactive {
+  width: 400px;
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.startpage_interactive > a{
+  display: inline-block;
+  color: black;
+}
+
+.start_page_about {
+  width: 800px;
+}
+
+.Auth_wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
