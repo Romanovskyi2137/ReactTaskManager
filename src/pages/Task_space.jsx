@@ -7,7 +7,6 @@ import TaskFilter from '../components/TaskFilter';
 import { useList } from '../myHooks/useList';
 import ModalWindow from '../components/ModalWindow/ModalWindow';
 import Input from '../components/UI/Input/Input';
-import Error from '../components/UI/Error/Error'
 
 function Task_space () {
   const [tasks, setTasks] = useState([
@@ -146,9 +145,6 @@ function Task_space () {
           <TaskFilter
             filter={filter}
             setFilter={setFilter}
-          />
-          <Error
-            message={"error text"}
           />
 
           <hr style={{margin: "30px 0"}}/>

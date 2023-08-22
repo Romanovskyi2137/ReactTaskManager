@@ -5,11 +5,12 @@ import AuthServise from "../service/authService";
 import { useNavigate } from "react-router-dom";
 import authValidator from "../validation/authValidator";
 import Error from "../components/UI/Error/Error";
+import { Notify } from "notiflix";
+
 
 
 function Registration () {
     const navigate = useNavigate();
-    const [error, setError] = useState("");
     const onFormSubmit = async (e) => {
         try {
             e.preventDefault();
@@ -22,7 +23,7 @@ function Registration () {
                 navigate("/auth", {replace: true})
             }
         } catch (e) {
-            setError(e.message)
+            Notify.failure(e.message);
         }
     }
 
@@ -33,7 +34,9 @@ function Registration () {
                     <h2 style={{textAlign: "center", marginBottom: "25px"}}>Реєстрація</h2>
                     <Input type="text" name="username" placeholder="Ім'я користувача"/>
                     <Input type="text" name="password" placeholder="Пароль"/>
-                    {error && <Error message={error}/>}
+                    <h6 style={{paddingLeft: "5px"}}>Пароль має бути від 6 до 12 символів</h6>
+
+                    {/* {error && <Error message={error}/>} */}
                     <Button type="submit" style={{marginTop: "5px"}}>Зареєструватись</Button>
                 </form> 
         </div>
