@@ -7,7 +7,7 @@ function ModalWindow ({children, visible, setVisible}) {
     const rootClasses = [cl.Modal]
 
     if(visible) {
-        rootClasses.push(cl.active)
+        rootClasses.push(cl.active);
     }
 
     return (

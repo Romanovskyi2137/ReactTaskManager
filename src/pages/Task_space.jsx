@@ -7,58 +7,31 @@ import TaskFilter from '../components/TaskFilter';
 import { useList } from '../myHooks/useList';
 import ModalWindow from '../components/ModalWindow/ModalWindow';
 import Input from '../components/UI/Input/Input';
+import userService from "../service/userService"
 
 function Task_space () {
-  const [tasks, setTasks] = useState([
-    {
-      title: "title of the task 1",
-      body: "body of the task",
-      prior: "3",
-      iconClassName: "fi fi-rs-flame",
-      startPoint: null,
-      endPoint: null
-    },
-    {
-      title: "title of the task 2",
-      body: "body of the task",
-      prior: "1",
-      iconClassName: "fi fi-ss-flame"
-    },
-    {
-      title: "title of the task 3",
-      body: "body of the task",
-      prior: "2",
-      iconClassName: "fi fi-bs-flame"
-    }
-  ]);
-  const [completedTasks, setCompletedTasks] = useState([
-    {
-      title: "title of the completed task 1",
-      body: "body of the task",
-      prior: "3",
-      iconClassName: "fi fi-rs-flame"
-    },
-    {
-      title: "title of the the completed task 2",
-      body: "body of the task",
-      prior: "1",
-      iconClassName: "fi fi-ss-flame"
-    },
-    {
-      title: "title of the the completed task 3",
-      body: "body of the task",
-      prior: "2",
-      iconClassName: "fi fi-bs-flame"
-    },
-  ])
+  const [tasks, setTasks] = useState([]);
+  const [completedTasks, setCompletedTasks] = useState([]);
   const [CTModalVisible, setCTModalVisible] = useState(false);
   const [completedTaskModalVisible, setcompletedTaskModalVisible] = useState(false);
   const [newTask, setNewTask] = useState({title: "", body: "", prior: "", iconClassName: ""});
   const [filter, setFilter] = useState({sort: null, query: ""});
-  const [completedTaskSearchQuery, setCompletedTaskSearchQuery] = useState("")
+  const [completedTaskSearchQuery, setCompletedTaskSearchQuery] = useState("");
+  
+  useEffect(async () => {
+    const taskData = await userService.getCurrent();
+    setTasks(taskData)
+  }, []);
+
+  useEffect(async () => {
+    // отут переробити, бо при вікритті модалки запит і при закритті теж
+    // доробити ЮРЛки в юзерСервісі
+    const data = await userService.getComplete();
+    setCompletedTasks(data);
+  }, [completedTaskModalVisible]);
 
   const filteredTasks = useList(tasks, filter.sort, filter.query);
-  const filteredCompletedTasks = useList(completedTasks, "", completedTaskSearchQuery)
+  const filteredCompletedTasks = useList(completedTasks, "", completedTaskSearchQuery);
   
 
   function onTaskCreate () {
@@ -70,14 +43,14 @@ function Task_space () {
       alert("Виберіть пріорітет задачі.");
       return
     }
-    setTasks([newTask, ...tasks])
-    setCTModalVisible(false)
-    setNewTask({title: "", body: "", prior: "", iconClassName: ""})
+    setTasks([newTask, ...tasks]);
+    setCTModalVisible(false);
+    setNewTask({title: "", body: "", prior: "", iconClassName: ""});
   }
  
   const toCompleteReplace = (task) => {
     setCompletedTasks([task, ...completedTasks]);
-    setTasks(tasks.filter(t => t.title !== task.title))
+    setTasks(tasks.filter(t => t.title !== task.title));
   }
 
   function toCurrentReplace (task) {
