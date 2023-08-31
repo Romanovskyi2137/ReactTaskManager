@@ -4,7 +4,6 @@ import Button from "../components/UI/Button/Button";
 import AuthServise from "../service/authService";
 import { useNavigate } from "react-router-dom";
 import authValidator from "../validation/authValidator";
-import Error from "../components/UI/Error/Error";
 import { Notify } from "notiflix";
 
 

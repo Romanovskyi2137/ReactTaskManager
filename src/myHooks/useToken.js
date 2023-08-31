@@ -1,8 +1,4 @@
-
-
-function useAuth () {
+export default function useToken () {
     const token = localStorage.getItem("token");
     return token
 };
-
-export default useAuth

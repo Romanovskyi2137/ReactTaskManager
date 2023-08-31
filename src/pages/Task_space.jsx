@@ -7,7 +7,7 @@ import TaskFilter from '../components/TaskFilter';
 import { useList } from '../myHooks/useList';
 import ModalWindow from '../components/ModalWindow/ModalWindow';
 import Input from '../components/UI/Input/Input';
-import userService from "../service/userService"
+import UserService from "../service/userService"
 
 function Task_space () {
   const [tasks, setTasks] = useState([]);
@@ -18,17 +18,20 @@ function Task_space () {
   const [filter, setFilter] = useState({sort: null, query: ""});
   const [completedTaskSearchQuery, setCompletedTaskSearchQuery] = useState("");
   
-  useEffect(async () => {
-    const taskData = await userService.getCurrent();
-    setTasks(taskData)
+  useEffect(() => {
+    const getData = async () => {
+      const taskData = await UserService.getCurrent();
+      setTasks(taskData)
+    };
+    getData();    
   }, []);
 
-  useEffect(async () => {
-    // отут переробити, бо при вікритті модалки запит і при закритті теж
-    // доробити ЮРЛки в юзерСервісі
-    const data = await userService.getComplete();
+
+ const onComplTasksModalOpen = async () => {
+    const data = await UserService.getComplete();
     setCompletedTasks(data);
-  }, [completedTaskModalVisible]);
+    setcompletedTaskModalVisible(true)
+  };
 
   const filteredTasks = useList(tasks, filter.sort, filter.query);
   const filteredCompletedTasks = useList(completedTasks, "", completedTaskSearchQuery);
@@ -100,7 +103,7 @@ function Task_space () {
             <h2>React Task Manager</h2>
             <div className='header__btns'>
               <Button
-                onClick={e => setcompletedTaskModalVisible(true)}
+                onClick={onComplTasksModalOpen}
               >
                 Виконані задачі
               </Button>
@@ -112,7 +115,8 @@ function Task_space () {
               </Button>
             </div>
           </div>
-          
+
+          {/* коли пустий масив все сипеться */}
           <hr style={{margin: "30px 0"}}/>
 
           <TaskFilter
@@ -127,7 +131,8 @@ function Task_space () {
             setTasks={setTasks}
             btnType="До виконаних"
             onTaskReplace={toCompleteReplace}
-          />
+          />          
+          
 
         </div>
       </div>
