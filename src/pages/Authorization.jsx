@@ -10,7 +10,7 @@ import { Notify } from "notiflix";
 function Authorization () {
     const navigate = useNavigate();
     const location = useLocation();
-    const fromPage = location.state?.location?.pathname || "/";
+    const fromPage = location.state?.from?.pathname || "/";
     const onFormSubmit = async (e) => {
         try {
             e.preventDefault();
@@ -21,7 +21,6 @@ function Authorization () {
             form.password.value = "";
             navigate(fromPage, {replace: true});
         } catch (e) {
-            console.log(e)
             Notify.failure(e.response.data.message);
         }
     };

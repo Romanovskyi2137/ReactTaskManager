@@ -8,115 +8,61 @@ import { useList } from '../myHooks/useList';
 import ModalWindow from '../components/ModalWindow/ModalWindow';
 import Input from '../components/UI/Input/Input';
 import UserService from "../service/userService"
+import CreateTaskModal from '../components/CreateTaskModal';
+import CompletedTasksModal from '../components/CompletedTasksModal';
+import TaskSpaceHeader from '../components/TaskSpaceHeader';
 
 function Task_space () {
   const [tasks, setTasks] = useState([]);
-  const [completedTasks, setCompletedTasks] = useState([]);
   const [CTModalVisible, setCTModalVisible] = useState(false);
-  const [completedTaskModalVisible, setcompletedTaskModalVisible] = useState(false);
-  const [newTask, setNewTask] = useState({title: "", body: "", prior: "", iconClassName: ""});
+  const [completedTaskModalVisible, setCompletedTaskModalVisible] = useState(false);
   const [filter, setFilter] = useState({sort: null, query: ""});
-  const [completedTaskSearchQuery, setCompletedTaskSearchQuery] = useState("");
   
-  useEffect(() => {
-    const getData = async () => {
-      const taskData = await UserService.getCurrent();
-      setTasks(taskData)
-    };
-    getData();    
-  }, []);
-
-
- const onComplTasksModalOpen = async () => {
-    const data = await UserService.getComplete();
-    setCompletedTasks(data);
-    setcompletedTaskModalVisible(true)
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const taskData = await UserService.getCurrent();
+  //     setTasks(taskData)
+  //   };
+  //   getData();    
+  // }, []);
+  const onCreate = (newTask) => {
+    setTasks([newTask, ...tasks])
   };
 
-  const filteredTasks = useList(tasks, filter.sort, filter.query);
-  const filteredCompletedTasks = useList(completedTasks, "", completedTaskSearchQuery);
-  
-
-  function onTaskCreate () {
-    if (newTask.title === "") {
-      alert("Вкажіть назву задачі.");
-      return
-    }
-    if (newTask.prior === ""){
-      alert("Виберіть пріорітет задачі.");
-      return
-    }
-    setTasks([newTask, ...tasks]);
-    setCTModalVisible(false);
-    setNewTask({title: "", body: "", prior: "", iconClassName: ""});
+  const onComplTasksModalOpen = () => {
+    setCompletedTaskModalVisible(true)
+  };
+  const onCreateTaskModalOpen = () => {
+    setCTModalVisible(true)
   }
+
+  const filteredTasks = useList(tasks, filter.sort, filter.query);
  
   const toCompleteReplace = (task) => {
-    setCompletedTasks([task, ...completedTasks]);
+    // http req
     setTasks(tasks.filter(t => t.title !== task.title));
-  }
-
-  function toCurrentReplace (task) {
-    setTasks([task, ...tasks])
-    setCompletedTasks(completedTasks.filter(t => t.title !== task.title))
-  }
+  };
 
   return (
     <div className="App">
-
-
-
       <div className="tasks">
         <div className="tasks__list">
-          <ModalWindow visible={CTModalVisible} setVisible={setCTModalVisible}>
-            <TaskForm
-              setNewTask={setNewTask}
-              onTaskCreate={onTaskCreate}
-              newTask={newTask}
-              visible={CTModalVisible}
-            />
-          </ModalWindow>
+          <CreateTaskModal 
+            visible={CTModalVisible} 
+            setVisible={setCTModalVisible}
+            onCreate={onCreate}
+          />
 
-          <ModalWindow 
-            visible={completedTaskModalVisible} 
-            setVisible={setcompletedTaskModalVisible}
-          >
-            <Input
-              type="text"
-              value={completedTaskSearchQuery}
-              onChange={e => setCompletedTaskSearchQuery(e.target.value)}
-              placeholder="Пошук..."
-            />
-            <hr
-              style={{margin: "15px 0"}}
-            />
-            <TaskList 
-              tasks={filteredCompletedTasks}
-              setTasks={setCompletedTasks}
-              setVisible={setcompletedTaskModalVisible}
-              btnType="До поточних"
-              onTaskReplace={toCurrentReplace}
-            />
-          </ModalWindow>
+          <CompletedTasksModal
+            visible={completedTaskModalVisible}
+            setVisible={setCompletedTaskModalVisible}
+          />
 
-          <div className="tasks__list_header">
-            <h2>React Task Manager</h2>
-            <div className='header__btns'>
-              <Button
-                onClick={onComplTasksModalOpen}
-              >
-                Виконані задачі
-              </Button>
-              <Button
-                style={{marginLeft: "15px"}}
-                onClick={e => setCTModalVisible(true)}
-              >
-                Створити задачу
-              </Button>
-            </div>
-          </div>
+          <TaskSpaceHeader
+            completeModalOpen={onComplTasksModalOpen}
+            createModalOpen={onCreateTaskModalOpen}
+          />
 
-          {/* коли пустий масив все сипеться */}
           <hr style={{margin: "30px 0"}}/>
 
           <TaskFilter

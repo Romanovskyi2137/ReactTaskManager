@@ -9,7 +9,7 @@ class UserService {
     async getCurrent () {
         const data = await axios({
             method: "get",
-            url: `${testURL}/current`,
+            url: `${mainURL}/current`,
             headers: {
                 "authorization": token
             }
@@ -19,7 +19,7 @@ class UserService {
     async getComplete () {
         const data = await axios({
             method: "get",
-            url: `${testURL}/complete`,
+            url: `${mainURL}/complete`,
             headers: {
                 "authorization": token
             }
