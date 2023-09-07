@@ -1,12 +1,9 @@
 import axios from "axios";
 
-const mainURL = "https://task-server-m418.onrender.com/task_space";
-const testURL = "http://localhost:5000/task_space"
-
-const token = localStorage.getItem("token");
+const mainURL = "https://task-server-m418.onrender.com/task_space"
 
 class UserService {
-    async getCurrent () {
+    async getCurrent (token) {
         const data = await axios({
             method: "get",
             url: `${mainURL}/current`,
@@ -16,7 +13,7 @@ class UserService {
         });
         return data
     };
-    async getComplete () {
+    async getComplete (token) {
         const data = await axios({
             method: "get",
             url: `${mainURL}/complete`,
@@ -26,6 +23,17 @@ class UserService {
         });
         return data
     };
+    async create (token, task) {
+        const res = await axios({
+            method: "post",
+            url: `${mainURL}/create`,
+            headers: {
+                "authorization": token
+            },
+            body: task
+        })
+        return res
+    }
 };
 
 export default new UserService
