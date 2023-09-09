@@ -19,7 +19,7 @@ function TaskItem (props) {
                         </Button>  
                         <Button 
                             style={{marginTop: "10px"}}
-                            onClick={() => props.onTaskDelete(props.task.title)}    
+                            onClick={() => props.onTaskDelete(props.task)}    
                         >
                             Видалити
                         </Button>

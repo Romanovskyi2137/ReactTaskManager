@@ -5,9 +5,10 @@ import TaskList from "./TaskList";
 import { useList } from "../myHooks/useList";
 import UserService from "../service/userService";
 import useToken from "../myHooks/useToken";
+import { Notify } from "notiflix";
 
 
-function CompletedTasksModal ({visible, setVisible, setTasks}) {
+function CompletedTasksModal ({visible, setVisible, toCurrentReplace}) {
     const [completedTasks, setCompletedTasks] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setIsLoading] = useState(true);
@@ -28,9 +29,15 @@ function CompletedTasksModal ({visible, setVisible, setTasks}) {
     }, [])
 
 
-    function toCurrent (task) {
-        // http req for replacement
-        setCompletedTasks(completedTasks.filter(t => t.title !== task.title))
+    async function toCurrent (task) {
+        const {id} = task;
+        try {
+          const res = await UserService.replace(token, id, "to_current"); 
+          setCompletedTasks(completedTasks.filter(t => t.id !== task.id));
+          toCurrentReplace(task)
+        } catch (e) {
+          Notify.failure("Щось пішло не так =(")
+        }
       };
     return (
         <ModalWindow 

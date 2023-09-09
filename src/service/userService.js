@@ -30,7 +30,31 @@ class UserService {
             headers: {
                 "authorization": token
             },
-            body: task
+            data: task
+        })
+        return res
+    };
+    async delete (token, id) {
+        const res = await axios({
+            method: "delete",
+            url: `${mainURL}/delete/${id}`,
+            headers: {
+                "authorization": token
+            }
+        })
+        return res
+    };
+    async replace (token, id, replaceType) {
+        const res = await axios({
+            method: "put",
+            url: `${mainURL}/replace`,
+            headers: {
+                "authorization": token
+            },
+            data: {
+                id: id,
+                replaceType: replaceType
+            }
         })
         return res
     }

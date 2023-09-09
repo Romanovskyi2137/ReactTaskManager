@@ -29,11 +29,15 @@ function CreateTaskModal ({visible, setVisible, onCreate}) {
           Notify.failure("Виберіть пріорітет задачі.");
           return
         };
-        onCreate(newTask);
-        // const res = await UserService.create(token, newTask);
-        // sending empty {}
-        setNewTask(taskSample);
-        setVisible(false);
+        try {
+          const res = await UserService.create(token, newTask);
+          onCreate(newTask);
+          setNewTask(taskSample);
+          setVisible(false);
+        } catch (e) {
+          Notify.failure("Щось пішло не так =(");
+          return
+        }
       }
     
     return(

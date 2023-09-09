@@ -9,6 +9,7 @@ import CompletedTasksModal from '../components/CompletedTasksModal';
 import TaskSpaceHeader from '../components/TaskSpaceHeader';
 import UserService from '../service/userService';
 import useToken from '../myHooks/useToken';
+import { Notify } from 'notiflix';
 
 
 
@@ -40,7 +41,7 @@ function Task_space () {
       }
     };
     fetchData();
-  }, [])
+  }, []);
 
   const onCreate = (newTask) => {
     setTasks([newTask, ...tasks])
@@ -55,9 +56,18 @@ function Task_space () {
 
   const filteredTasks = useList(tasks, filter.sort, filter.query);
  
-  const toCompleteReplace = (task) => {
-    // http req
-    setTasks(tasks.filter(t => t.title !== task.title));
+  const toCompleteReplace = async (task) => {
+    const {id} = task;
+    try {
+      const res = await UserService.replace(token, id, "to_complete")
+      setTasks(tasks.filter(t => t.title !== task.title));
+    } catch (e) {
+      Notify.failure("Щось пішло не так =(")
+    }
+  };
+
+  const toCurrentReplace = (task) => {
+    setTasks([task, ...tasks])
   };
 
   return (
@@ -78,6 +88,7 @@ function Task_space () {
             <CompletedTasksModal
             visible={completedTaskModalVisible}
             setVisible={setCompletedTaskModalVisible}
+            toCurrentReplace={toCurrentReplace}
             />
           :
             <></>
