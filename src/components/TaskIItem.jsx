@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './UI/Button/Button';
+import TaskTimer from './UI/TaskTimer/TaskTimer';
 
 
 function TaskItem (props) {
@@ -11,6 +12,7 @@ function TaskItem (props) {
                         <h3 style={{marginBottom: "12px", display: "inline-block"}}>{props.task.title}</h3>
                         <p>{props.task.body}</p>
                     </div>
+                    <TaskTimer endPoint={props.task.endPoint}/>
                     <div className="taskItem__btns">
                         <Button
                             onClick={() => props.onTaskReplace(props.task)}
