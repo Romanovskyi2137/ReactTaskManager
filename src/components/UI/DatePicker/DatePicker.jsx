@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 
 
-function DataPicker ({onChange}) {
+function DatePicker ({onChange}) {
     const getTimeValue = (value) => {
         return new Date(value).getTime()
     };
@@ -14,4 +14,4 @@ function DataPicker ({onChange}) {
 };
 
 
-export default DataPicker
+export default DatePicker

@@ -3,7 +3,7 @@ import Input from "./UI/Input/Input";
 import TextArea from "./UI/TextArea/TextArea";
 import Button from "./UI/Button/Button";
 import PriorPicker from "./UI/PriorPicker/PriorPicker";
-import DataPicker from "./UI/DataPicker/DataPicker";
+import DatePicker from "./UI/DatePicker/DatePicker";
 
 function TaskForm ({setNewTask, onTaskCreate, newTask, visible}) {
     const getPrior = ({number, iconClass}) => {
@@ -32,7 +32,7 @@ function TaskForm ({setNewTask, onTaskCreate, newTask, visible}) {
               visible={visible} 
             />
 
-            <DataPicker
+            <DatePicker
               onChange={(value) => setNewTask({...newTask, endPoint: value})}
             />
       
