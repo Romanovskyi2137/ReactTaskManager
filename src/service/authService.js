@@ -39,8 +39,8 @@ class AuthServise {
         };
         const userToken = await axios({
             method: "post",
-            // url: `${mainURL}/authorization/google_login`,
-            url: `${testURL}/google_login`,
+            url: `${mainURL}/authorization/google_login`,
+            // url: `${testURL}/google_login`,
             data: userData
         });
         return userToken

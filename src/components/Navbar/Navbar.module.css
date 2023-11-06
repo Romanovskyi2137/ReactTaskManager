@@ -1,0 +1,32 @@
+.navbar_container {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.navbar_list {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none
+}
+
+.navbar_list > li {
+    display: block;
+    margin: 0px 5px
+}
+
+.navbar_list > li > a {
+    color: black;
+    text-decoration: none;
+}
+
+.navbar_list > li > a:hover {
+    transition: all 0.15s;
+    color: orange;
+    text-shadow: 1px 1px 1px orange;
+}
+
+

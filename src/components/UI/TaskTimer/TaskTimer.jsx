@@ -3,13 +3,13 @@ import React, { useState, useEffect } from "react";
 
 function TaskTimer ({endPoint}) {
     const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining());
-    useEffect(() => {
-        const intervalId = setInterval(updateTimeRemaining, 1000);
+    // useEffect(() => {
+    //     const intervalId = setInterval(updateTimeRemaining, 1000);
     
-        return () => {
-          clearInterval(intervalId);
-        };
-      }, []);
+    //     return () => {
+    //       clearInterval(intervalId);
+    //     };
+    //   }, []);
 
 
     function calculateTimeRemaining () {

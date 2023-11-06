@@ -15,9 +15,7 @@ function CreateTaskModal ({visible, setVisible, onCreate}) {
       prior: "", 
       iconClassName: "", 
       id: uuidv4(),  
-      // ###
-      endPoint: new Date('2023-10-05').getTime()
-      // ###
+      endPoint: null
     };
     const token = useToken();
     const [newTask, setNewTask] = useState(taskSample);

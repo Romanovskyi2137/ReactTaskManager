@@ -7,7 +7,6 @@ function TaskSpaceHeader ({completeModalOpen, createModalOpen}) {
 
     return (
         <div className="tasks__list_header">
-            <h2>React Task Manager</h2>
             <div className='header__btns'>
               <Button
                 onClick={completeModalOpen}

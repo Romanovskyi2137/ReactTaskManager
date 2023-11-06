@@ -99,8 +99,6 @@ function Task_space () {
             createModalOpen={onCreateTaskModalOpen}
           />
 
-          <hr style={{margin: "30px 0"}}/>
-
           <TaskFilter
             filter={filter}
             setFilter={setFilter}
