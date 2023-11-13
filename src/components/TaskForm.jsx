@@ -1,18 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import Input from "./UI/Input/Input";
 import TextArea from "./UI/TextArea/TextArea";
 import Button from "./UI/Button/Button";
 import PriorPicker from "./UI/PriorPicker/PriorPicker";
 import DatePicker from "./UI/DatePicker/DatePicker";
+import { useDispatch } from "react-redux";
+import { addOneCurrentTask } from "../store/tasksReducer";
+import {Notify} from "notiflix";
+import {v4 as uuidv4} from "uuid";
+import UserService from "../service/userService";
+import useToken from "../myHooks/useToken";
 
-function TaskForm ({setNewTask, onTaskCreate, newTask, visible}) {
+function TaskForm ({visible, setVisible}) {
+    const dispatch = useDispatch()
+    const token = useToken();
+    const taskSample = {
+      title: "", 
+      body: "", 
+      prior: "", 
+      iconClassName: "", 
+      id: uuidv4(),  
+      endPoint: null
+    };
+    const [newTask, setNewTask] = useState(taskSample);
     const getPrior = ({number, iconClass}) => {
       setNewTask({...newTask, prior: number, iconClassName: iconClass});
+    };
+    async function onTaskCreate (e) {
+      e.preventDefault();
+      if (newTask.title === "") {
+        Notify.failure("Вкажіть назву задачі.");
+        return
+      };
+      if (newTask.prior === ""){
+        Notify.failure("Виберіть пріорітет задачі.");
+        return
+      };
+      try {
+        const res = await UserService.create(token, newTask);
+        dispatch(addOneCurrentTask(newTask))
+        setNewTask(taskSample);
+        setVisible(false);
+      } catch (e) {
+        Notify.failure("Щось пішло не так =(");
+        return
       }
-
+    }
     return (
         <form 
-          onSubmit={e => e.preventDefault()}
+          onSubmit={async e => onTaskCreate(e)}
         >
             <Input 
               type="text"
@@ -42,7 +78,6 @@ function TaskForm ({setNewTask, onTaskCreate, newTask, visible}) {
             <div style={{display: "flex", justifyContent: "flex-end"}}>
               <Button
                 type= "submit"
-                onClick={e => onTaskCreate()}
               >
                 Створити задачу
               </Button>

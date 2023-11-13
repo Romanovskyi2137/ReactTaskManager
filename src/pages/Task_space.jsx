@@ -9,12 +9,13 @@ import CompletedTasksModal from '../components/CompletedTasksModal';
 import TaskSpaceHeader from '../components/TaskSpaceHeader';
 import UserService from '../service/userService';
 import useToken from '../myHooks/useToken';
-import { Notify } from 'notiflix';
+import { useDispatch, useSelector } from 'react-redux';
+import { addManyTasks } from '../store/tasksReducer';
 
 
 
 function Task_space () {
-  const [tasks, setTasks] = useState([]);
+  const tasks = useSelector(state => state.tasks.currentTasks)
   const [CTModalVisible, setCTModalVisible] = useState(false);
   const [completedTaskModalVisible, setCompletedTaskModalVisible] = useState(false);
   const [filter, setFilter] = useState({sort: null, query: ""});
@@ -22,15 +23,16 @@ function Task_space () {
   const token = useToken();
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await UserService.getCurrent(token);
-        setTasks(res.data);
+        dispatch(addManyTasks(res.data));
         setIsLoading(false)
       } catch (e) {
-        if (e.response.status == 400) {
+        if (e.response.status === 400) {
           navigate("/auth", {
             state: {
               from: location
@@ -43,10 +45,6 @@ function Task_space () {
     fetchData();
   }, []);
 
-  const onCreate = (newTask) => {
-    setTasks([newTask, ...tasks])
-  };
-
   const onComplTasksModalOpen = () => {
     setCompletedTaskModalVisible(true)
   };
@@ -55,20 +53,6 @@ function Task_space () {
   }
 
   const filteredTasks = useList(tasks, filter.sort, filter.query);
- 
-  const toCompleteReplace = async (task) => {
-    const {id} = task;
-    try {
-      const res = await UserService.replace(token, id, "to_complete")
-      setTasks(tasks.filter(t => t.title !== task.title));
-    } catch (e) {
-      Notify.failure("Щось пішло не так =(")
-    }
-  };
-
-  const toCurrentReplace = (task) => {
-    setTasks([task, ...tasks])
-  };
 
   return (
     <div className="App">
@@ -79,7 +63,6 @@ function Task_space () {
             <CreateTaskModal 
               visible={CTModalVisible} 
               setVisible={setCTModalVisible}
-              onCreate={onCreate}
             />
           :
             <></>
@@ -88,7 +71,6 @@ function Task_space () {
             <CompletedTasksModal
             visible={completedTaskModalVisible}
             setVisible={setCompletedTaskModalVisible}
-            toCurrentReplace={toCurrentReplace}
             />
           :
             <></>
@@ -111,9 +93,7 @@ function Task_space () {
           :
             <TaskList 
               tasks={filteredTasks}
-              setTasks={setTasks}
               btnType="До виконаних"
-              onTaskReplace={toCompleteReplace}
             />
           }          
           

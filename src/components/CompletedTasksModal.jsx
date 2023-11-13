@@ -7,10 +7,13 @@ import UserService from "../service/userService";
 import useToken from "../myHooks/useToken";
 import { Notify } from "notiflix";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addManyCompletedTasks, addOneCurrentTask, removeCompletedTask } from "../store/tasksReducer";
 
 
-function CompletedTasksModal ({visible, setVisible, toCurrentReplace}) {
-    const [completedTasks, setCompletedTasks] = useState([]);
+function CompletedTasksModal ({visible, setVisible}) {
+    const completedTasks = useSelector(state => state.tasks.completedTasks);
+    const dispatch = useDispatch();
     const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const filtered = useList(completedTasks, "", searchQuery);
@@ -23,7 +26,7 @@ function CompletedTasksModal ({visible, setVisible, toCurrentReplace}) {
       const fetchData = async () => {
         try {
           const res = await UserService.getComplete(token);
-          setCompletedTasks(res.data);
+          dispatch(addManyCompletedTasks(res.data));
           setIsLoading(false)
         } catch (e) {
           if (e.response.status == 400) {
@@ -40,17 +43,6 @@ function CompletedTasksModal ({visible, setVisible, toCurrentReplace}) {
       fetchData()
     }, [])
 
-
-    async function toCurrent (task) {
-        const {id} = task;
-        try {
-          const res = await UserService.replace(token, id, "to_current"); 
-          setCompletedTasks(completedTasks.filter(t => t.id !== task.id));
-          toCurrentReplace(task)
-        } catch (e) {
-          Notify.failure("Щось пішло не так =(")
-        }
-      };
     return (
         <ModalWindow 
             visible={visible} 
@@ -70,10 +62,8 @@ function CompletedTasksModal ({visible, setVisible, toCurrentReplace}) {
             :
               <TaskList 
                 tasks={filtered}
-                setTasks={setCompletedTasks}
                 setVisible={setVisible}
                 btnType="До поточних"
-                onTaskReplace={toCurrent}
               />
             }
           </ModalWindow>

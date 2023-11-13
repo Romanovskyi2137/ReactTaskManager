@@ -1,12 +1,12 @@
 import { combineReducers, createStore } from "redux"
 import { composeWithDevTools } from "redux-devtools-extension";
-import { completedTasksReducer } from "./completedTasksReducer";
+import tasksReducer from "./tasksReducer";
 
 
 
 
 const rootReducer = combineReducers({
-   completedTasks: completedTasksReducer 
+   tasks: tasksReducer 
 });
 
 
