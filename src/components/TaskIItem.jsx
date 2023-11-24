@@ -54,7 +54,11 @@ function TaskItem (props) {
                 <h3 style={{marginBottom: "12px", display: "inline-block"}}>{props.task.title}</h3>
                 <p>{props.task.body}</p>
             </div>
-            <TaskTimer endPoint={props.task.endPoint}/>
+            {props.task.endPoint ?
+                <TaskTimer endPoint={props.task.endPoint}/>
+            :
+                null
+            }
             <div className="taskItem__btns">
                 <Button
                     onClick={() => onTaskReplace(props.task)}

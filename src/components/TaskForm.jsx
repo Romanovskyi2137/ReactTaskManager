@@ -10,6 +10,7 @@ import {Notify} from "notiflix";
 import {v4 as uuidv4} from "uuid";
 import UserService from "../service/userService";
 import useToken from "../myHooks/useToken";
+import TimePicker from "./UI/TimePicker/TimePicker";
 
 function TaskForm ({visible, setVisible}) {
     const dispatch = useDispatch()
@@ -26,6 +27,12 @@ function TaskForm ({visible, setVisible}) {
     const getPrior = ({number, iconClass}) => {
       setNewTask({...newTask, prior: number, iconClassName: iconClass});
     };
+    const getTime = (millis) => {
+      if (newTask.endPoint == null) {
+        setNewTask({...newTask, endPoint: (new Date().getTime() + millis)})  
+      }
+      setNewTask({...newTask, endPoint: (newTask.endPoint + millis)})
+    };
     async function onTaskCreate (e) {
       e.preventDefault();
       if (newTask.title === "") {
@@ -36,6 +43,7 @@ function TaskForm ({visible, setVisible}) {
         Notify.failure("Виберіть пріорітет задачі.");
         return
       };
+      console.log(newTask);
       try {
         const res = await UserService.create(token, newTask);
         dispatch(addOneCurrentTask(newTask))
@@ -70,6 +78,10 @@ function TaskForm ({visible, setVisible}) {
 
             <DatePicker
               onChange={(value) => setNewTask({...newTask, endPoint: value})}
+            />
+
+            <TimePicker
+              getTime={getTime}
             />
       
 
