@@ -10,7 +10,7 @@ import TaskSpaceHeader from '../components/TaskSpaceHeader';
 import UserService from '../service/userService';
 import useToken from '../myHooks/useToken';
 import { useDispatch, useSelector } from 'react-redux';
-import { addManyTasks } from '../store/tasksReducer';
+import { addManyTasks, removeCurrentTask, toCompleteReplace } from '../store/tasksReducer';
 
 
 
@@ -48,6 +48,15 @@ function Task_space () {
     };
     fetchData();
   }, []);
+
+  const onTaskDelete = async (id) => {
+    const res = await UserService.delete(token, id);
+    dispatch(removeCurrentTask(id));
+  };
+  const onTaskReplace = async (id) => {
+    const res = await UserService.replace(token, id, "to_complete");
+    dispatch(toCompleteReplace(id));
+  };
 
   const onComplTasksModalOpen = () => {
     setCompletedTaskModalVisible(true)
@@ -98,6 +107,8 @@ function Task_space () {
             <TaskList 
               tasks={filteredTasks}
               btnType="До виконаних"
+              taskDelete={onTaskDelete}
+              taskReplace={onTaskReplace}
             />
           }          
           

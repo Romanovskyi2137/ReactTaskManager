@@ -5,10 +5,9 @@ import TaskList from "./TaskList";
 import { useList } from "../myHooks/useList";
 import UserService from "../service/userService";
 import useToken from "../myHooks/useToken";
-import { Notify } from "notiflix";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addManyCompletedTasks, addOneCurrentTask, removeCompletedTask } from "../store/tasksReducer";
+import { addManyCompletedTasks, removeCompletedTask, toCurrentReplace } from "../store/tasksReducer";
 
 
 function CompletedTasksModal ({visible, setVisible}) {
@@ -43,6 +42,16 @@ function CompletedTasksModal ({visible, setVisible}) {
       fetchData()
     }, [])
 
+    const onTaskDelete = async (id) => {
+      const res = await UserService.delete(token, id);
+      dispatch(removeCompletedTask(id));
+    };
+    const onTaskReplace = async (id) => {
+      const res = await UserService.replace(token, id, "to_current");
+      dispatch(toCurrentReplace(id));
+    }
+
+
     return (
         <ModalWindow 
             visible={visible} 
@@ -62,8 +71,9 @@ function CompletedTasksModal ({visible, setVisible}) {
             :
               <TaskList 
                 tasks={filtered}
-                setVisible={setVisible}
                 btnType="До поточних"
+                taskDelete={onTaskDelete}
+                taskReplace={onTaskReplace}
               />
             }
           </ModalWindow>

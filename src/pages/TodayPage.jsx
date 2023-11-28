@@ -3,7 +3,7 @@ import UserService from "../service/userService";
 import useToken from "../myHooks/useToken";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { addManyToday } from "../store/tasksReducer";
+import { addManyToday, removeCurrentTask, removeTodayTask, toCompleteReplace } from "../store/tasksReducer";
 import TaskList from "../components/TaskList";
 
 
@@ -40,15 +40,28 @@ export default function TodayPage () {
         fetchData();
       }, []);
     
-    
+    const onTaskDelete = async (id) => {
+      const res = await UserService.delete(token, id);
+      dispatch(removeCurrentTask(id));
+      dispatch(removeTodayTask(id));
+    };
+    const onTaskReplace = async (id) => {
+      const res = await UserService.replace(token, id, "to_complete");
+      dispatch(toCompleteReplace(id));
+      dispatch(removeTodayTask(id))
+    }
+
+
     return (
-        <div className="page_wrapper">
+        <div className="TodayPage_wrapper">
             {isLoading ? 
                 <h1 style={{textAlign: "center"}}>loading...</h1> 
             :
                 <TaskList 
                     tasks={tasks}
                     btnType="До виконаних"
+                    taskDelete={onTaskDelete}
+                    taskReplace={onTaskReplace}
                 />
             }          
         </div>

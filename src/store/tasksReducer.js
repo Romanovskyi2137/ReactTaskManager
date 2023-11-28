@@ -35,8 +35,12 @@ const slice = createSlice({
             const id = action.payload;
             state.completedTasks = state.completedTasks.filter(task => task.id !== id) 
         },
+        removeTodayTask (state, action) {
+            const id = action.payload;
+            state.todayTasks = state.todayTasks.filter(task => task.id !== id)
+        },
         toCurrentReplace (state, action) {
-            const {id, ...rest} = action.payload;
+            const id = action.payload;
             state.completedTasks.forEach(task => {
                 if (task.id === id) {
                     state.currentTasks = [action.payload, ...state.currentTasks]
@@ -45,7 +49,7 @@ const slice = createSlice({
             })
         },
         toCompleteReplace (state, action) {
-            const {id, ...rest} = action.payload;
+            const id = action.payload;
             state.currentTasks.forEach(task => {
                 if (task.id === id) {
                     state.completedTasks = [action.payload, ...state.completedTasks];
@@ -67,6 +71,7 @@ export const {
     addOneCompletedTask, 
     removeCurrentTask, 
     removeCompletedTask,
+    removeTodayTask,
     toCompleteReplace,
     toCurrentReplace
 } = slice.actions;

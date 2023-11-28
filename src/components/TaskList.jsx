@@ -4,13 +4,15 @@ import TaskItem from "./TaskIItem";
 
 
 function TaskList (props) {
-    const {tasks, btnType} = props;
+    const {tasks, btnType, taskDelete, taskReplace} = props;
     if(tasks.length === 0){
       return (<h3 style={{textAlign: "center"}}>Список пустий.</h3>)
     };
 
     
-    return (<TransitionGroup>
+    return (
+        <div className="tasks">
+          <TransitionGroup>
             {tasks.map(task => 
               <CSSTransition
                   key={task.id}
@@ -18,14 +20,18 @@ function TaskList (props) {
                   timeout={500}
                   >
                   <TaskItem 
-                  task={task} 
-                  btnType={btnType}
-                  startPoint={null}
-                  endPoint={null}
+                    task={task} 
+                    btnType={btnType}
+                    startPoint={null}
+                    endPoint={null}
+                    taskDelete={taskDelete}
+                    taskReplace={taskReplace}
                   />
               </CSSTransition>            
             )}
-        </TransitionGroup>)
+          </TransitionGroup>
+        </div>
+        )
     
 }
 

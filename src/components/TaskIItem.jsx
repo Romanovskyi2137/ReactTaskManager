@@ -1,47 +1,23 @@
 import React from 'react';
 import Button from './UI/Button/Button';
 import TaskTimer from './UI/TaskTimer/TaskTimer';
-import { useDispatch } from 'react-redux';
-import { removeCompletedTask, removeCurrentTask, toCurrentReplace, toCompleteReplace } from "../store/tasksReducer";
 import { Notify } from "notiflix";
-import useToken from "../myHooks/useToken";
-import UserService from '../service/userService';
+
 
 
 function TaskItem (props) {
     const TO_CURRENT = "До поточних";
     const TO_COMPLETE = "До виконаних";
-    const token = useToken();
-    const dispatch = useDispatch();
-    const onTaskReplace = async (task) => {
-        const {id} = task;
+    const onTaskReplace = async (id) => {
         try {
-            switch(props.btnType){
-                case TO_CURRENT:
-                    await UserService.replace(token, id, "to_current");
-                    dispatch(toCurrentReplace(task));
-                    break
-                case TO_COMPLETE:
-                    await UserService.replace(token, id, "to_complete");
-                    dispatch(toCompleteReplace(task));
-                    break
-            };
+           await props.taskReplace(id)
         } catch (e) {
           Notify.failure("Щось пішло не так =(")
         }
       };
-    const onTaskDelete = async (task) => {
-        const {id} = task;
+    const onTaskDelete = async (id) => {
             try {
-                const res = await UserService.delete(token, id);
-                switch(props.btnType) {
-                case TO_CURRENT: 
-                    dispatch(removeCompletedTask(id));
-                    break
-                case TO_COMPLETE: 
-                    dispatch(removeCurrentTask(id))
-                    break
-                }
+                await props.taskReplace(id)
             } catch (e) {
                 console.log(e)
                 Notify.failure("Щось пішло не так =(");
@@ -61,13 +37,13 @@ function TaskItem (props) {
             }
             <div className="taskItem__btns">
                 <Button
-                    onClick={() => onTaskReplace(props.task)}
+                    onClick={() => onTaskReplace(props.task.id)}
                 >
                     {props.btnType}
                 </Button>  
                 <Button 
                     style={{marginTop: "10px"}}
-                    onClick={() => onTaskDelete(props.task)}    
+                    onClick={() => onTaskDelete(props.task.id)}    
                 >
                     Видалити
                 </Button>

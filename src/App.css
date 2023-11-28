@@ -10,12 +10,11 @@ body{
   min-height: 100vh;
 }
 
-.main {
-  
+main {
+  display: flex;
+  justify-content: center;
 }
 .App{
-  min-width: 100vw;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   /* background: rgba(0, 0, 0, 0.4); */
@@ -121,3 +120,8 @@ body{
   margin-top: 50px;
 }
 
+.TodayPage_wrapper {
+  width: 800px;
+  display: flex;
+  justify-content: center;
+}
