@@ -5,7 +5,8 @@ const slice = createSlice({
     name: "tasks",
     initialState: {
         currentTasks: [],
-        completedTasks: []
+        completedTasks: [],
+        todayTasks: []
     },
     reducers: {
         addManyTasks (state, action) {
@@ -16,6 +17,9 @@ const slice = createSlice({
         },
         addOneCurrentTask (state, action) {
             state.currentTasks = [action.payload, ...state.currentTasks]
+        },
+        addManyToday (state, action) {
+            state.todayTasks = action.payload
         },
         updateCurrentTasks (state, action) {
             state.currentTasks = action.payload
@@ -57,6 +61,7 @@ export default slice.reducer;
 export const {
     addManyTasks, 
     addManyCompletedTasks,
+    addManyToday,
     addOneCurrentTask, 
     updateCurrentTasks, 
     addOneCompletedTask, 

@@ -23,6 +23,16 @@ class UserService {
         });
         return data
     };
+    async getToday (token) {
+        const data = await axios({
+            method: "get",
+            url: `${mainURL}/today`,
+            headers: {
+                "authorization": token
+            }
+        });
+        return data
+    }
     async create (token, task) {
         const res = await axios({
             method: "post",

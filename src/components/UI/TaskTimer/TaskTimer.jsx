@@ -16,7 +16,6 @@ const TaskTimer = ({endPoint}) => {
   function calculateTimeRemaining() {
     const now = Date.now();
     const timeDiff = endPoint - now;  
-    console.log(endPoint);
     if (timeDiff <= 0) {
       return { days: 0, hours: 0, minutes: 0, expired: true };
     };

@@ -5,6 +5,7 @@ import Layout from "./components/Layout"
 import Authorization from './pages/Authorization';
 import Registration from './pages/Registration';
 import {RequireAuth} from './hoc/RequireAuth';
+import TodayPage from './pages/TodayPage';
 
 
 
@@ -15,6 +16,11 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path="task_space" element={
       <RequireAuth>
         <Task_space/>
+      </RequireAuth>
+    }/>
+    <Route path="today" element={
+      <RequireAuth>
+        <TodayPage/>
       </RequireAuth>
     }/>
     <Route path="auth" element={<Authorization/>}/>

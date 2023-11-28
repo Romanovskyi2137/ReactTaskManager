@@ -4,16 +4,9 @@ import TaskItem from "./TaskIItem";
 
 
 function TaskList (props) {
-    const {tasks, setVisible, btnType} = props;
+    const {tasks, btnType} = props;
     if(tasks.length === 0){
       return (<h3 style={{textAlign: "center"}}>Список пустий.</h3>)
-    };
-
-    if(setVisible){
-      if(tasks.length === 0){
-        setVisible(false);
-        return
-      }
     };
 
     

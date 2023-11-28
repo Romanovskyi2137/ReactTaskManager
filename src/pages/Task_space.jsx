@@ -27,6 +27,10 @@ function Task_space () {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (tasks.length != 0) {
+        setIsLoading(false)
+        return
+      };
       try {
         const res = await UserService.getCurrent(token);
         dispatch(addManyTasks(res.data));

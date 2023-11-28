@@ -43,7 +43,6 @@ function TaskForm ({visible, setVisible}) {
         Notify.failure("Виберіть пріорітет задачі.");
         return
       };
-      console.log(newTask);
       try {
         const res = await UserService.create(token, newTask);
         dispatch(addOneCurrentTask(newTask))
