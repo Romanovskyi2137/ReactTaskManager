@@ -17,18 +17,21 @@ main {
 .App{
   display: flex;
   justify-content: center;
+  width: 800px;
+
   /* background: rgba(0, 0, 0, 0.4); */
 }
 
 .tasks{
-  width: 800px;
-  margin: 50px;
+  width: inherit;
+  /* margin: 50px; */
 
 }
 .tasks__list_header{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 50px;
 }
 
 .task__item{
@@ -38,6 +41,12 @@ main {
   margin: 12px 0;
   display: flex;
   justify-content: space-between;
+}
+
+.TaskFilter {
+  display: flex;
+  max-height: 25px;
+  align-items: center;
 }
 
 /* React Transition Group */

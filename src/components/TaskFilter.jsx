@@ -7,7 +7,7 @@ function TaskFilter ({filter, setFilter}) {
 
 
     return (
-        <div style={{dispaly: "flex", justifyContent:"space-between"}}>
+        <div className="TaskFilter">
 
             <Select
                 options={[
@@ -22,9 +22,7 @@ function TaskFilter ({filter, setFilter}) {
                 placeholder="Пошук..."
                 value={filter.query}
                 onChange={e => setFilter({...filter, query: e.target.value})}
-                style={{marginBottom: "15px"}}
             />
-
         </div>
     )
 }
