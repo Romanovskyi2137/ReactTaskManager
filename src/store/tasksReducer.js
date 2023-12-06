@@ -6,7 +6,9 @@ const slice = createSlice({
     initialState: {
         currentTasks: [],
         completedTasks: [],
-        todayTasks: []
+        todayTasks: [],
+        urgentlyTasks: [],
+        majorTasks: []
     },
     reducers: {
         addManyTasks (state, action) {
@@ -56,7 +58,21 @@ const slice = createSlice({
                     state.currentTasks = state.currentTasks.filter(task => task.id !== id) 
                 }
             })    
-        }
+        },
+        removeUrgentlyTask (state, action) {
+            const id = action.payload;
+            state.urgentlyTasks = state.urgentlyTasks.filter(task => task.id !== id)
+        },
+        addManyUrgently (state, action) {
+            state.urgentlyTasks = action.payload
+        },
+        removeMajorTask (state, action) {
+            const id = action.payload;
+            state.majorTasks = state.majorTasks.filter(task => task.id !== id)
+        },
+        addManyMajor (state, action) {
+            state.majorTasks = action.payload
+        },
         
 
     }
@@ -73,7 +89,11 @@ export const {
     removeCompletedTask,
     removeTodayTask,
     toCompleteReplace,
-    toCurrentReplace
+    toCurrentReplace,
+    removeUrgentlyTask,
+    addManyUrgently,
+    removeMajorTask,
+    addManyMajor
 } = slice.actions;
 
 

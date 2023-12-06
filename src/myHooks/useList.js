@@ -3,7 +3,7 @@ import { useMemo } from "react";
 export const useSortedList = (list, sort) => {
   const sortedList = useMemo(() => {
     if (!list || list.length === 0) {
-      return null;
+      return list;
     }
 
     if (sort) {

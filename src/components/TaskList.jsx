@@ -5,7 +5,7 @@ import TaskItem from "./TaskIItem";
 
 function TaskList (props) {
     const {tasks, btnType, taskDelete, taskReplace} = props;
-    if(tasks.length === 0){
+    if(!tasks.length){
       return (<h3 style={{textAlign: "center"}}>Список пустий.</h3>)
     };
 

@@ -1,11 +1,14 @@
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
-import Task_space from './pages/Task_space';
+import Current from './pages/Current';
 import StartPage from './pages/StartPage';
 import Layout from "./components/Layout"
 import Authorization from './pages/Authorization';
 import Registration from './pages/Registration';
 import {RequireAuth} from './hoc/RequireAuth';
 import TodayPage from './pages/TodayPage';
+import Completed from './pages/Completed';
+import Urgently from './pages/Urgently';
+import Major from './pages/Major';
 
 
 
@@ -13,14 +16,29 @@ import TodayPage from './pages/TodayPage';
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout/>}>
     <Route index element={<StartPage/>}/>
-    <Route path="task_space" element={
+    <Route path="current" element={
       <RequireAuth>
-        <Task_space/>
+        <Current/>
+      </RequireAuth>
+    }/>
+    <Route path="completed" element={
+      <RequireAuth>
+        <Completed/>
       </RequireAuth>
     }/>
     <Route path="today" element={
       <RequireAuth>
         <TodayPage/>
+      </RequireAuth>
+    }/>
+    <Route path="urgently" element={
+      <RequireAuth>
+        <Urgently/>
+      </RequireAuth>
+    }/>
+    <Route path="major" element={
+      <RequireAuth>
+        <Major/>
       </RequireAuth>
     }/>
     <Route path="auth" element={<Authorization/>}/>

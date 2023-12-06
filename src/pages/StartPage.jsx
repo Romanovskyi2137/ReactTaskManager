@@ -24,7 +24,7 @@ function StartPage () {
                 </p>
                 <div className="startpage_interactive__wrapper">
                     <div className="startpage_interactive">
-                            <Link to="/task_space">Перейти до задач</Link>
+                            <Link to="/current">Перейти до задач</Link>
                             <Link to="/registration">Зареєструватись</Link>
                     </div>
                 </div>

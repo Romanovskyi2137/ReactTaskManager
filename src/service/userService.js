@@ -32,7 +32,27 @@ class UserService {
             }
         });
         return data
-    }
+    };
+    async getUrgently (token) {
+        const data = await axios({
+            method: "get",
+            url: `${mainURL}/urgently`,
+            headers: {
+                "authorization": token
+            }
+        });
+        return data
+    };
+    async getMajor (token) {
+        const data = await axios({
+            method: "get",
+            url: `${mainURL}/major`,
+            headers: {
+                "authorization": token
+            }
+        });
+        return data
+    };
     async create (token, task) {
         const res = await axios({
             method: "post",

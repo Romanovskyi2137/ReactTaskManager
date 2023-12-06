@@ -1,8 +1,5 @@
 import {React, useEffect, useState} from "react";
-import ModalWindow from "./ModalWindow/ModalWindow";
-import Input from "./UI/Input/Input";
-import TaskList from "./TaskList";
-import { useList } from "../myHooks/useList";
+import TaskList from "../components/TaskList";
 import UserService from "../service/userService";
 import useToken from "../myHooks/useToken";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -10,12 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { addManyCompletedTasks, removeCompletedTask, toCurrentReplace } from "../store/tasksReducer";
 
 
-function CompletedTasksModal ({visible, setVisible}) {
+export default function Completed ({visible, setVisible}) {
     const completedTasks = useSelector(state => state.tasks.completedTasks);
     const dispatch = useDispatch();
-    const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setIsLoading] = useState(true);
-    const filtered = useList(completedTasks, "", searchQuery);
     const token = useToken();
     const navigate = useNavigate();
     const location = useLocation();
@@ -57,31 +52,18 @@ function CompletedTasksModal ({visible, setVisible}) {
 
 
     return (
-        <ModalWindow 
-            visible={visible} 
-            setVisible={setVisible}
-          >
-            <Input
-              type="text"
-              value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
-              placeholder="Пошук..."
-            />
-            <hr
-              style={{margin: "15px 0"}}
-            />
+        <div>
             {isLoading ?
-            <h1>Loading...</h1>
+                <h1>Loading...</h1>
             :
               <TaskList 
-                tasks={filtered}
+                tasks={completedTasks}
                 btnType="До поточних"
                 taskDelete={onTaskDelete}
                 taskReplace={onTaskReplace}
               />
             }
-          </ModalWindow>
+        </div>
     )
 };
 
-export default CompletedTasksModal

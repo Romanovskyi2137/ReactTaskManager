@@ -22,7 +22,7 @@ function Navbar () {
                     <NavLink to="/current">Всі поточні</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/complete">Виконані</NavLink>
+                    <NavLink to="/completed">Виконані</NavLink>
                 </li>
             </ul>
         </div>

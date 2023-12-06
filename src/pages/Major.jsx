@@ -3,14 +3,14 @@ import UserService from "../service/userService";
 import useToken from "../myHooks/useToken";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { addManyToday, removeCurrentTask, removeTodayTask, toCompleteReplace } from "../store/tasksReducer";
+import { addManyMajor, removeCurrentTask, removeMajorTask, toCompleteReplace } from "../store/tasksReducer";
 import TaskList from "../components/TaskList";
 
 
 
-export default function TodayPage () {
+export default function Major () {
     const token = useToken();
-    const tasks = useSelector(state => state.tasks.todayTasks);
+    const tasks = useSelector(state => state.tasks.majorTasks);
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -22,8 +22,8 @@ export default function TodayPage () {
             return
           };
           try {
-            const res = await UserService.getToday(token);
-            dispatch(addManyToday(res.data));
+            const res = await UserService.getMajor(token);
+            dispatch(addManyMajor(res.data));
             setIsLoading(false)
           } catch (e) {
             if (e.response.status === 400) {
@@ -42,12 +42,12 @@ export default function TodayPage () {
     const onTaskDelete = async (id) => {
       const res = await UserService.delete(token, id);
       dispatch(removeCurrentTask(id));
-      dispatch(removeTodayTask(id));
+      dispatch(removeMajorTask(id));
     };
     const onTaskReplace = async (id) => {
       const res = await UserService.replace(token, id, "to_complete");
       dispatch(toCompleteReplace(id));
-      dispatch(removeTodayTask(id))
+      dispatch(removeMajorTask(id))
     }
 
 

@@ -14,7 +14,7 @@ import { addManyTasks, removeCurrentTask, toCompleteReplace } from '../store/tas
 
 
 
-function Task_space () {
+export default function Current () {
   const tasks = useSelector(state => state.tasks.currentTasks)
   const [CTModalVisible, setCTModalVisible] = useState(false);
   const [completedTaskModalVisible, setCompletedTaskModalVisible] = useState(false);
@@ -119,4 +119,3 @@ function Task_space () {
   );
 }
 
-export default Task_space;
