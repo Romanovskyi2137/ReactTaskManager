@@ -43,18 +43,22 @@ const slice = createSlice({
         },
         toCurrentReplace (state, action) {
             const id = action.payload;
+            let replacebleTask;
             state.completedTasks.forEach(task => {
                 if (task.id === id) {
-                    state.currentTasks = [action.payload, ...state.currentTasks]
+                    replacebleTask = task;
+                    state.currentTasks = [replacebleTask, ...state.currentTasks]
                     state.completedTasks = state.completedTasks.filter(task => task.id !== id)
                 };
             })
         },
         toCompleteReplace (state, action) {
             const id = action.payload;
+            let replacebleTask;
             state.currentTasks.forEach(task => {
                 if (task.id === id) {
-                    state.completedTasks = [action.payload, ...state.completedTasks];
+                    replacebleTask = task;
+                    state.completedTasks = [replacebleTask, ...state.completedTasks];
                     state.currentTasks = state.currentTasks.filter(task => task.id !== id) 
                 }
             })    

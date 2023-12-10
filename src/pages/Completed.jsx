@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addManyCompletedTasks, removeCompletedTask, toCurrentReplace } from "../store/tasksReducer";
 
 
-export default function Completed ({visible, setVisible}) {
+export default function Completed () {
     const completedTasks = useSelector(state => state.tasks.completedTasks);
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(true);
