@@ -17,7 +17,7 @@ export default function Urgently () {
     const location = useLocation();
     useEffect(() => {
         const fetchData = async () => {
-          if (tasks.length != 0) {
+          if (tasks.length !== 0) {
             setIsLoading(false)
             return
           };

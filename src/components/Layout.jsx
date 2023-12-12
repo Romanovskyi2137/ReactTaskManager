@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar/Navbar";
+import DataUpdater from "../hoc/DataUpdater";
 
 
 function Layout () {
@@ -10,7 +11,9 @@ function Layout () {
                 <Navbar/>
             </nav>
             <main>
-                <Outlet/>
+                <DataUpdater>
+                    <Outlet/>
+                </DataUpdater>
             </main>
         </>
     )

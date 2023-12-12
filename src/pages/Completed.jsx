@@ -5,6 +5,7 @@ import useToken from "../myHooks/useToken";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addManyCompletedTasks, removeCompletedTask, toCurrentReplace } from "../store/tasksReducer";
+import { Notify } from "notiflix";
 
 
 export default function Completed () {
@@ -42,12 +43,20 @@ export default function Completed () {
     }, [])
 
     const onTaskDelete = async (id) => {
-      const res = await UserService.delete(token, id);
-      dispatch(removeCompletedTask(id));
+      try {
+        const res = await UserService.delete(token, id);
+        dispatch(removeCompletedTask(id));
+      } catch {
+        Notify.failure("sometihg goes wrong...=)")
+      }
     };
     const onTaskReplace = async (id) => {
-      const res = await UserService.replace(token, id, "to_current");
-      dispatch(toCurrentReplace(id));
+      try {
+        const res = await UserService.replace(token, id, "to_current");
+        dispatch(toCurrentReplace(id));
+      } catch {
+        Notify.failure("sometihg goes wrong...=)")
+      }
     }
 
 

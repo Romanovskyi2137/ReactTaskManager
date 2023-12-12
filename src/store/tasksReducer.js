@@ -17,14 +17,17 @@ const slice = createSlice({
         addManyCompletedTasks (state, action) {
             state.completedTasks = action.payload
         },
-        addOneCurrentTask (state, action) {
-            state.currentTasks = [action.payload, ...state.currentTasks]
+        addManyMajor (state, action) {
+            state.majorTasks = action.payload
         },
         addManyToday (state, action) {
             state.todayTasks = action.payload
         },
-        updateCurrentTasks (state, action) {
-            state.currentTasks = action.payload
+        addManyUrgently (state, action) {
+            state.urgentlyTasks = action.payload
+        },
+        addOneCurrentTask (state, action) {
+            state.currentTasks = [action.payload, ...state.currentTasks]
         },  
         addOneCompletedTask (state, action) {
             state.completedTasks = [action.payload, ...state.completedTasks]
@@ -40,6 +43,26 @@ const slice = createSlice({
         removeTodayTask (state, action) {
             const id = action.payload;
             state.todayTasks = state.todayTasks.filter(task => task.id !== id)
+        },
+        removeUrgentlyTask (state, action) {
+            const id = action.payload;
+            state.urgentlyTasks = state.urgentlyTasks.filter(task => task.id !== id)
+        },
+        removeMajorTask (state, action) {
+            const id = action.payload;
+            state.majorTasks = state.majorTasks.filter(task => task.id !== id)
+        },
+        updateCurrentTasks (state, action) {
+            state.currentTasks = action.payload
+        },
+        updateMajorTasks (state, action) {
+            state.majorTasks = action.payload
+        },
+        updateUrgentlyTasks (state, action) {
+            state.urgentlyTasks = action.payload
+        },
+        updateTodayTasks (state, action) {
+            state.todayTasks = action.payload
         },
         toCurrentReplace (state, action) {
             const id = action.payload;
@@ -62,23 +85,7 @@ const slice = createSlice({
                     state.currentTasks = state.currentTasks.filter(task => task.id !== id) 
                 }
             })    
-        },
-        removeUrgentlyTask (state, action) {
-            const id = action.payload;
-            state.urgentlyTasks = state.urgentlyTasks.filter(task => task.id !== id)
-        },
-        addManyUrgently (state, action) {
-            state.urgentlyTasks = action.payload
-        },
-        removeMajorTask (state, action) {
-            const id = action.payload;
-            state.majorTasks = state.majorTasks.filter(task => task.id !== id)
-        },
-        addManyMajor (state, action) {
-            state.majorTasks = action.payload
-        },
-        
-
+        }
     }
 });
 export default slice.reducer;
@@ -97,7 +104,10 @@ export const {
     removeUrgentlyTask,
     addManyUrgently,
     removeMajorTask,
-    addManyMajor
+    addManyMajor,
+    updateMajorTasks,
+    updateUrgentlyTasks,
+    updateTodayTasks
 } = slice.actions;
 
 
