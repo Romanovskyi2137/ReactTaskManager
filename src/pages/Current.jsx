@@ -10,7 +10,8 @@ import TaskSpaceHeader from '../components/TaskSpaceHeader';
 import UserService from '../service/userService';
 import useToken from '../myHooks/useToken';
 import { useDispatch, useSelector } from 'react-redux';
-import { addManyTasks, removeCurrentTask, toCompleteReplace } from '../store/tasksReducer';
+import { addManyTasks, removeCurrentTask, removeMajorTask, removeTodayTask, removeUrgentlyTask, toCompleteReplace } from '../store/tasksReducer';
+import { Notify } from 'notiflix';
 
 
 
@@ -50,12 +51,26 @@ export default function Current () {
   }, []);
 
   const onTaskDelete = async (id) => {
-    const res = await UserService.delete(token, id);
-    dispatch(removeCurrentTask(id));
+    try {
+      const res = await UserService.delete(token, id);
+      dispatch(removeCurrentTask(id));
+      dispatch(removeMajorTask(id));
+      dispatch(removeUrgentlyTask(id))
+      dispatch(removeTodayTask(id))
+    } catch {
+      Notify.failure("something goes wrong...=)")
+    }
   };
   const onTaskReplace = async (id) => {
-    const res = await UserService.replace(token, id, "to_complete");
-    dispatch(toCompleteReplace(id));
+    try {
+      const res = await UserService.replace(token, id, "to_complete");
+      dispatch(toCompleteReplace(id));
+      dispatch(removeMajorTask(id));
+      dispatch(removeUrgentlyTask(id))
+      dispatch(removeTodayTask(id))
+    } catch {
+      Notify.failure("something goes wrong...=)")
+    }
   };
 
   const onComplTasksModalOpen = () => {

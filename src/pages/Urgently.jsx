@@ -3,8 +3,9 @@ import UserService from "../service/userService";
 import useToken from "../myHooks/useToken";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { addManyUrgently, removeCurrentTask, removeUrgentlyTask, toCompleteReplace } from "../store/tasksReducer";
+import { addManyUrgently, removeCurrentTask, removeMajorTask, removeTodayTask, removeUrgentlyTask, toCompleteReplace } from "../store/tasksReducer";
 import TaskList from "../components/TaskList";
+import { Notify } from "notiflix";
 
 
 
@@ -40,14 +41,26 @@ export default function Urgently () {
       }, []);
     
     const onTaskDelete = async (id) => {
-      const res = await UserService.delete(token, id);
-      dispatch(removeCurrentTask(id));
-      dispatch(removeUrgentlyTask(id));
+      try {
+        const res = await UserService.delete(token, id);
+        dispatch(removeCurrentTask(id));
+        dispatch(removeUrgentlyTask(id));
+        dispatch(removeTodayTask(id));
+        dispatch(removeMajorTask(id))
+      } catch {
+        Notify.failure("somthing goes wrong...=)")
+      }
     };
     const onTaskReplace = async (id) => {
-      const res = await UserService.replace(token, id, "to_complete");
-      dispatch(toCompleteReplace(id));
-      dispatch(removeUrgentlyTask(id))
+      try {
+        const res = await UserService.replace(token, id, "to_complete");
+        dispatch(toCompleteReplace(id));
+        dispatch(removeUrgentlyTask(id));
+        dispatch(removeTodayTask(id));
+        dispatch(removeMajorTask(id))
+      } catch {
+        Notify.failure("somthing goes wrong...=)")
+      }
     }
 
 

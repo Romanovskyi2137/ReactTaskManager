@@ -44,9 +44,9 @@ export default function TodayPage () {
       try {
         const res = await UserService.delete(token, id);
         dispatch(removeCurrentTask(id));
-        // dispatch(removeTodayTask(id));
-        // dispatch(removeMajorTask(id));
-        // dispatch(removeUrgentlyTask(id));
+        dispatch(removeTodayTask(id));
+        dispatch(removeMajorTask(id));
+        dispatch(removeUrgentlyTask(id));
       } catch {
         Notify.failure('something goes wrong...=)')
       }
@@ -55,9 +55,9 @@ export default function TodayPage () {
       try {
         const res = await UserService.replace(token, id, "to_complete");
         dispatch(toCompleteReplace(id));
-        // dispatch(removeTodayTask(id));
-        // dispatch(removeMajorTask(id));
-        // dispatch(removeUrgentlyTask(id));
+        dispatch(removeTodayTask(id));
+        dispatch(removeMajorTask(id));
+        dispatch(removeUrgentlyTask(id));
       } catch {
         Notify.failure('something goes wrong...=)')
       }

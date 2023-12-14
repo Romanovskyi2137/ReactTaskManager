@@ -66,13 +66,20 @@ const slice = createSlice({
         },
         toCurrentReplace (state, action) {
             const id = action.payload;
-            let replacebleTask;
             state.completedTasks.forEach(task => {
                 if (task.id === id) {
-                    replacebleTask = task;
-                    state.currentTasks = [replacebleTask, ...state.currentTasks]
+                    state.currentTasks = [task, ...state.currentTasks]
                     state.completedTasks = state.completedTasks.filter(task => task.id !== id)
                 };
+                if (task.prior == 1) {
+                    state.major = [task, ...state.majorTasks];
+                };
+                if ((task.endPoint - Date.now()) < (1000 * 60 * 60 * 24)) {
+                    state.todayTasks = [task, ...state.todayTasks];
+                };
+                if ((task.endPoint - Date.now()) < (1000 * 60 * 60 * 24 * 3)) {
+                    state.urgentlyTasks = [task, ...state.urgentlyTasks]
+                }
             })
         },
         toCompleteReplace (state, action) {

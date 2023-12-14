@@ -11,9 +11,9 @@ function Layout () {
                 <Navbar/>
             </nav>
             <main>
-                <DataUpdater>
+
                     <Outlet/>
-                </DataUpdater>
+
             </main>
         </>
     )
