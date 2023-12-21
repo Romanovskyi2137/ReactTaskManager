@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "./UI/Input/Input";
 import TextArea from "./UI/TextArea/TextArea";
 import Button from "./UI/Button/Button";
@@ -22,15 +22,21 @@ function TaskForm ({visible, setVisible}) {
       iconClassName: "", 
       id: uuidv4(),  
       endPoint: null
-    };
+    }; 
     const [newTask, setNewTask] = useState(taskSample);
     const getPrior = ({number, iconClass}) => {
       setNewTask({...newTask, prior: number, iconClassName: iconClass});
     };
+        //
+        useEffect(() => {
+          console.log(new Date(newTask.endPoint));      
+        }, [newTask.endPoint])
+        //
     const getTime = (millis) => {
       if (newTask.endPoint == null) {
-        setNewTask({...newTask, endPoint: (new Date().getTime() + millis)})  
-      }
+        Notify.failure("Оберіть дату!")
+        return
+      };
       setNewTask({...newTask, endPoint: (newTask.endPoint + millis)})
     };
     async function onTaskCreate (e) {
