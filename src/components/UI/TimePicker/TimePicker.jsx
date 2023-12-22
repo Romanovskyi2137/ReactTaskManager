@@ -29,12 +29,14 @@ export default function TimePicker ({getTime}) {
             <span>Час</span>:
             <input 
                 type="number" 
+                inputmode="numeric"
                 max="23" min="0" 
                 value={time.hours} 
                 onChange={e => setTime({...time, hours: timeCorrector(e.target.value)})}
             />
             <input 
                 type="number" 
+                inputMode="numeric"
                 max="59" 
                 min="0"
                 value={time.minutes} 

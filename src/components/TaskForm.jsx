@@ -27,14 +27,9 @@ function TaskForm ({visible, setVisible}) {
     const getPrior = ({number, iconClass}) => {
       setNewTask({...newTask, prior: number, iconClassName: iconClass});
     };
-        //
-        useEffect(() => {
-          console.log(new Date(newTask.endPoint));      
-        }, [newTask.endPoint])
-        //
     const getTime = (millis) => {
       if (newTask.endPoint == null) {
-        Notify.failure("Оберіть дату!")
+        // Notify.failure("Оберіть дату!")
         return
       };
       setNewTask({...newTask, endPoint: (newTask.endPoint + millis)})
