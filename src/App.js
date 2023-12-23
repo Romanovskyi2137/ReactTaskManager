@@ -9,6 +9,8 @@ import TodayPage from './pages/TodayPage';
 import Completed from './pages/Completed';
 import Urgently from './pages/Urgently';
 import Major from './pages/Major';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 
 
 
@@ -51,7 +53,9 @@ const router = createBrowserRouter(createRoutesFromElements(
 function App() {
 
   return (
-    <RouterProvider router={router}/>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <RouterProvider router={router}/>
+    </LocalizationProvider>
   )
 }
 

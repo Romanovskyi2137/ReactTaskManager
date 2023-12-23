@@ -3,14 +3,15 @@ import Input from "./UI/Input/Input";
 import TextArea from "./UI/TextArea/TextArea";
 import Button from "./UI/Button/Button";
 import PriorPicker from "./UI/PriorPicker/PriorPicker";
-import DatePicker from "./UI/DatePicker/DatePicker";
+// import DatePicker from "./UI/DatePicker/DatePicker";
 import { useDispatch } from "react-redux";
 import { addOneCurrentTask } from "../store/tasksReducer";
 import {Notify} from "notiflix";
 import {v4 as uuidv4} from "uuid";
 import UserService from "../service/userService";
 import useToken from "../myHooks/useToken";
-import TimePicker from "./UI/TimePicker/TimePicker";
+import { DatePicker, DateTimePicker } from "@mui/x-date-pickers";
+// import TimePicker from "./UI/TimePicker/TimePicker";
 
 function TaskForm ({visible, setVisible}) {
     const dispatch = useDispatch()
@@ -27,6 +28,9 @@ function TaskForm ({visible, setVisible}) {
     const getPrior = ({number, iconClass}) => {
       setNewTask({...newTask, prior: number, iconClassName: iconClass});
     };
+    useEffect(() => {
+      console.log(newTask.endPoint);
+    })
     const getTime = (millis) => {
       if (newTask.endPoint == null) {
         // Notify.failure("Оберіть дату!")
@@ -76,14 +80,21 @@ function TaskForm ({visible, setVisible}) {
               visible={visible} 
             />
 
-            <DatePicker
+            {/* <DatePicker
               onChange={(value) => setNewTask({...newTask, endPoint: value})}
             />
 
             <TimePicker
               getTime={getTime}
             />
-      
+            */}
+            <DateTimePicker
+              // label="mobile"
+              ampm={false}
+              ampmInClock={true}
+              value={newTask.endPoint}
+              onChange={value => setNewTask({...newTask, endPoint: value.$d})}
+            />
 
             </div>
 
