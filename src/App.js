@@ -18,6 +18,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout/>}>
     <Route index element={<StartPage/>}/>
+    {/* need to make a new route & new page called "menu" */}
     <Route path="current" element={
       <RequireAuth>
         <Current/>

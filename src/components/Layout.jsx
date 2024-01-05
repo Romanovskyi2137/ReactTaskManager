@@ -7,9 +7,6 @@ import DataUpdater from "../hoc/DataUpdater";
 function Layout () {
     return (
         <>
-            <nav>
-                <Navbar/>
-            </nav>
             <main>
 
                     <Outlet/>
