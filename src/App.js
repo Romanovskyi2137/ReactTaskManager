@@ -9,6 +9,8 @@ import TodayPage from './pages/TodayPage';
 import Completed from './pages/Completed';
 import Urgently from './pages/Urgently';
 import Major from './pages/Major';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 
 
 
@@ -16,6 +18,7 @@ import Major from './pages/Major';
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout/>}>
     <Route index element={<StartPage/>}/>
+    {/* need to make a new route & new page called "menu" */}
     <Route path="current" element={
       <RequireAuth>
         <Current/>
@@ -51,7 +54,9 @@ const router = createBrowserRouter(createRoutesFromElements(
 function App() {
 
   return (
-    <RouterProvider router={router}/>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <RouterProvider router={router}/>
+    </LocalizationProvider>
   )
 }
 
