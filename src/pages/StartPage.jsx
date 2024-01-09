@@ -16,7 +16,6 @@ function StartPage () {
     }, 2000)
     return (
         <div className="startpage">
-            <h2 className="_icon-all">h2</h2>
             <h1 className={titleState}>React task manager</h1>
         </div>
     )
