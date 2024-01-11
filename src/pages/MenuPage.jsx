@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React from "react";
 
 export default function MenuPage () {
@@ -11,20 +12,28 @@ export default function MenuPage () {
                     <h3>#</h3>
                 </div>
             </div>
-                <div className="menu__items">
-                    <div className="menu__items_item">
-                        <h2 className="_icon-completed">Виконані</h2>
-                    </div>
-                    <div className="menu__items_item">
-                        <h2 className="_icon-today">На сьогодні</h2>
-                    </div>
-                    <div className="menu__items_item">
-                        <h2 className="_icon-urgently">Термінові</h2>
-                    </div>
-                    <div className="menu__items_item">
-                        <h2 className="_icon-all">Всі</h2>  
-                    </div>
+            <div className="menu__items">
+                <div className="menu__items_item">
+                    <h2 className="_icon-completed">Виконані</h2>
                 </div>
+                <div className="menu__items_item">
+                    <h2 className="_icon-today">На сьогодні</h2>
+                </div>
+                <div className="menu__items_item">
+                    <h2 className="_icon-urgently">Термінові</h2>
+                </div>
+                <div className="menu__items_item">
+                    <h2 className="_icon-all">Всі</h2>  
+                </div>
+            </div>
+            <div className="menu__button_container">
+                <button
+                    // onClick={}
+                    className="createTaskBtn"
+                >
+                    <h3>Створити задачу</h3>
+                </button>
+            </div> 
 
         </div>
     )
