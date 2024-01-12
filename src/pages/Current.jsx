@@ -1,4 +1,3 @@
-import '../App.css';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import TaskList from '../components/TaskList';

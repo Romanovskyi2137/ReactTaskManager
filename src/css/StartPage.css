@@ -1,0 +1,30 @@
+.startpage {
+    height: 100%;
+    width: 100%;
+    color: #FCF9F9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F36D0C;
+  }
+  
+  .startpage > h1 {
+    opacity: 0;
+    font-family: Inter;
+    font-size: 90px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  .startpage__h1__visible {
+    opacity: 1 !important;
+    transition: all 1s linear;
+    text-shadow: black 0px 2px;
+  }
+  
+  @media (max-width: 500px) {
+    .startpage > h1 {
+      font-size: 35px;
+    }
+  }

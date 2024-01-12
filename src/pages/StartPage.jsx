@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useToken from "../myHooks/useToken";
 import { useNavigate } from "react-router-dom";
+import "../css/StartPage.css"
 
 function StartPage () {
     const [titleState, setTitleState] = useState("");
