@@ -17,7 +17,7 @@ export default function MenuPage () {
                     <h2 className="_icon-completed">Виконані</h2>
                 </div>
                 <div className="menu__items_item todayTasks">
-                    <h2 className="_icon-today">На сьогодні</h2>
+                    <h2 className="_icon-today">Cьогодні</h2>
                 </div>
                 <div className="menu__items_item urgentlyTasks">
                     <h2 className="_icon-urgently">Термінові</h2>

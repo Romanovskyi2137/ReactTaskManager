@@ -231,3 +231,17 @@
       font-size: 18px;
     }
   }
+  @media (max-width: 500px) {
+    .menu__wrapper {
+      padding: 0 15px;
+    }
+    .menu__items_item {
+      width: 155px;
+      height: 85px;
+      border-radius: 20px
+    }
+    .menu__items {
+      justify-content: space-between;
+      height: 200px;
+    }
+  }
