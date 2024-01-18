@@ -27,6 +27,12 @@ export default function MenuPage () {
                 </div>
             </div>
             <div className="menu__button_container">
+                <button 
+                    className="createTaskBtn_mobile"
+                    // onClick={}
+                >
+                    <h3>+</h3>
+                </button>
                 <button
                     // onClick={}
                     className="createTaskBtn"
