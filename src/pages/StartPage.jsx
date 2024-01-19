@@ -15,20 +15,19 @@ function StartPage () {
     setTimeout(async () => {
 
               try {
-                // const res = await UserService.getToday(token);
-                // if (res.status === 200) {
-                //     navigate("/menu")
-                // }
-                navigate("/menu")
+                const res = await UserService.getToday(token);
+                if (res.status === 200) {
+                    navigate("/menu")
+                }
               } catch (e) {
-                // if (e.response.status === 400) {
-                //   navigate("/auth", {
-                //     state: {
-                //       from: location
-                //     },
-                //     replace: true
-                //   })
-                // }
+                if (e.response.status === 400) {
+                  navigate("/auth", {
+                    state: {
+                      from: location
+                    },
+                    replace: true
+                  })
+                }
               }
     }, 2500)
     return (

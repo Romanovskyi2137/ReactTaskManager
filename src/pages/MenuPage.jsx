@@ -1,44 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/MenuPage.css"
+import NavElement from "../components/NavElement";
+import CreateTaskButton from "../components/UI/CreateTaskButton";
 
 export default function MenuPage () {
-    
+    const avatar = useState("#")
 
     return (
         <div className="menu__wrapper">
             <div className="menu__header">
                 <h1 className="menu__header_logo">React task manager</h1>
                 <div className="menu__header_avatar">
-                    <h3>#</h3>
+                    <h3>{avatar}</h3>
                 </div>
             </div>
-            <div className="menu__items">
-                <div className="menu__items_item completedTasks">
-                    <h2 className="_icon-completed">Виконані</h2>
-                </div>
-                <div className="menu__items_item todayTasks">
-                    <h2 className="_icon-today">Cьогодні</h2>
-                </div>
-                <div className="menu__items_item urgentlyTasks">
-                    <h2 className="_icon-urgently">Термінові</h2>
-                </div>
-                <div className="menu__items_item allTasks">
-                    <h2 className="_icon-all">Всі</h2>  
-                </div>
-            </div>
+            <nav className="menu__items">
+                <NavElement
+                    className="menu__items_item completedTasks"
+                    iconClass="_icon-completed"
+                    title="Виконані"
+                    navTo="/completed"
+                />
+                <NavElement
+                    className="menu__items_item todayTasks"
+                    iconClass="_icon-today"
+                    title="Cьогодні"
+                    navTo="/today"
+                />
+                <NavElement
+                    className="menu__items_item urgentlyTasks"
+                    iconClass="_icon-urgently"
+                    title="Термінові"
+                    navTo="/urgently"
+                />
+                <NavElement
+                    className="menu__items_item allTasks"
+                    iconClass="_icon-all"
+                    title="Всі"
+                    navTo="/current"
+                />
+            </nav>
             <div className="menu__button_container">
-                <button 
+                <CreateTaskButton
                     className="createTaskBtn_mobile"
-                    // onClick={}
-                >
-                    <h3>+</h3>
-                </button>
-                <button
-                    // onClick={}
+                    title="+"
+                />
+                 <CreateTaskButton
                     className="createTaskBtn"
-                >
-                    <h3>Створити задачу</h3>
-                </button>
+                    title="Створити задачу"
+                />
             </div> 
 
         </div>

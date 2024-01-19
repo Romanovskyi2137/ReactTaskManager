@@ -19,7 +19,11 @@ import MenuPage from './pages/MenuPage';
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout/>}>
     <Route index element={<StartPage/>}/>
-    <Route path="menu" element={<MenuPage/>}/>
+    <Route path="menu" element={
+      <RequireAuth>
+        <MenuPage/>
+      </RequireAuth>
+    }/>
     <Route path="current" element={
       <RequireAuth>
         <Current/>

@@ -5,5 +5,8 @@
     font-family: Inter;
     word-break: break-word;
 }
-
+a {
+    text-decoration: initial;
+    color: initial        
+}
 

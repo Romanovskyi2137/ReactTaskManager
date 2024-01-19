@@ -23,8 +23,26 @@
     text-shadow: black 0px 2px;
   }
   
-  @media (max-width: 500px) {
-    .startpage > h1 {
-      font-size: 35px;
-    }
+@media (max-width: 1250px) {
+  .startpage > h1 {
+    font-size: 65px;
   }
+}
+
+@media (max-width: 920px) {
+  .startpage > h1 {
+    font-size: 55px;
+  }
+}
+
+@media (max-width: 500px) {
+  .startpage > h1 {
+    font-size: 35px;
+  }
+}
+
+@media (min-width: 1921px) {
+  .startpage > h1 {
+    font-size: 10vh;
+  }
+}
