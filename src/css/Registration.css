@@ -1,0 +1,44 @@
+.registrationPage__wrapper {
+    height: 100vh;
+    flex: 1 1 auto;
+}
+
+.registrationPage__container {
+    display: flex;
+    margin: 0 auto;
+    min-height: 100%;
+}
+
+.registrationPage__logo_container {
+    min-width: 50%;
+    min-height: 100%;
+    background-color: #F36D0C;
+    text-align: center;
+    padding-top: 27.625rem;
+}
+
+.registrationPage__logo {
+    font-size: 5.625rem;
+    color: white;
+    text-shadow: black 0px 2px;
+}
+.registrationPage__form_container {
+    min-width: 50%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registrationPage__form {
+    
+} 
+
+@media (max-width: 1400px) {
+    .registrationPage__logo_container {
+        padding-top: 230px;
+    }
+    .registrationPage__logo {
+        font-size: 45px;
+    }
+}

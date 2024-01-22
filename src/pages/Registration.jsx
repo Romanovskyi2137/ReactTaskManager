@@ -5,6 +5,7 @@ import AuthServise from "../service/authService";
 import { useNavigate } from "react-router-dom";
 import authValidator from "../validation/authValidator";
 import { Notify } from "notiflix";
+import "../css/Registration.css"
 
 
 
@@ -28,16 +29,23 @@ function Registration () {
 
 
     return (
-        <div className="reg_form_wrapper">
-                <form onSubmit={onFormSubmit}>
-                    <h2 style={{textAlign: "center", marginBottom: "25px"}}>Реєстрація</h2>
+        <div className="registrationPage__wrapper">
+            <div className="registrationPage__container">
+                <div className="registrationPage__logo_container">
+                    <h2 className="registrationPage__logo">React task manager</h2>
+                </div>
+            <div className="registrationPage__form_container">
+                <form
+                    onSubmit={onFormSubmit}
+                    className="registrationPage__form"
+                >
+                    <h2>Створити обліковий запис</h2>
                     <Input type="text" name="username" placeholder="Ім'я користувача"/>
                     <Input type="text" name="password" placeholder="Пароль"/>
-                    <h6 style={{paddingLeft: "5px"}}>Пароль має бути від 6 до 12 символів</h6>
-
-                    {/* {error && <Error message={error}/>} */}
-                    <Button type="submit" style={{marginTop: "5px"}}>Зареєструватись</Button>
+                    <Button type="submit">Зареєструватись</Button>
                 </form> 
+            </div>
+            </div>
         </div>
     )
 };

@@ -1,12 +1,12 @@
 import React from "react";
 
-export default function CreateTaskButton ({className, title}) {
+export default function CreateTaskButton ({className, title, ...props}) {
     
 
     return (
         <button 
             className={className}
-            // onClick={}
+            {...props}
         >
             <h3>{title}</h3>
         </button>

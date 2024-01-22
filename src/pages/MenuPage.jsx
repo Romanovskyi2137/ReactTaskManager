@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import "../css/MenuPage.css"
 import NavElement from "../components/NavElement";
 import CreateTaskButton from "../components/UI/CreateTaskButton";
+import CreateTaskModal from "../components/CreateTaskModal";
 
 export default function MenuPage () {
-    const avatar = useState("#")
+    const avatar = useState("#");
+    const [CTModalVisible, setCTModalVisible] = useState(false);
 
     return (
         <div className="menu__wrapper">
@@ -14,6 +16,15 @@ export default function MenuPage () {
                     <h3>{avatar}</h3>
                 </div>
             </div>
+            {CTModalVisible
+                ?
+                <CreateTaskModal
+                    visible={CTModalVisible}
+                    setVisible={setCTModalVisible}
+                />
+                :
+                <></>
+            }
             <nav className="menu__items">
                 <NavElement
                     className="menu__items_item completedTasks"
@@ -44,10 +55,12 @@ export default function MenuPage () {
                 <CreateTaskButton
                     className="createTaskBtn_mobile"
                     title="+"
+                    onClick={() => setCTModalVisible(true)}
                 />
                  <CreateTaskButton
                     className="createTaskBtn"
                     title="Створити задачу"
+                    onClick={() => setCTModalVisible(true)}
                 />
             </div> 
 

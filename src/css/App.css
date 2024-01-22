@@ -8,15 +8,14 @@ body{
 }
 
 #root{
-  width: 100vw;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
 }
 
 main {
   display: flex;
   justify-content: center;
   height: 100%;
-  width: 100%;
 }
 
 .App{
@@ -88,11 +87,7 @@ main {
 
 /*  */
 
-.reg_form_wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-}
+
 
 .Auth_wrapper {
   display: flex;

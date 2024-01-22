@@ -28,9 +28,6 @@ function TaskForm ({visible, setVisible}) {
     const getPrior = ({number, iconClass}) => {
       setNewTask({...newTask, prior: number, iconClassName: iconClass});
     };
-    useEffect(() => {
-      console.log(newTask.endPoint);
-    })
     const getTime = (millis) => {
       if (newTask.endPoint == null) {
         // Notify.failure("Оберіть дату!")
@@ -80,16 +77,7 @@ function TaskForm ({visible, setVisible}) {
               visible={visible} 
             />
 
-            {/* <DatePicker
-              onChange={(value) => setNewTask({...newTask, endPoint: value})}
-            />
-
-            <TimePicker
-              getTime={getTime}
-            />
-            */}
             <DateTimePicker
-              // label="mobile"
               ampm={false}
               ampmInClock={true}
               value={newTask.endPoint}
