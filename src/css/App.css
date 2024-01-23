@@ -10,12 +10,13 @@ body{
 #root{
   min-width: 100vw;
   min-height: 100vh;
+  display: flex;
 }
 
 main {
   display: flex;
   justify-content: center;
-  height: 100%;
+  flex: 1 1 auto
 }
 
 .App{

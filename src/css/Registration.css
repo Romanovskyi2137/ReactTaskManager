@@ -31,8 +31,20 @@
 }
 
 .registrationPage__form {
-    
+    display: flex;
+    flex-direction: column;
+
 } 
+.registrationPage__form > input {
+    border: 0;
+    border-bottom: 1px solid black;
+}
+
+.registrationPage__form > input:focus {
+    background-color: initial;
+    border: 5px;
+    border-bottom: 2px solid black
+}
 
 @media (max-width: 1400px) {
     .registrationPage__logo_container {

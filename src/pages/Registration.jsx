@@ -34,17 +34,18 @@ function Registration () {
                 <div className="registrationPage__logo_container">
                     <h2 className="registrationPage__logo">React task manager</h2>
                 </div>
-            <div className="registrationPage__form_container">
-                <form
-                    onSubmit={onFormSubmit}
-                    className="registrationPage__form"
-                >
-                    <h2>Створити обліковий запис</h2>
-                    <Input type="text" name="username" placeholder="Ім'я користувача"/>
-                    <Input type="text" name="password" placeholder="Пароль"/>
-                    <Button type="submit">Зареєструватись</Button>
-                </form> 
-            </div>
+                <div className="registrationPage__form_container">
+                    <form
+                        onSubmit={onFormSubmit}
+                        className="registrationPage__form"
+                    >
+                        <h2>Створити обліковий запис</h2>
+                        <input type="text" name="login" placeholder="Ім’я"/>
+                        <input type="email" name="email" placeholder="Електронна пошта"/>
+                        <input type="password" name="password" placeholder="Пароль"/>
+                        <input type="password" name="confirm_password" placeholder="Підтвердити пароль"/>
+                    </form> 
+                </div>
             </div>
         </div>
     )
