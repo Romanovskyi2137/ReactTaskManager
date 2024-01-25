@@ -14,7 +14,7 @@
     min-height: 100%;
     background-color: #F36D0C;
     text-align: center;
-    padding-top: 27.625rem;
+    padding-top: 24.625rem;
 }
 
 .registrationPage__logo {
@@ -26,6 +26,7 @@
     min-width: 50%;
     min-height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -33,22 +34,77 @@
 .registrationPage__form {
     display: flex;
     flex-direction: column;
-
+    max-width: 450px;
 } 
+
+.registration__form_box {
+    display: flex;
+    width: 100%;
+    max-width: 655px;
+    max-height: 765px;
+}
+
+.registrationPage__form_container > h2 {
+    color: black;
+    font-size: 50px;
+    font-weight: 500;
+    margin-bottom: 45px;
+}
 .registrationPage__form > input {
-    border: 0;
+    padding-bottom: 18px;
     border-bottom: 1px solid black;
+    margin-bottom: 60px;
+    font-size: 30px;
 }
 
 .registrationPage__form > input:focus {
-    background-color: initial;
-    border: 5px;
     border-bottom: 2px solid black
+}
+
+.registration__button {
+    background-color: #F36D0C;
+    width: 446px;
+    height: 96px;
+    border-radius: 20px;    
+    border: 1px solid #000;
+    font-size: 30px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 35px;
+}
+
+.registration__form_footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 25px;
+}
+
+.registration__form_footer > p {
+    font-size: 25px;
+    color: #8D8686;
+
+}
+
+.registration__form_footer > a {
+    font-weight: 700;
+    font-size: 25px;
+    text-decoration: underline;
+}
+
+.registration__button:hover {
+    background-color: #FB8E40;
+    transition: all 0.3s;
+}
+
+.registration__button:active {
+    border: 0;
+    transition: border 0.3s;
+    background-color: #D45B04;
 }
 
 @media (max-width: 1400px) {
     .registrationPage__logo_container {
-        padding-top: 230px;
+        padding-top: 280px;
     }
     .registrationPage__logo {
         font-size: 45px;

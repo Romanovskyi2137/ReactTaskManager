@@ -10,3 +10,18 @@ a {
     color: initial        
 }
 
+input {
+    border: none;
+    font-size: inherit;
+    font-weight: inherit;
+    background-color: transparent;
+    color: inherit;
+}
+
+input:focus {
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    box-shadow: none;
+    outline: none;
+}

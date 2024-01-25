@@ -1,6 +1,8 @@
 import React from "react";
 import { getAuth, signInWithPopup } from "firebase/auth";
 import { app, googleAuthProvider } from '../../../firebase';
+import "./GoogleLogin.css";
+import googleIcon from "./googleIcon.png"
 
 function GoogleLogin ({callback}) {
     const onClick = async () => {
@@ -18,13 +20,10 @@ function GoogleLogin ({callback}) {
         }
     };
     
-    const style = {
-        border: "1px solid black"
-    }
     return (
-        <div className="Google_Auth_Btn" style={style} onClick={onClick}>
-            <img src="#" alt="icon"/>
-            <h3>Signin with Google!</h3>
+        <div className="Google_Auth_Btn" onClick={onClick}>
+            <img src={googleIcon} alt="icon"/>
+            <h3>Увійти через Google</h3>
         </div>
     )
 };

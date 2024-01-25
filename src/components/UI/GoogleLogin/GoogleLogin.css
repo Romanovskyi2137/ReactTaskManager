@@ -1,0 +1,39 @@
+.Google_Auth_Btn {
+    width: 446px;
+    height: 90px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+
+.Google_Auth_Btn > img{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.Google_Auth_Btn > h3 {
+    color: black;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Google_Auth_Btn:hover {
+    background-color: #cecccc;
+    transition: all 0.3s;
+}
+
+.Google_Auth_Btn:active {
+    background-color: black;
+    border: 0;
+    transition: all 0.3s;
+}
+
+.Google_Auth_Btn:active > h3 {
+    color: white;
+    transition: 0.3s
+}
