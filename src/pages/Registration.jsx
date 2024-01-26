@@ -36,8 +36,8 @@ function Registration () {
                     <h2 className="registrationPage__logo">React task manager</h2>
                 </div>
                 <div className="registrationPage__form_container">
-                    <h2>Створити обліковий запис</h2>
                     <div className="registration__form_box">
+                        <h2>Створити обліковий запис</h2>
                         <form
                             onSubmit={onFormSubmit}
                             className="registrationPage__form"

@@ -17,9 +17,6 @@
 .Google_Auth_Btn > h3 {
     color: black;
     font-size: 30px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
 }
 
 .Google_Auth_Btn:hover {
@@ -36,4 +33,19 @@
 .Google_Auth_Btn:active > h3 {
     color: white;
     transition: 0.3s
+}
+
+@media (max-width: 1400px) {
+    .Google_Auth_Btn {
+        width: 340px;
+        height: 76px;
+    }
+    .Google_Auth_Btn > img{
+        width: 30px;
+        height: 30px;
+        margin-right: 7px;
+    }
+    .Google_Auth_Btn > h3 {
+        font-size: 24px;
+    }
 }

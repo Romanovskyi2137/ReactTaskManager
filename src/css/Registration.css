@@ -10,11 +10,14 @@
 }
 
 .registrationPage__logo_container {
-    min-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
     min-height: 100%;
     background-color: #F36D0C;
     text-align: center;
-    padding-top: 24.625rem;
+    
 }
 
 .registrationPage__logo {
@@ -29,6 +32,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0 20px;
 }
 
 .registrationPage__form {
@@ -39,16 +43,19 @@
 
 .registration__form_box {
     display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 655px;
     max-height: 765px;
 }
 
-.registrationPage__form_container > h2 {
+.registration__form_box > h2 {
     color: black;
     font-size: 50px;
     font-weight: 500;
     margin-bottom: 45px;
+    text-align: center;
+    align-self: self-start;
 }
 .registrationPage__form > input {
     padding-bottom: 18px;
@@ -103,10 +110,44 @@
 }
 
 @media (max-width: 1400px) {
-    .registrationPage__logo_container {
-        padding-top: 280px;
-    }
     .registrationPage__logo {
         font-size: 45px;
     }
+    .registration__form_box {
+        display: flex;
+        width: 100%;
+        max-width: 555px;
+        max-height: 665px;
+    }
+    .registrationPage__form {
+        max-width: 350px;
+    }
+    .registration__form_box > h2 {
+        font-size: 35px;
+        margin-bottom: 25px;
+    }
+    .registrationPage__form > input {
+        padding-bottom: 12px;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+    .registration__button {
+        width: 340px;
+        height: 76px;
+        border-radius: 18px;    
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    .registration__form_footer {
+        padding-top: 20px;
+    }
+    
+    .registration__form_footer > p {
+        font-size: 18px;
+    }
+    
+    .registration__form_footer > a {
+        font-size: 18px;
+    }
+    
 }
