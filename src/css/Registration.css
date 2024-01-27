@@ -109,6 +109,15 @@
     background-color: #D45B04;
 }
 
+[type*="password"]::after {
+    /* відобразити афтер, і повісити на нього онКлік, досступ отримати через квері селектор */
+    content: "::after";
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: black;
+}
+
 @media (max-width: 1400px) {
     .registrationPage__logo {
         font-size: 45px;
@@ -150,4 +159,15 @@
         font-size: 18px;
     }
     
+}
+
+@media (max-width: 615px) {
+    .registrationPage__logo_container {
+        display: none;
+    }
+    .registrationPage__wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

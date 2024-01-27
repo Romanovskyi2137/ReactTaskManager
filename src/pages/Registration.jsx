@@ -45,6 +45,7 @@ function Registration () {
                             <input type="text" name="login" placeholder="Ім’я"/>
                             <input type="email" name="email" placeholder="Електронна пошта"/>
                             <input type="password" name="password" placeholder="Пароль"/>
+                            <input type="password" name="password" placeholder="Пароль"/>
                             <input type="password" name="confirm_password" placeholder="Підтвердити пароль"/>
                             <div 
                                 className="registration__button_container"
