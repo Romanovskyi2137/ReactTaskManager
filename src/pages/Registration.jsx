@@ -7,10 +7,12 @@ import authValidator from "../validation/authValidator";
 import { Notify } from "notiflix";
 import "../css/Registration.css";
 import GoogleLogin from "../components/UI/GoogleLogin/GoogleLogin"
+import InputPassword from "../components/UI/InputPassword/InputPassword";
 
 
 
 function Registration () {
+    const [type, setType] = useState("password");
     const navigate = useNavigate();
     const onFormSubmit = async (e) => {
         try {
@@ -44,9 +46,18 @@ function Registration () {
                         >
                             <input type="text" name="login" placeholder="Ім’я"/>
                             <input type="email" name="email" placeholder="Електронна пошта"/>
-                            <input type="password" name="password" placeholder="Пароль"/>
-                            <input type="password" name="password" placeholder="Пароль"/>
-                            <input type="password" name="confirm_password" placeholder="Підтвердити пароль"/>
+                            <InputPassword
+                                placeholder={"Пароль"}
+                                name={"password"}
+                                type={type}
+                                setType={setType}
+                            />
+                            <InputPassword
+                                placeholder={"Підтвердити пароль"}
+                                name={"confirm_password"}
+                                type={type}
+                                setType={setType}
+                            />
                             <div 
                                 className="registration__button_container"
                             >
