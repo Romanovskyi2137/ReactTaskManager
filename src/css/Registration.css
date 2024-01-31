@@ -162,4 +162,7 @@
         justify-content: center;
         align-items: center;
     }
+    .registrationPage__form {
+        margin: 0 auto;
+    }
 }

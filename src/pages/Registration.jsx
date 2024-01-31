@@ -1,6 +1,4 @@
 import React, {useState} from "react";
-import Input from "../components/UI/Input/Input";
-import Button from "../components/UI/Button/Button";
 import AuthServise from "../service/authService";
 import { Link, useNavigate } from "react-router-dom";
 import authValidator from "../validation/authValidator";
@@ -12,7 +10,10 @@ import InputPassword from "../components/UI/InputPassword/InputPassword";
 
 
 function Registration () {
-    const [type, setType] = useState("password");
+    const [visability, setVisability] = useState({
+        type: "password",
+        iconClassName: "_iconsUI__eye-regular"
+    });
     const navigate = useNavigate();
     const onFormSubmit = async (e) => {
         try {
@@ -49,14 +50,14 @@ function Registration () {
                             <InputPassword
                                 placeholder={"Пароль"}
                                 name={"password"}
-                                type={type}
-                                setType={setType}
+                                visability={visability}
+                                setVisability={setVisability}
                             />
                             <InputPassword
                                 placeholder={"Підтвердити пароль"}
                                 name={"confirm_password"}
-                                type={type}
-                                setType={setType}
+                                visability={visability}
+                                setVisability={setVisability}
                             />
                             <div 
                                 className="registration__button_container"
