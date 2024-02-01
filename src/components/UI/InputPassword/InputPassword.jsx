@@ -1,6 +1,6 @@
 import React from "react";
 import "./InputPassword.css";
-import "../../../iconsFont/iconsUI/style.css"
+import "../../../iconsFont/style.css"
 
 
 export default function InputPassword ({placeholder, name, visability, setVisability}) {
@@ -8,12 +8,12 @@ export default function InputPassword ({placeholder, name, visability, setVisabi
         if (visability.type === "password") {
             setVisability({
                 type: "text",
-                iconClassName: "_iconsUI__eye-slash-solid"
+                iconClassName: "_icon-eye_splashed_solid"
             })
         } else {
             setVisability({
                 type: "password",
-                iconClassName: "_iconsUI__eye-regular"
+                iconClassName: "_icon-eye_regular"
             })
         }
     }

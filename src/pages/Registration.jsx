@@ -12,7 +12,7 @@ import InputPassword from "../components/UI/InputPassword/InputPassword";
 function Registration () {
     const [visability, setVisability] = useState({
         type: "password",
-        iconClassName: "_iconsUI__eye-regular"
+        iconClassName: "_icon-eye_regular"
     });
     const navigate = useNavigate();
     const onFormSubmit = async (e) => {
