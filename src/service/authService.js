@@ -2,7 +2,6 @@ import axios from "axios";
 
 
 const mainURL = "https://task-server-m418.onrender.com";
-const testURL = "http://localhost:5000/authorization";
 
 class AuthServise {
 
@@ -40,7 +39,6 @@ class AuthServise {
         const userToken = await axios({
             method: "post",
             url: `${mainURL}/authorization/google_login`,
-            // url: `${testURL}/google_login`,
             data: userData
         });
         return userToken

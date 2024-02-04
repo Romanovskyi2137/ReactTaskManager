@@ -4,7 +4,7 @@ import { app, googleAuthProvider } from '../../../firebase';
 import "./GoogleLogin.css";
 import googleIcon from "./googleIcon.png"
 
-function GoogleLogin ({callback}) {
+function GoogleLogin ({onGoogleLogin}) {
     const onClick = async () => {
         const auth = getAuth(app);
         try {
@@ -13,7 +13,7 @@ function GoogleLogin ({callback}) {
                 username: data.user.email,
                 password: data.user.uid
             };
-            const result = await callback(userData)
+            const result = await onGoogleLogin(userData)
         } catch (error) {
             // handling error
             console.log(error)

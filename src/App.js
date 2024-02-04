@@ -2,7 +2,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Current from './pages/Current';
 import StartPage from './pages/StartPage';
 import Layout from "./components/Layout"
-import Authorization from './pages/Authorization';
+import Login from './pages/Login';
 import Registration from './pages/Registration';
 import {RequireAuth} from './hoc/RequireAuth';
 import TodayPage from './pages/TodayPage';
@@ -49,7 +49,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Major/>
       </RequireAuth>
     }/>
-    <Route path="auth" element={<Authorization/>}/>
+    <Route path="login" element={<Login/>}/>
     <Route path="registration" element={<Registration/>}/>
   </Route>
 ));

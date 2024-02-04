@@ -19,18 +19,31 @@ function Registration () {
         try {
             e.preventDefault();
             const form = e.target;
+            if (form.password.value !== form.confirm_password.value) {
+                throw new Error ("Введіть однакові паролі!")
+            };
             const validStatus = authValidator(form.username.value, form.password.value);
             const user = await AuthServise.registration(form.username.value, form.password.value)
             form.username.value = "";
             form.password.value = "";
             if (user.status == 200) {
-                navigate("/auth", {replace: true})
+                navigate("/login", {replace: true})
             }
         } catch (e) {
-            Notify.failure(e.message);
+            Notify.failure(e.message || e);
         }
     }
-
+    const onGoogleAuthClick = async (data) => {
+        try {
+            const {username, password} = data;
+            const user = await AuthServise.google_login(username, password);
+            localStorage.setItem("token", `Bearer ${user.data.token}`);
+            navigate("/menu");
+        } catch (error) {
+            console.log(error)
+        }
+        
+    } 
 
     return (
         <div className="registrationPage__wrapper">
@@ -45,8 +58,8 @@ function Registration () {
                             onSubmit={onFormSubmit}
                             className="registrationPage__form"
                         >
-                            <input type="text" name="login" placeholder="Ім’я"/>
-                            <input type="email" name="email" placeholder="Електронна пошта"/>
+                            <input type="text" name="username" placeholder="Ім’я"/>
+                            <input type="email" name="email" placeholder="Ел. пошта (не обов'язково)"/>
                             <InputPassword
                                 placeholder={"Пароль"}
                                 name={"password"}
@@ -68,7 +81,9 @@ function Registration () {
                                 >
                                     Зареєструватися
                                 </button>
-                                <GoogleLogin/>
+                                <GoogleLogin
+                                    onGoogleLogin={onGoogleAuthClick}
+                                />
                             </div>
                             <div className="registration__form_footer">
                                 <p>Маєте обліковий запис?</p>
