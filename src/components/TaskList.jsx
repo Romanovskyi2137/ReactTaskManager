@@ -1,6 +1,6 @@
 import React from "react";
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import TaskItem from "./TaskIItem";
+import TaskItem from "./TaskItem/TaskIItem.jsx";
 
 
 function TaskList (props) {

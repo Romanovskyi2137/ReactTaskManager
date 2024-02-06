@@ -39,15 +39,6 @@ main {
   margin-top: 50px;
 }
 
-.task__item{
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 15px;
-  margin: 12px 0;
-  display: flex;
-  justify-content: space-between;
-}
-
 .TaskFilter {
   display: flex;
   max-height: 25px;
@@ -71,11 +62,8 @@ main {
   transition: all 1000ms;
 }
 
-.taskItem__btns {
-  display: flex;
-  flex-direction: column;
-}
-
+ /*  */
+ 
 .task_prior_checked {
   border-left: 1px solid black;
   border-bottom: 1px solid black;
