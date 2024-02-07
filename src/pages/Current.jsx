@@ -37,7 +37,7 @@ export default function Current () {
         setIsLoading(false)
       } catch (e) {
         if (e.response.status === 400) {
-          navigate("/auth", {
+          navigate("/login", {
             state: {
               from: location
             },
@@ -56,7 +56,8 @@ export default function Current () {
       dispatch(removeMajorTask(id));
       dispatch(removeUrgentlyTask(id))
       dispatch(removeTodayTask(id))
-    } catch {
+    } catch (e) {
+      console.log(e);
       Notify.failure("something goes wrong...=)")
     }
   };
@@ -67,7 +68,8 @@ export default function Current () {
       dispatch(removeMajorTask(id));
       dispatch(removeUrgentlyTask(id))
       dispatch(removeTodayTask(id))
-    } catch {
+    } catch (e) {
+      console.log(e);
       Notify.failure("something goes wrong...=)")
     }
   };

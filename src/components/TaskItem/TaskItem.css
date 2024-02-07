@@ -1,12 +1,20 @@
 .task_item__container {
     min-height: 180px;
-    
+    padding: 10px 0;
+    min-width: 100%
 }
 .task__item {
-
+    border: 1px solid black;
+    display:flex;
+    justify-content: space-between;
 }
 .task_item__content {
-
+    display: flex;
+    flex-direction: column;
+    
+}
+.task_item__content > p {
+    flex: 1 1 auto;
 }
 .timer_component_container {
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import "./TaskItem.css"
-import Button from '../UI/Button/Button';
 import TaskTimer from '../UI/TaskTimer/TaskTimer';
 import { Notify } from "notiflix";
 
@@ -39,8 +38,8 @@ function TaskItem ({task, taskReplace,}) {
                     </div>
                 </div>
                 <div className="taskItem__btns">
-                    <button onClick={onTaskReplace("ID")}>replace</button>
-                    <button onClick={onTaskDelete("ID")}>delete</button>
+                    <button onClick={onTaskReplace}>replace</button>
+                    <button onClick={onTaskDelete}>delete</button>
                 </div>
             </div>
         </div>
