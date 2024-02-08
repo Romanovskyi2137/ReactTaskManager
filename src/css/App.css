@@ -22,15 +22,13 @@ main {
 .App{
   display: flex;
   justify-content: center;
-  width: 800px;
+  min-width: 800px;
 
   /* background: rgba(0, 0, 0, 0.4); */
 }
 
 .tasks{
   width: inherit;
-  /* margin: 50px; */
-
 }
 .tasks__list_header{
   display: flex;

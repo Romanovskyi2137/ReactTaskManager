@@ -38,8 +38,8 @@ function TaskItem ({task, taskReplace,}) {
                     </div>
                 </div>
                 <div className="taskItem__btns">
-                    <button onClick={onTaskReplace}>replace</button>
-                    <button onClick={onTaskDelete}>delete</button>
+                    <button onClick={e => onTaskReplace(task.id)}>replace</button>
+                    <button onClick={e => onTaskDelete(task.id)}>delete</button>
                 </div>
             </div>
         </div>
