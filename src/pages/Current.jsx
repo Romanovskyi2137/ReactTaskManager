@@ -109,11 +109,11 @@ export default function Current () {
             completeModalOpen={onComplTasksModalOpen}
             createModalOpen={onCreateTaskModalOpen}
           />
-
+{/* 
           <TaskFilter
             filter={filter}
             setFilter={setFilter}
-          />
+          /> */}
 
           <hr style={{margin: "30px 0"}}/>
           
