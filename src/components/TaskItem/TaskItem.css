@@ -1,7 +1,7 @@
 .task_item__container {
     min-height: 180px;
     padding: 10px 0;
-    min-width: 100%
+    width: 100%
 }
 .task__item {
     border: 1px solid black;
@@ -13,7 +13,7 @@
 .task_item__content {
     display: flex;
     flex-direction: column;
-    
+    max-width: 800px;
 }
 .task_item__content > h3 {
     font-size: 35px;
@@ -21,7 +21,6 @@
 
 }
 .task_item__content > p {
-    max-width: 90%;
     word-wrap: break-word;
     padding: 15px 0;
     font-size: 24px;
@@ -33,6 +32,6 @@
 .taskItem__btns {
     display: flex;
     flex-direction: column;
-    
+    min-width: 50px;
 }
 

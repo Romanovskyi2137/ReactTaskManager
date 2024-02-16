@@ -109,7 +109,7 @@ export default function Current () {
             completeModalOpen={onComplTasksModalOpen}
             createModalOpen={onCreateTaskModalOpen}
           />
-{/* 
+          {/* 
           <TaskFilter
             filter={filter}
             setFilter={setFilter}

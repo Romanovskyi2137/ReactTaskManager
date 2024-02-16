@@ -22,13 +22,12 @@ main {
 .App{
   display: flex;
   justify-content: center;
-  min-width: 800px;
-
-  /* background: rgba(0, 0, 0, 0.4); */
+  min-width: 60%; 
+  padding: 0 25px;
 }
 
 .tasks{
-  width: inherit;
+  width: 100%;
 }
 .tasks__list_header{
   display: flex;
