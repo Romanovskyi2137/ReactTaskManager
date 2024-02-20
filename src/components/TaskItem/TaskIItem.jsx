@@ -2,16 +2,14 @@ import React, { useState } from 'react';
 import "./TaskItem.css"
 import TaskTimer from '../UI/TaskTimer/TaskTimer';
 import { Notify } from "notiflix";
+import { IconButton } from '@mui/material';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+
 
 
 
 function TaskItem ({task, taskReplace,}) {
-    const TO_CURRENT = "До поточних";
-    const TO_COMPLETE = "До виконаних";
-    const [buttons, setButtons] = useState({
-        replBtn: "",
-        delBtn: ""
-    });
     const onTaskReplace = async (id) => {
         try {
            await taskReplace(id)
@@ -42,16 +40,18 @@ function TaskItem ({task, taskReplace,}) {
                     </div>
                 </div>
                 <div className="taskItem__btns">
-                    <button onClick={e => onTaskReplace(task.id)}>
-                        <div className='taskItem__btn'>
-                            <div className={buttons.replBtn}></div>
-                        </div>
-                    </button>
-                    <button onClick={e => onTaskDelete(task.id)}>
-                        <div className='taskItem__btn'>
-                            <div className={buttons.delBtn}></div>
-                        </div>
-                    </button>
+                    <IconButton onClick={e => onTaskReplace(task.id)}>
+                        <CheckCircleOutlineIcon
+                            fontSize='large'
+                        />
+                    </IconButton>
+                    <IconButton 
+                        onClick={e => onTaskDelete(task.id)}
+                    >
+                        <HighlightOffIcon
+                            fontSize='large'
+                        />
+                    </IconButton>
                 </div>
             </div>
         </div>
