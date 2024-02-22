@@ -10,6 +10,7 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 
 function TaskItem ({task, taskReplace,}) {
+    const task__item_className = `task__item ${("prior_" + task.prior)}`;
     const onTaskReplace = async (id) => {
         try {
            await taskReplace(id)
@@ -27,7 +28,7 @@ function TaskItem ({task, taskReplace,}) {
         };
     return (
         <div className='task_item__container'>
-            <div className="task__item">
+            <div className={task__item_className}>
                 <div className='task_item__content'>
                     <h3>{task.title}</h3>
                     <p>{task.body}</p>
@@ -41,8 +42,12 @@ function TaskItem ({task, taskReplace,}) {
                 </div>
                 <div className="taskItem__btns">
                     <IconButton onClick={e => onTaskReplace(task.id)}>
+                        
                         <CheckCircleOutlineIcon
                             fontSize='large'
+                        />
+                        <UndoIcon
+                            fontSize="large"
                         />
                     </IconButton>
                     <IconButton 
