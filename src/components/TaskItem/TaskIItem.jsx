@@ -46,9 +46,7 @@ function TaskItem ({task, taskReplace,}) {
                         <CheckCircleOutlineIcon
                             fontSize='large'
                         />
-                        <UndoIcon
-                            fontSize="large"
-                        />
+
                     </IconButton>
                     <IconButton 
                         onClick={e => onTaskDelete(task.id)}

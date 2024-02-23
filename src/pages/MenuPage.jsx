@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../css/MenuPage.css"
 import NavElement from "../components/NavElement";
-import CreateTaskButton from "../components/UI/CreateTaskButton";
+import CreateTaskButton from "../components/UI/CreateTaskButton/CreateTaskButton.jsx";
 import CreateTaskModal from "../components/CreateTaskModal";
 
 export default function MenuPage () {

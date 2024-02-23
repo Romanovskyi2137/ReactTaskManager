@@ -26,20 +26,8 @@ main {
   padding: 0 25px;
 }
 
-.tasks{
+.tasks__list{
   width: 100%;
-}
-.tasks__list_header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 50px;
-}
-
-.TaskFilter {
-  display: flex;
-  max-height: 25px;
-  align-items: center;
 }
 
 /* React Transition Group */

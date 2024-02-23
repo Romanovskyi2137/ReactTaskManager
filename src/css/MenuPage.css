@@ -167,7 +167,7 @@
   }
 
 /*  */
-/* create task btn */
+
   .menu__button_container {
     display: flex;
     max-width: 1560px;
@@ -177,47 +177,7 @@
     margin-bottom: 120px;
   }
   
-  .createTaskBtn {
-    border: 0;
-    font-size: 18px;
-    font-weight: 500;
-    width: 275px;
-    height: 68px;
-    border-radius: 20px;
-    background-color: #F36D0C;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-  }
-  .createTaskBtn_mobile {
-    background-color: #F36D0C;
-    border: 0;
-    border-radius: 50%;
-    text-align: center;
-    margin: 0 auto;
-    min-width: 60px;
-    min-height: 60px;
-    display: none;
-    position: absolute;
-    bottom: 60px;
-    right: 20px
-  }
   
-  .createTaskBtn:hover {
-    transition: all 0.3s;
-    background-color: #FB8E40;
-  }
-
-  .createTaskBtn:active {
-    transition: all 0.1s;
-    background-color: #D45B04;
-  }
-  .createTaskBtn_mobile:active {
-    transition: all 0.1s;
-    background-color: #D45B04;
-  }
- /*  */
   @media (max-width: 1400px) {
     .menu__items {
       justify-content: center;
@@ -239,11 +199,7 @@
       margin-bottom: 0;
       margin-top: 0;
     }
-    .createTaskBtn {
-      width: 250px;
-      height: 50px;
-      font-size: 18px;
-    }
+ 
   }
 
   @media (max-width: 890px) {
@@ -259,11 +215,7 @@
     .menu__button_container {
       padding-top: 50px;
     }
-    .createTaskBtn {
-      width: 250px;
-      height: 50px;
-      font-size: 18px;
-    }
+
   }
 
   @media (max-width: 500px) {
@@ -301,10 +253,5 @@
       width: 350px;
       min-height: auto;
     }
-    .createTaskBtn {
-      display: none
-    }
-    .createTaskBtn_mobile {
-      display: block;
-    }
+
   }

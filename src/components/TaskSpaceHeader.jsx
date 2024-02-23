@@ -14,7 +14,6 @@ function TaskSpaceHeader ({completeModalOpen, createModalOpen}) {
                 Виконані задачі
               </Button>
               <Button
-                style={{marginLeft: "15px"}}
                 onClick={createModalOpen}
               >
                 Створити задачу

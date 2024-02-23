@@ -85,7 +85,15 @@ export default function Current () {
 
   return (
     <div className="App">
-      <div className="tasks">
+          <TaskSpaceHeader
+            completeModalOpen={onComplTasksModalOpen}
+            createModalOpen={onCreateTaskModalOpen}
+          />
+          
+          <TaskFilter
+            filter={filter}
+            setFilter={setFilter}
+          />
         <div className="tasks__list">
           {CTModalVisible
           ?
@@ -104,18 +112,6 @@ export default function Current () {
           :
             <></>
           }
-
-          <TaskSpaceHeader
-            completeModalOpen={onComplTasksModalOpen}
-            createModalOpen={onCreateTaskModalOpen}
-          />
-          {/* 
-          <TaskFilter
-            filter={filter}
-            setFilter={setFilter}
-          /> */}
-
-          <hr style={{margin: "30px 0"}}/>
           
           {isLoading ? 
             <h1>loading...</h1> 
@@ -130,7 +126,6 @@ export default function Current () {
           
 
         </div>
-      </div>
     </div>
   );
 }
