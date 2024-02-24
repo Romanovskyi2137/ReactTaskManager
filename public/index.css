@@ -5,6 +5,24 @@
     font-family: Inter;
     word-break: break-word;
 }
+body{
+    overflow: hidden;
+  }
+  
+#root{
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    flex: 1 1 auto
+  }
+
+
+
 a {
     text-decoration: initial;
     color: initial        

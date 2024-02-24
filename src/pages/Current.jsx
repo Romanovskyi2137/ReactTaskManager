@@ -11,6 +11,7 @@ import useToken from '../myHooks/useToken';
 import { useDispatch, useSelector } from 'react-redux';
 import { addManyTasks, removeCurrentTask, removeMajorTask, removeTodayTask, removeUrgentlyTask, toCompleteReplace } from '../store/tasksReducer';
 import { Notify } from 'notiflix';
+import BackToMenu from '../components/BackToMenu/BackToMenu';
 
 
 
@@ -84,7 +85,8 @@ export default function Current () {
   const filteredTasks = useList(tasks, filter.sort, filter.query);
 
   return (
-    <div className="App">
+    <div className="current">
+          <BackToMenu/>
           <TaskSpaceHeader
             completeModalOpen={onComplTasksModalOpen}
             createModalOpen={onCreateTaskModalOpen}

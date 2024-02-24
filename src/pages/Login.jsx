@@ -41,46 +41,46 @@ function Login () {
     } 
     return (
         <div className="loginPage__wrapper">
-        <div className="loginPage__container">
-            <div className="loginPage__logo_container">
-                <h2 className="loginPage__logo">React task manager</h2>
-            </div>
-            <div className="loginPage__form_container">
-                <div className="login__form_box">
-                    <h2>Увійти в обліковий запис</h2>
-                    <form
-                        onSubmit={onFormSubmit}
-                        className="loginPage__form"
-                    >
-                        <input type="text" name="username" placeholder="Ім’я"/>
-                        <InputPassword
-                            placeholder={"Пароль"}
-                            name={"password"}
-                            visability={visability}
-                            setVisability={setVisability}
-                        />
-                        <div 
-                            className="login__button_container"
+            <div className="loginPage__container">
+                <div className="loginPage__logo_container">
+                    <h2 className="loginPage__logo">React task manager</h2>
+                </div>
+                <div className="loginPage__form_container">
+                    <div className="login__form_box">
+                        <h2>Увійти в обліковий запис</h2>
+                        <form
+                            onSubmit={onFormSubmit}
+                            className="loginPage__form"
                         >
-                            <button
-                                className="login__button"
-                                type="submit"
-                            >
-                                Увійти
-                            </button>
-                            <GoogleLogin
-                                onGoogleLogin={onGoogleAuthClick}
+                            <input type="text" name="username" placeholder="Ім’я"/>
+                            <InputPassword
+                                placeholder={"Пароль"}
+                                name={"password"}
+                                visability={visability}
+                                setVisability={setVisability}
                             />
-                        </div>
-                        <div className="login__form_footer">
-                            <p>Не маєте облікового запису?</p>
-                            <Link to="/registration">Зареєструватись</Link>
-                        </div>
-                    </form> 
+                            <div 
+                                className="login__button_container"
+                            >
+                                <button
+                                    className="login__button"
+                                    type="submit"
+                                >
+                                    Увійти
+                                </button>
+                                <GoogleLogin
+                                    onGoogleLogin={onGoogleAuthClick}
+                                />
+                            </div>
+                            <div className="login__form_footer">
+                                <p>Не маєте облікового запису?</p>
+                                <Link to="/registration">Зареєструватись</Link>
+                            </div>
+                        </form> 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 )
 };
 

@@ -23,7 +23,7 @@
 .registrationPage__logo {
     font-size: 5.625rem;
     color: white;
-    text-shadow: black 0px 2px;
+    text-shadow: black 0px 1px 2px;
 }
 
 .registrationPage__form_container {

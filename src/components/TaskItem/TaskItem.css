@@ -1,13 +1,16 @@
 .task_item__container {
     min-height: 180px;
     padding: 10px 0;
-    width: 100%
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 .task__item {
     border-radius: 24px;
     display:flex;
     justify-content: space-between;
     padding: 25px;
+    min-width: 100%;
     max-width: 800px;
     box-shadow: 0px 2px 2px 0px rgba(147, 146, 146, 0.482);
 }

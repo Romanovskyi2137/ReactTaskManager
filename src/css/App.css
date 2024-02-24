@@ -1,29 +1,11 @@
 @import "~@flaticon/flaticon-uicons/css/all/all";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
-
-
-body{
-  overflow: hidden;
-}
-
-#root{
-  min-width: 100vw;
-  min-height: 100vh;
+.current{
   display: flex;
-}
-
-main {
-  display: flex;
-  justify-content: center;
-  flex: 1 1 auto
-}
-
-.App{
-  display: flex;
-  justify-content: center;
+  flex-direction: column;
   min-width: 60%; 
-  padding: 0 25px;
+  padding: 50px 25px;
 }
 
 .tasks__list{
@@ -61,13 +43,6 @@ main {
 
 /*  */
 
-
-
-.Auth_wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-}
 
 .TodayPage_wrapper {
   width: 800px;
