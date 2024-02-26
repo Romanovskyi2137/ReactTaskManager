@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addManyTasks, removeCurrentTask, removeMajorTask, removeTodayTask, removeUrgentlyTask, toCompleteReplace } from '../store/tasksReducer';
 import { Notify } from 'notiflix';
 import BackToMenu from '../components/BackToMenu/BackToMenu';
+import PageHeader from '../components/PageHeader/PageHeader';
 
 
 
@@ -86,16 +87,9 @@ export default function Current () {
 
   return (
     <div className="current">
-          <BackToMenu/>
-          <TaskSpaceHeader
-            completeModalOpen={onComplTasksModalOpen}
-            createModalOpen={onCreateTaskModalOpen}
-          />
+        <PageHeader
           
-          <TaskFilter
-            filter={filter}
-            setFilter={setFilter}
-          />
+        />  
         <div className="tasks__list">
           {CTModalVisible
           ?
