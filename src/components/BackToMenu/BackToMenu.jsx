@@ -1,7 +1,9 @@
 import React from "react";
 import backArrow from "./arrow-left-long-solid.svg";
 import "./BackToMenu.css";
-import { Link } from "@mui/material";
+import { Link } from "react-router-dom";
+
+
 
 export default function BackToMenu ({location}) {
     

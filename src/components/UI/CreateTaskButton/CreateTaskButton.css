@@ -2,8 +2,9 @@
     border: 0;
     font-size: 18px;
     font-weight: 500;
-    width: 275px;
+    max-width: 275px;
     height: 68px;
+    padding: 0 25px;
     border-radius: 20px;
     background-color: #F36D0C;
     display: flex;
@@ -17,12 +18,17 @@
     border-radius: 50%;
     text-align: center;
     margin: 0 auto;
-    min-width: 60px;
-    min-height: 60px;
+    min-width: 75px;
+    min-height: 75px;
     display: none;
     position: absolute;
-    bottom: 60px;
-    right: 20px
+    bottom: 10%;
+    right: 10%;
+  }
+
+  .createTaskBtn_mobile > img {
+    width: 40px;
+    height: 40px;
   }
   
   .createTaskBtn:hover {
@@ -41,25 +47,30 @@
 
   @media (max-width: 1400px) {
     .createTaskBtn {
-      width: 250px;
+      max-width: 250px;
       height: 50px;
       font-size: 18px;
     }
   }
 
-  @media (max-width: 890px) {
-    .createTaskBtn {
-      width: 250px;
-      height: 50px;
-      font-size: 18px;
-    }
-  }
-
-  @media (max-width: 500px) {
+  @media (max-width: 920px) {
     .createTaskBtn {
       display: none
     }
     .createTaskBtn_mobile {
-      display: block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  
+  @media (max-width: 520px) {
+    .createTaskBtn_mobile {
+      min-width: 45px;
+      min-height: 45px;
+    }
+    .createTaskBtn_mobile > img {
+      width: 25px;
+      height: 25px;
     }
   }

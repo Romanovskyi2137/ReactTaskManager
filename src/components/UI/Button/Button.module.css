@@ -1,17 +1,29 @@
 .Button {
-    min-height: 30px;
-    border: 1px solid black;
-    border-radius: 5px;
-    background: transparent;
-    padding: 5px;
-    word-break: keep-all;
+    border: 0;
+    font-size: 18px;
+    font-weight: 500;
+    max-width: 275px;
+    height: 68px;
+    padding: 0 25px;
+    border-radius: 20px;
+    background-color: #868585;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 .Button:hover {
-    box-shadow: 0 0 3px black;
     transition: all 0.3s ease;
+    background-color: #9e9c9c;
 }
 .Button:active {
-    background-color: #16471daf;
-    transform: scale(1.050, 1.050);
-    transition: all 0;
+    transition: all 0.1s ease;
+    background-color: #C1B9B9;
+}
+
+@media (max-width: 1400px) {
+    .Button {
+      max-width: 250px;
+      height: 50px;
+    }
 }

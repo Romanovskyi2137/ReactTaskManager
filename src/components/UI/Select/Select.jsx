@@ -4,9 +4,9 @@ import cl from './Select.module.css';
 function Select ({options, defaultValue, onChange, value}) {
     return (
         <select
-        className={cl.Select}
-        value={value}
-        onChange={e => onChange(e.target.value)}
+            className={cl.Select}
+            value={value}
+            onChange={e => onChange(e.target.value)}
         >
             <option value="" disabled>{defaultValue}</option>
 

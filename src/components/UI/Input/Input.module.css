@@ -1,9 +1,12 @@
 .Input {
+    min-width: 80%;
     border: 1px solid black;
     border-radius: 5px;
     height: inherit;
+    margin-right: 10px;
+    min-height: 40px;
+    padding-left: 5px;
 }
 .Input__radio{
-    margin:  5px 5px;
-    
+    margin:  5px 5px; 
 }

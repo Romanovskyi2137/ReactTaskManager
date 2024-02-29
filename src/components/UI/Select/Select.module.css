@@ -1,3 +1,14 @@
 .Select{
     border-radius: 5px;
+    /* background-color: #d6d2d2; */
+}
+
+.Select > option:hover {
+    background-color: #d6d2d2;
+}
+
+@media (max-width: 1170px) {
+    .Select {
+        max-width: 40px
+    }
 }

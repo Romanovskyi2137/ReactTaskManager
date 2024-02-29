@@ -5,7 +5,6 @@
 }
 .back__container {
     display: flex;
-    
 }
 .back__container > img {
     width: 32px;
