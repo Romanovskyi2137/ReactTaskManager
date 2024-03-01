@@ -5,16 +5,16 @@ import CreateTaskButton from "../components/UI/CreateTaskButton/CreateTaskButton
 import CreateTaskModal from "../components/CreateTaskModal";
 
 export default function MenuPage () {
-    const avatar = useState("#");
+    // const avatar = useState("#");
     const [CTModalVisible, setCTModalVisible] = useState(false);
 
     return (
         <div className="menu__wrapper">
             <div className="menu__header">
                 <h1 className="menu__header_logo">React task manager</h1>
-                <div className="menu__header_avatar">
+                {/* <div className="menu__header_avatar">
                     <h3>{avatar}</h3>
-                </div>
+                </div> */}
             </div>
             {CTModalVisible
                 ?

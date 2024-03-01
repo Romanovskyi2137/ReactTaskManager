@@ -20,6 +20,8 @@
     padding: 30px 10px;
 }
 .ModalContent{
+    display: flex;
+    flex-direction: column;
     padding: 25px;
     background: white;
     border: 1px solid black;

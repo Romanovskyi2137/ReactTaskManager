@@ -30,7 +30,7 @@ function TaskForm ({visible, setVisible}) {
     };
     const getTime = (millis) => {
       if (newTask.endPoint == null) {
-        // Notify.failure("Оберіть дату!")
+        Notify.failure("Оберіть дату!")
         return
       };
       setNewTask({...newTask, endPoint: (newTask.endPoint + millis)})
@@ -58,6 +58,7 @@ function TaskForm ({visible, setVisible}) {
     return (
         <form 
           onSubmit={async e => onTaskCreate(e)}
+          style={{display: "flex", flexDirection: "column"}}
         >
             <Input 
               type="text"

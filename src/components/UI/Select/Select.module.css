@@ -1,14 +1,22 @@
 .Select{
-    border-radius: 5px;
-    /* background-color: #d6d2d2; */
+    padding-left: 10px;
+    border-radius: 20px;
+    border: 1px solid #8D8686;
+    color: #8D8686;    
 }
 
-.Select > option:hover {
-    background-color: #d6d2d2;
+.Select > option {
+    color: #8D8686;
 }
 
 @media (max-width: 1170px) {
     .Select {
-        max-width: 40px
+        max-width: 40px;
+        padding: 0;
+        border-radius: 8px;
+    }
+    .Select::after {
+        position: relative;
+        right: 15px;
     }
 }

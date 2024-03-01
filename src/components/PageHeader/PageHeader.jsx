@@ -37,8 +37,8 @@ export default function PageHeader ({filter, setFilter}) {
                             Виконані
                         </Button> 
                     </div>
+                </div>
             </div>
-    
                 {CTModalVisible
                 ?
                     <CreateTaskModal 
@@ -57,9 +57,6 @@ export default function PageHeader ({filter, setFilter}) {
                 :
                     <></>
                 } 
-
-            </div>
-
             <TaskFilter
                 filter={filter}
                 setFilter={setFilter}
