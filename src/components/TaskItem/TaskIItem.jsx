@@ -9,7 +9,7 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 
 
-function TaskItem ({task, taskReplace,}) {
+function TaskItem ({task, taskReplace, taskDelete}) {
     const task__item_className = `task__item ${("prior_" + task.prior)}`;
     const onTaskReplace = async (id) => {
         try {
@@ -20,7 +20,7 @@ function TaskItem ({task, taskReplace,}) {
       };
     const onTaskDelete = async (id) => {
             try {
-                await taskReplace(id)
+                await taskDelete(id)
             } catch (e) {
                 console.log(e)
                 Notify.failure("Щось пішло не так =(");
@@ -30,7 +30,7 @@ function TaskItem ({task, taskReplace,}) {
         <div className='task_item__container'>
             <div className={task__item_className}>
                 <div className='task_item__content'>
-                    <h3>{task.title}</h3>
+                    <h3 className={task.prior}>{task.title}</h3>
                     <p>{task.body}</p>
                     <div className='timer_component_container'>
                         {task.endPoint ?
@@ -41,7 +41,7 @@ function TaskItem ({task, taskReplace,}) {
                     </div>
                 </div>
                 <div className="taskItem__btns">
-                    <IconButton onClick={e => onTaskReplace(task.id)}>
+                    <IconButton onClick={() => onTaskReplace(task.id)}>
                         
                         <CheckCircleOutlineIcon
                             fontSize='large'
@@ -49,7 +49,7 @@ function TaskItem ({task, taskReplace,}) {
 
                     </IconButton>
                     <IconButton 
-                        onClick={e => onTaskDelete(task.id)}
+                        onClick={() => onTaskDelete(task.id)}
                     >
                         <HighlightOffIcon
                             fontSize='large'
