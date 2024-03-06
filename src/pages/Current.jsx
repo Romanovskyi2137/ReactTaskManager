@@ -75,6 +75,7 @@ export default function Current () {
         <PageHeader
           filter={filter}
           setFilter={setFilter}
+          location="Всі"
         />  
         <div className="tasks__list">        
           {isLoading ? 

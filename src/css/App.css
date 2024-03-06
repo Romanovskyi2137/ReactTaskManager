@@ -43,13 +43,6 @@
 
 /*  */
 
-
-.TodayPage_wrapper {
-  width: 800px;
-  display: flex;
-  justify-content: center;
-}
-
 .active {
   text-decoration: underline;
 }

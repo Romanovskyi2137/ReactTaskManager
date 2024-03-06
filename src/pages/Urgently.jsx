@@ -6,6 +6,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { addManyUrgently, removeCurrentTask, removeMajorTask, removeTodayTask, removeUrgentlyTask, toCompleteReplace } from "../store/tasksReducer";
 import TaskList from "../components/TaskList";
 import { Notify } from "notiflix";
+import { useList } from "../myHooks/useList";
+import PageHeader from "../components/PageHeader/PageHeader";
+import "../css/Urgently.css"
 
 
 
@@ -13,6 +16,7 @@ export default function Urgently () {
     const token = useToken();
     const tasks = useSelector(state => state.tasks.urgentlyTasks);
     const [isLoading, setIsLoading] = useState(true);
+    const [filter, setFilter] = useState({sort: "prior", query: ""});
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const location = useLocation();
@@ -63,19 +67,27 @@ export default function Urgently () {
       }
     }
 
+    const filteredTasks = useList(tasks, filter.sort, filter.query)
 
     return (
-        <div className="TodayPage_wrapper">
-            {isLoading ? 
-                <h1 style={{textAlign: "center"}}>loading...</h1> 
-            :
-                <TaskList 
-                    tasks={tasks}
-                    btnType="До виконаних"
-                    taskDelete={onTaskDelete}
-                    taskReplace={onTaskReplace}
-                />
-            }          
+        <div className="Urgently_wrapper">
+            <div className="Urgently__container">
+              <PageHeader
+                filter={filter}
+                setFilter={setFilter}
+                location={"Термінові"}
+              />
+              {isLoading ? 
+                  <h1 style={{textAlign: "center"}}>loading...</h1> 
+              :
+                  <TaskList 
+                      tasks={filteredTasks}
+                      btnType="До виконаних"
+                      taskDelete={onTaskDelete}
+                      taskReplace={onTaskReplace}
+                  />
+              }          
+            </div>
         </div>
     )
 }

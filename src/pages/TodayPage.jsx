@@ -6,12 +6,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { addManyToday, removeCurrentTask, removeMajorTask, removeTodayTask, removeUrgentlyTask, toCompleteReplace } from "../store/tasksReducer";
 import TaskList from "../components/TaskList";
 import { Notify } from "notiflix";
+import "../css/TodayPage.css";
+import PageHeader from "../components/PageHeader/PageHeader.jsx"
+import { useList } from "../myHooks/useList.js";
 
 
 
 export default function TodayPage () {
     const token = useToken();
     const tasks = useSelector(state => state.tasks.todayTasks);
+    const [filter, setFilter] = useState({sort: "prior", query: ""});
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -63,19 +67,26 @@ export default function TodayPage () {
       }
     }
 
-
+    const filteredTasks = useList(tasks, filter.sort, filter.query)
     return (
         <div className="TodayPage_wrapper">
+          <div className="TodayPage__container">
+            <PageHeader
+              filter={filter}
+              setFilter={setFilter}
+              location="Сьогодні"
+            />
             {isLoading ? 
                 <h1 style={{textAlign: "center"}}>loading...</h1> 
             :
                 <TaskList 
-                    tasks={tasks}
+                    tasks={filteredTasks}
                     btnType="До виконаних"
                     taskDelete={onTaskDelete}
                     taskReplace={onTaskReplace}
                 />
             }          
+          </div>
         </div>
     )
 }

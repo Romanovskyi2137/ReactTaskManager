@@ -6,6 +6,13 @@
 .back__container {
     display: flex;
 }
+.back__container:hover {
+    box-shadow: 0 2px black;
+}
+.back__container:active {
+    transform: scale(0.90);
+    overflow: hidden
+}
 .back__container > img {
     width: 32px;
     height: 24px;

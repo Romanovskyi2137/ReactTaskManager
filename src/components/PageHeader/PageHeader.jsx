@@ -8,7 +8,7 @@ import CreateTaskModal from "../CreateTaskModal";
 import CompletedTasksModal from "../CompletedTasksModal";
 
 
-export default function PageHeader ({filter, setFilter}) {
+export default function PageHeader ({filter, setFilter, location}) {
     const [CTModalVisible, setCTModalVisible] = useState(false);
     const [completedTaskModalVisible, setCompletedTaskModalVisible] = useState(false);
 
@@ -16,7 +16,7 @@ export default function PageHeader ({filter, setFilter}) {
         <div className="PageHeader__container">
             <div className="btn_section">
                 <BackToMenu
-                    location="Всі"
+                    location={location}
                 />
                 <div className="pageHeader__interactive">
                     <div className='pageHeader__btns'>
