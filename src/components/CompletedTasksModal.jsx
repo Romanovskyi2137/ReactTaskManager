@@ -34,7 +34,7 @@ function CompletedTasksModal ({visible, setVisible}) {
           setIsLoading(false)
         } catch (e) {
           if (e.response.status == 400) {
-            navigate("/auth", {
+            navigate("/login", {
               state: {
                 from: location
               },

@@ -7,13 +7,14 @@
 }
 .task__item {
     border-radius: 24px;
-    display:flex;
+    display: flex;
     justify-content: space-between;
     padding: 25px;
     min-width: 100%;
-    max-width: 800px;
+    width: 80vw;
     box-shadow: 0px 2px 2px 0px rgba(147, 146, 146, 0.482);
 }
+
 .task_item__content {
     display: flex;
     flex-direction: column;

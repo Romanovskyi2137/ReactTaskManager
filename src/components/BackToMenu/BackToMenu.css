@@ -11,7 +11,6 @@
 }
 .back__container:active {
     transform: scale(0.90);
-    overflow: hidden
 }
 .back__container > img {
     width: 32px;
