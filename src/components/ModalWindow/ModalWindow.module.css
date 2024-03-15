@@ -26,9 +26,18 @@
     background: white;
     border: 1px solid black;
     border-radius: 16px;
-    
+    min-width: 650px;
 }
-
+@media (max-width: 900px) {
+    .ModalContent {
+        min-width: 400px;
+    }
+}
+@media (max-width: 500px) {
+    .ModalContent {
+        min-width: 350px;
+    }
+}
 
 
 .Modal.active {

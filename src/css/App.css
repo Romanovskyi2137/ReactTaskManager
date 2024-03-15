@@ -8,11 +8,6 @@
   padding: 50px 25px;
 }
 
-.tasks__list{
-  width: 100%;
-  
-}
-
 /* React Transition Group */
 
 .task-enter {
@@ -30,6 +25,14 @@
   transition: all 1000ms;
 }
 
+/*  */
+.TaskForm_pickers {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0px;
+}
+/*  */
+
  /*  */
  
 .task_prior_checked {
@@ -43,7 +46,3 @@
 }
 
 /*  */
-
-.active {
-  text-decoration: underline;
-}

@@ -10,7 +10,7 @@ function PriorPicker (props) {
             }
         )
     }
-    const iconDeactive = useEffect(iconClassControl, [props.visible]);
+    useEffect(iconClassControl, [props.visible]);
 
     const  iOnClick = (e, number, iconClass) => {
         e.stopPropagation();
@@ -22,7 +22,7 @@ function PriorPicker (props) {
         e.target.classList.add("task_prior_checked");
     }
     return (
-        <div style={{marginLeft: "10px"}}> 
+        <div> 
             <i className="chose_prior_btn fi fi-ss-flame"
                 onClick={e => iOnClick(e, "1", e.target.className)}
             />

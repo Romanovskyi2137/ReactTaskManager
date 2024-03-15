@@ -3,15 +3,13 @@ import Input from "./UI/Input/Input";
 import TextArea from "./UI/TextArea/TextArea";
 import Button from "./UI/Button/Button";
 import PriorPicker from "./UI/PriorPicker/PriorPicker";
-// import DatePicker from "./UI/DatePicker/DatePicker";
 import { useDispatch } from "react-redux";
 import { addOneCurrentTask } from "../store/tasksReducer";
 import {Notify} from "notiflix";
 import {v4 as uuidv4} from "uuid";
 import UserService from "../service/userService";
 import useToken from "../myHooks/useToken";
-import { DatePicker, DateTimePicker } from "@mui/x-date-pickers";
-// import TimePicker from "./UI/TimePicker/TimePicker";
+import { DateTimePicker } from "@mui/x-date-pickers";
 
 function TaskForm ({visible, setVisible}) {
     const dispatch = useDispatch()
@@ -71,7 +69,7 @@ function TaskForm ({visible, setVisible}) {
               onChange={e => setNewTask({...newTask, body: e.target.value})}
               placeholder="Опис"  
             />
-            <div>
+            <div className="TaskForm_pickers">
 
             <PriorPicker 
               getPrior={getPrior}
