@@ -8,7 +8,9 @@ import TaskList from "../components/TaskList";
 import { Notify } from "notiflix";
 import { useList } from "../myHooks/useList";
 import PageHeader from "../components/PageHeader/PageHeader";
-import "../css/Urgently.css"
+import "../css/Urgently.css";
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+
 
 
 
@@ -24,15 +26,17 @@ export default function Urgently () {
         const fetchData = async () => {
           if (tasks.length !== 0) {
             setIsLoading(false)
+            Loading.remove()
             return
           };
           try {
             const res = await UserService.getUrgently(token);
             dispatch(addManyUrgently(res.data));
             setIsLoading(false)
+            Loading.remove()
           } catch (e) {
             if (e.response.status === 400) {
-              navigate("/auth", {
+              navigate("/login", {
                 state: {
                   from: location
                 },
@@ -78,7 +82,10 @@ export default function Urgently () {
                 location={"Термінові"}
               />
               {isLoading ? 
-                  <h1 style={{textAlign: "center"}}>loading...</h1> 
+                  Loading.circle({
+                    svgSize: "128px",
+                    svgColor: "#F36D0C"
+                  }) 
               :
                   <TaskList 
                       tasks={filteredTasks}

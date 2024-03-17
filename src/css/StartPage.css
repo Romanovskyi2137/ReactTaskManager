@@ -19,7 +19,7 @@
   
   .startpage__h1__visible {
     opacity: 1 !important;
-    transition: all 1s linear;
+    transition: all 0.7s linear;
     text-shadow: black 0px 2px 3px;
   }
   

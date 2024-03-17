@@ -21,6 +21,7 @@ function TaskFilter ({filter, setFilter}) {
                 ]}
                 defaultValue={"Сортувати за..."}
                 onChange={value => setFilter({...filter, sort: value})}
+                style={{marginLeft: "15px"}}
             />
         </div>
     )

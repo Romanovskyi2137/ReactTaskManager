@@ -54,7 +54,7 @@ export default function MenuPage () {
             <div className="menu__button_container">
                 <CreateTaskButton
                     className="createTaskBtn_mobile"
-                    title="+"
+                    title=""
                     onClick={() => setCTModalVisible(true)}
                 />
                  <CreateTaskButton

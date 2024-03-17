@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addManyTasks, removeCurrentTask, removeMajorTask, removeTodayTask, removeUrgentlyTask, toCompleteReplace } from '../store/tasksReducer';
 import { Notify } from 'notiflix';
 import PageHeader from '../components/PageHeader/PageHeader';
-
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 
 export default function Current () {
@@ -23,12 +23,14 @@ export default function Current () {
     const fetchData = async () => {
       if (tasks.length != 0) {
         setIsLoading(false)
+        Loading.remove()
         return
       };
       try {
         const res = await UserService.getCurrent(token);
         dispatch(addManyTasks(res.data));
         setIsLoading(false)
+        Loading.remove()
       } catch (e) {
         if (e.response.status === 400) {
           navigate("/login", {
@@ -79,7 +81,10 @@ export default function Current () {
         />  
         <div className="tasks__list">        
           {isLoading ? 
-            <h1>loading...</h1> 
+            Loading.circle({
+              svgSize: "128px",
+              svgColor: "#F36D0C"
+            })
           :
             <TaskList 
               tasks={filteredTasks}

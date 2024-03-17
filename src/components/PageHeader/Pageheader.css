@@ -13,11 +13,14 @@
     align-items: center;
 }
 
+.create__button_container {
+    display: flex;
+    align-items: center;
+}
 .pageHeader__btns {
     display: flex;
     min-width: 400px;
     justify-content: space-between; 
-    /* margin-bottom: 25px; */
 }
 
 .TaskFilter {

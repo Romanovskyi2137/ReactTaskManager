@@ -29,7 +29,7 @@ function StartPage () {
                   })
                 }
               }
-    }, 2500)
+    }, 1400)
     return (
         <div className="startpage">
             <h1 className={titleState}>React task manager</h1>

@@ -9,6 +9,7 @@ import { Notify } from "notiflix";
 import "../css/TodayPage.css";
 import PageHeader from "../components/PageHeader/PageHeader.jsx"
 import { useList } from "../myHooks/useList.js";
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 
 
@@ -24,15 +25,17 @@ export default function TodayPage () {
         const fetchData = async () => {
           if (tasks.length != 0) {
             setIsLoading(false)
+            Loading.remove()
             return
           };
           try {
             const res = await UserService.getToday(token);
             dispatch(addManyToday(res.data));
             setIsLoading(false)
+            Loading.remove()
           } catch (e) {
             if (e.response.status === 400) {
-              navigate("/auth", {
+              navigate("/login", {
                 state: {
                   from: location
                 },
@@ -77,7 +80,10 @@ export default function TodayPage () {
               location="Сьогодні"
             />
             {isLoading ? 
-                <h1 style={{textAlign: "center"}}>loading...</h1> 
+                Loading.circle({
+                  svgSize: "128px",
+                  svgColor: "#F36D0C"
+                })
             :
                 <TaskList 
                     tasks={filteredTasks}
