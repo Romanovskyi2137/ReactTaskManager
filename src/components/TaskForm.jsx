@@ -71,17 +71,17 @@ function TaskForm ({visible, setVisible}) {
             />
             <div className="TaskForm_pickers">
 
-            <PriorPicker 
-              getPrior={getPrior}
-              visible={visible} 
-            />
+              <PriorPicker 
+                getPrior={getPrior}
+                visible={visible} 
+              />
 
-            <DateTimePicker
-              ampm={false}
-              ampmInClock={true}
-              value={newTask.endPoint}
-              onChange={value => setNewTask({...newTask, endPoint: value.$d})}
-            />
+              <DateTimePicker
+                ampm={false}
+                ampmInClock={true}
+                value={newTask.endPoint}
+                onChange={value => setNewTask({...newTask, endPoint: value.$d})}
+              />
 
             </div>
 
@@ -89,7 +89,7 @@ function TaskForm ({visible, setVisible}) {
               <Button
                 type= "submit"
               >
-                Створити задачу
+                Створити
               </Button>
             </div>
 
