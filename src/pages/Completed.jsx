@@ -24,11 +24,6 @@ export default function Completed () {
 
     useEffect(() => {
       const fetchData = async () => {
-        if (completedTasks.length != 0) {
-          setIsLoading(false)
-          Loading.remove()
-          return
-        };
         try {
           const res = await UserService.getComplete(token);
           dispatch(addManyCompletedTasks(res.data));

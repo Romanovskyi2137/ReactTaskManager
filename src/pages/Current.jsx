@@ -21,11 +21,6 @@ export default function Current () {
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchData = async () => {
-      if (tasks.length != 0) {
-        setIsLoading(false)
-        Loading.remove()
-        return
-      };
       try {
         const res = await UserService.getCurrent(token);
         dispatch(addManyTasks(res.data));

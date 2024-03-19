@@ -19,11 +19,6 @@ export default function Major () {
     const location = useLocation();
     useEffect(() => {
         const fetchData = async () => {
-          if (tasks.length != 0) {
-            setIsLoading(false);
-            Loading.remove()
-            return
-          };
           try {
             const res = await UserService.getMajor(token);
             dispatch(addManyMajor(res.data));

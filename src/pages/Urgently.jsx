@@ -24,11 +24,6 @@ export default function Urgently () {
     const location = useLocation();
     useEffect(() => {
         const fetchData = async () => {
-          if (tasks.length !== 0) {
-            setIsLoading(false)
-            Loading.remove()
-            return
-          };
           try {
             const res = await UserService.getUrgently(token);
             dispatch(addManyUrgently(res.data));

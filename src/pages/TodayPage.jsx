@@ -23,11 +23,6 @@ export default function TodayPage () {
     const location = useLocation();
     useEffect(() => {
         const fetchData = async () => {
-          if (tasks.length != 0) {
-            setIsLoading(false)
-            Loading.remove()
-            return
-          };
           try {
             const res = await UserService.getToday(token);
             dispatch(addManyToday(res.data));
