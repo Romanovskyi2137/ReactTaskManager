@@ -81,6 +81,7 @@ function TaskForm ({visible, setVisible}) {
                 ampmInClock={true}
                 value={newTask.endPoint}
                 onChange={value => setNewTask({...newTask, endPoint: value.$d.getTime()})}
+
               />
 
             </div>

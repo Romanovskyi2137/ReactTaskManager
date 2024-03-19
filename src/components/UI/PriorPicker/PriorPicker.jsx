@@ -50,7 +50,6 @@ function PriorPicker (props) {
             <div className="chose_prior_btn _icon-low_prio"
                 onClick={e => iOnClick(e, "3", e.target.className)}
             />
-         
         </div>
     )
 }
