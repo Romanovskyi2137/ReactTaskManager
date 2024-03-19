@@ -36,7 +36,8 @@ export default function Completed () {
           Loading.remove()
         } catch (e) {
           if (e.response.status == 400) {
-            navigate("/auth", {
+            Loading.remove();
+            navigate("/login", {
               state: {
                 from: location
               },

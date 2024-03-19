@@ -33,6 +33,7 @@ export default function Current () {
         Loading.remove()
       } catch (e) {
         if (e.response.status === 400) {
+          Loading.remove();
           navigate("/login", {
             state: {
               from: location

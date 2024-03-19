@@ -25,16 +25,26 @@
   transition: all 1000ms;
 }
 
-/*  */
+/* task form */
 .TaskForm_pickers {
   display: flex;
   justify-content: space-between;
   margin: 25px 0px;
 }
-/*  */
+.prio__container {
+  display: flex;
+}
 
- /*  */
- 
+.prio_tooltip {
+  position: absolute;
+  z-index: 10;
+  display: none;
+  border: 0.5px solid rgb(136, 136, 136);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+}
+
 .task_prior_checked {
   border-left: 1px solid black;
   border-bottom: 1px solid black;
@@ -43,6 +53,7 @@
 }
 .chose_prior_btn {
   margin: 15px 15px 15px 0;
+  padding-top: 3px
 }
 
 /*  */

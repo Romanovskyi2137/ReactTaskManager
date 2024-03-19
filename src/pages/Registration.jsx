@@ -87,7 +87,7 @@ function Registration () {
                             </div>
                             <div className="registration__form_footer">
                                 <p>Маєте обліковий запис?</p>
-                                <Link to="/auth">Увійти</Link>
+                                <Link to="/login">Увійти</Link>
                             </div>
                         </form> 
                     </div>

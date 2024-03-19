@@ -35,6 +35,7 @@ export default function TodayPage () {
             Loading.remove()
           } catch (e) {
             if (e.response.status === 400) {
+              Loading.remove();
               navigate("/login", {
                 state: {
                   from: location

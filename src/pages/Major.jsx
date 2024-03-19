@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { addManyMajor, removeCurrentTask, removeMajorTask, removeTodayTask, removeUrgentlyTask, toCompleteReplace } from "../store/tasksReducer";
 import TaskList from "../components/TaskList";
 import { Notify } from "notiflix";
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 
 
@@ -19,16 +20,19 @@ export default function Major () {
     useEffect(() => {
         const fetchData = async () => {
           if (tasks.length != 0) {
-            setIsLoading(false)
+            setIsLoading(false);
+            Loading.remove()
             return
           };
           try {
             const res = await UserService.getMajor(token);
             dispatch(addManyMajor(res.data));
-            setIsLoading(false)
+            setIsLoading(false);
+            Loading.remove()
           } catch (e) {
             if (e.response.status === 400) {
-              navigate("/auth", {
+              Loading.remove();
+              navigate("/login", {
                 state: {
                   from: location
                 },
@@ -67,7 +71,10 @@ export default function Major () {
     return (
         <div className="TodayPage_wrapper">
             {isLoading ? 
-                <h1 style={{textAlign: "center"}}>loading...</h1> 
+                Loading.circle({
+                  svgSize: "128px",
+                  svgColor: "#F36D0C"
+                })
             :
                 <TaskList 
                     tasks={tasks}
