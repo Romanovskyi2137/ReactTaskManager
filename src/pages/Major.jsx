@@ -13,6 +13,7 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 export default function Major () {
     const token = useToken();
     const tasks = useSelector(state => state.tasks.majorTasks);
+    const currentTasks = useSelector(state => state.tasks.currentTasks);
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -37,7 +38,7 @@ export default function Major () {
           }
         };
         fetchData();
-      }, []);
+      }, [currentTasks]);
     
     const onTaskDelete = async (id) => {
       try {
