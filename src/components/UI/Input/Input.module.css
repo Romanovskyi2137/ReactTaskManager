@@ -1,9 +1,16 @@
 .Input {
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 1px solid #8D8686;
+    border-radius: 20px;
     height: inherit;
+    min-height: 40px;
+    padding: 0 10px;
+    flex: auto;
+    color: #8D8686;
+}
+.Input:focus {
+    border: 1.5px solid black;
 }
 .Input__radio{
-    margin:  5px 5px;
-    
+    margin:  5px 5px; 
 }
+

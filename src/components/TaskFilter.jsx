@@ -8,7 +8,12 @@ function TaskFilter ({filter, setFilter}) {
 
     return (
         <div className="TaskFilter">
-
+            <Input
+                type="text"
+                placeholder="Пошук..."
+                value={filter.query}
+                onChange={e => setFilter({...filter, query: e.target.value})}
+            />
             <Select
                 options={[
                     {value: "prior", name: "За пріорітетом"},
@@ -16,12 +21,7 @@ function TaskFilter ({filter, setFilter}) {
                 ]}
                 defaultValue={"Сортувати за..."}
                 onChange={value => setFilter({...filter, sort: value})}
-            />
-            <Input
-                type="text"
-                placeholder="Пошук..."
-                value={filter.query}
-                onChange={e => setFilter({...filter, query: e.target.value})}
+                style={{marginLeft: "15px"}}
             />
         </div>
     )

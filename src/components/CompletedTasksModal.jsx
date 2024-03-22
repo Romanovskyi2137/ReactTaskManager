@@ -9,6 +9,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addManyCompletedTasks, removeCompletedTask, toCurrentReplace } from "../store/tasksReducer";
 import { Notify } from "notiflix";
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 
 function CompletedTasksModal ({visible, setVisible}) {
@@ -26,15 +27,17 @@ function CompletedTasksModal ({visible, setVisible}) {
       const fetchData = async () => {
         if (completedTasks.length != 0) {
           setIsLoading(false)
+          Loading.remove()
           return
         };
         try {
           const res = await UserService.getComplete(token);
           dispatch(addManyCompletedTasks(res.data));
           setIsLoading(false)
+          Loading.remove()
         } catch (e) {
           if (e.response.status == 400) {
-            navigate("/auth", {
+            navigate("/login", {
               state: {
                 from: location
               },
@@ -81,7 +84,10 @@ function CompletedTasksModal ({visible, setVisible}) {
               style={{margin: "15px 0"}}
             />
             {isLoading ?
-            <h1>Loading...</h1>
+              Loading.circle({
+                svgSize: "128px",
+                svgColor: "#F36D0C"
+              })
             :
               <TaskList 
                 tasks={filtered}

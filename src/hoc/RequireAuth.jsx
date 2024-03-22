@@ -6,7 +6,7 @@ export function RequireAuth ({children}) {
     const token = useToken();
     const location = useLocation();
     if (!token) {
-        return <Navigate to="/auth" state={{from: location}}/>
+        return <Navigate to="/login" state={{from: location}}/>
     };
     return children
 };

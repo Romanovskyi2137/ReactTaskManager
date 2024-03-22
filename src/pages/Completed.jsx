@@ -6,10 +6,15 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addManyCompletedTasks, removeCompletedTask, toCurrentReplace } from "../store/tasksReducer";
 import { Notify } from "notiflix";
+import "../css/Completed.css"
+import PageHeader from "../components/PageHeader/PageHeader";
+import { useList } from "../myHooks/useList";
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 
 export default function Completed () {
     const completedTasks = useSelector(state => state.tasks.completedTasks);
+    const [filter, setFilter] = useState({sort: "prior", query: ""});
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(true);
     const token = useToken();
@@ -19,17 +24,15 @@ export default function Completed () {
 
     useEffect(() => {
       const fetchData = async () => {
-        if (completedTasks.length != 0) {
-          setIsLoading(false)
-          return
-        };
         try {
           const res = await UserService.getComplete(token);
           dispatch(addManyCompletedTasks(res.data));
           setIsLoading(false)
+          Loading.remove()
         } catch (e) {
           if (e.response.status == 400) {
-            navigate("/auth", {
+            Loading.remove();
+            navigate("/login", {
               state: {
                 from: location
               },
@@ -59,19 +62,30 @@ export default function Completed () {
       }
     }
 
+    const filteredTasks = useList(completedTasks, filter.sort, filter.query)
 
     return (
-        <div>
+        <div className="Completed_wrapper">
+          <div className="Completed__container">
+            <PageHeader
+              filter={filter}
+              setFilter={setFilter}
+              location={"Виконані"}
+            />
             {isLoading ?
-                <h1>Loading...</h1>
-            :
-              <TaskList 
-                tasks={completedTasks}
-                btnType="До поточних"
-                taskDelete={onTaskDelete}
-                taskReplace={onTaskReplace}
-              />
-            }
+                  Loading.circle({
+                    svgSize: "128px",
+                    svgColor: "#F36D0C"
+                  })
+              :
+                <TaskList 
+                  tasks={filteredTasks}
+                  btnType="До поточних"
+                  taskDelete={onTaskDelete}
+                  taskReplace={onTaskReplace}
+                />
+              }
+          </div>
         </div>
     )
 };

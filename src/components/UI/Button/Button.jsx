@@ -8,7 +8,7 @@ function Button ({children, ...props}) {
 
     return (
         <button className={cl.Button} {...props}>
-            {children}
+            <h3>{children}</h3>
         </button>
     )
 }

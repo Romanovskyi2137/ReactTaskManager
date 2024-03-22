@@ -1,0 +1,257 @@
+
+.menu__wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 80px;
+  }
+  
+  .menu__header {
+    display: flex;
+    align-items: center;
+    max-width: 1560px;
+    width: 100%;
+    justify-content: space-between;
+    margin: 137px 0 89px 0 
+  }
+  
+  .menu__header_logo {
+    font-size: 50px;
+    font-weight: 500;
+  }
+  
+  .menu__header_avatar {
+    min-height: 90px;
+    min-width: 90px;
+    border-radius: 50%;
+    background-color: #D7D2D1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    font-weight: 400;
+  }
+  
+  .menu__items {
+    display: flex;
+    max-width: 960px;
+    min-height: 442px;
+    max-height: 600px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .menu__items_item {
+    display: flex;
+    width: 460px;
+    height: 166px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    border: 2px solid black;
+    background: #ede8e8d3;
+  }
+  /* completed */
+  .completedTasks {
+    border-color: #BDB5B4;
+  }
+  
+  ._icon-completed:before {
+    margin-right: 15px;
+    color: #BDB5B4
+  }
+  
+  .completedTasks:hover {
+    transition: all 0.5s;
+    background-color: #D7D7D7;
+  }
+  
+  .completedTasks:active {
+    transition: all 0.3s;
+    background-color: #C1B9B9;
+    border-color: white;
+    color: white; 
+  }
+  
+  .completedTasks:active ._icon-completed:before {
+    transition: all 0.6s;
+    color: white
+  }
+  /*  */
+
+  /* today */
+  .todayTasks {
+    border-color: #3B95E9;
+  }
+  
+  ._icon-today:before {
+    margin-right: 15px;
+    color: #3B95E9
+  }
+  
+  .todayTasks:hover {
+    transition: all 0.5s;
+    background-color: #D0E6ED;
+  }
+  
+  .todayTasks:active {
+    transition: all 0.3s;
+    background-color: #3B95E9;
+    border-color: white;
+    color: white; 
+  }
+  
+  .todayTasks:active ._icon-today:before {
+    transition: all 0.6s;
+    color: white
+  }
+
+/*  */
+
+/* urgently */
+.urgentlyTasks {
+    border-color: #E94040;
+  }
+  
+  ._icon-urgently:before {
+    margin-right: 15px;
+    color: #E94040
+  }
+  
+  .urgentlyTasks:hover {
+    transition: all 0.5s;
+    background-color: #F3CCCC;
+  }
+  
+  .urgentlyTasks:active {
+    transition: all 0.3s;
+    background-color: #E94040;
+    border-color: white;
+    color: white; 
+  }
+  
+  .urgentlyTasks:active ._icon-urgently:before {
+    transition: all 0.6s;
+    color: white
+  }
+
+/*  */
+
+/* all */
+.allTasks {
+   border-color: #757373;
+}
+  
+._icon-all:before {
+    margin-right: 15px;
+    color: #757373
+}
+  
+  .allTasks:hover {
+    transition: all 0.5s;
+    background-color: #CDCACA;
+  }
+  
+  .allTasks:active {
+    transition: all 0.3s;
+    background-color: #757373;
+    border-color: white;
+    color: white; 
+  }
+  
+  .allTasks:active ._icon-all:before {
+    transition: all 0.6s;
+    color: white
+  }
+
+/*  */
+
+  .menu__button_container {
+    display: flex;
+    max-width: 1560px;
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 40px;
+    margin-bottom: 120px;
+  }
+  
+  
+  @media (max-width: 1400px) {
+    .menu__items {
+      justify-content: center;
+      column-gap: 35px;
+      min-height: 350px;
+      max-width: 750px;
+      overflow-y: auto;
+    }
+     .menu__items_item {
+      width: 350px;
+      height: 130px;
+      border-radius: 30px;
+     }
+    .menu__header {
+      margin: 0px 0 50px 0 
+      
+    }
+    .menu__button_container {
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+ 
+  }
+
+  @media (max-width: 890px) {
+    .menu__items {
+      justify-content: center;
+      column-gap: 35px;
+      row-gap: 35px;
+      min-height: 350px;
+      max-height: none;
+      max-width: 750px;
+      /* overflow-y: auto; */
+    }
+    .menu__button_container {
+      padding-top: 50px;
+    }
+
+  }
+
+  @media (max-width: 500px) {
+    .menu__wrapper {
+      padding: 50px 15px;
+      max-height: 100%;
+      justify-content: space-between;
+    }
+    .menu__header {
+      margin: 0 0 0 0 ;
+    }
+    .menu__header_logo {
+      visibility: hidden;
+    }
+    .menu__header_avatar{
+      min-width: 52px;
+      min-height: 52px;
+      font-size: 20px;
+    }
+    .menu__items_item {
+      width: 164px;
+      height: 90px;
+      border-radius: 20px
+    }
+
+    .menu__items_item > h2::before {
+      margin-right: 10px;
+    }
+
+    .menu__items {
+      font-size: 14px;
+      column-gap: 10px;
+      row-gap: 40px;
+      height: 220px;
+      width: 350px;
+      min-height: auto;
+    }
+
+  }

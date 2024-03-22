@@ -1,0 +1,37 @@
+.PageHeader__container {
+    display: flex;
+    flex-direction: column;
+}
+.btn_section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pageHeader__interactive {
+    display: flex;
+    align-items: center;
+}
+
+.create__button_container {
+    display: flex;
+    align-items: center;
+}
+.pageHeader__btns {
+    display: flex;
+    min-width: 400px;
+    justify-content: space-between; 
+}
+
+.TaskFilter {
+    display: flex;
+    min-width: 100%;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+@media (max-width: 920px) {
+    .pageHeader__btns {
+        min-width: 0;
+    }
+}

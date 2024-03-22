@@ -6,29 +6,34 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { addManyUrgently, removeCurrentTask, removeMajorTask, removeTodayTask, removeUrgentlyTask, toCompleteReplace } from "../store/tasksReducer";
 import TaskList from "../components/TaskList";
 import { Notify } from "notiflix";
+import { useList } from "../myHooks/useList";
+import PageHeader from "../components/PageHeader/PageHeader";
+import "../css/Urgently.css";
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+
 
 
 
 export default function Urgently () {
     const token = useToken();
     const tasks = useSelector(state => state.tasks.urgentlyTasks);
+    const currentTasks = useSelector(state => state.tasks.currentTasks);
     const [isLoading, setIsLoading] = useState(true);
+    const [filter, setFilter] = useState({sort: "prior", query: ""});
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const location = useLocation();
     useEffect(() => {
         const fetchData = async () => {
-          if (tasks.length !== 0) {
-            setIsLoading(false)
-            return
-          };
           try {
             const res = await UserService.getUrgently(token);
             dispatch(addManyUrgently(res.data));
             setIsLoading(false)
+            Loading.remove()
           } catch (e) {
             if (e.response.status === 400) {
-              navigate("/auth", {
+              Loading.remove();
+              navigate("/login", {
                 state: {
                   from: location
                 },
@@ -38,7 +43,7 @@ export default function Urgently () {
           }
         };
         fetchData();
-      }, []);
+      }, [currentTasks]);
     
     const onTaskDelete = async (id) => {
       try {
@@ -63,19 +68,30 @@ export default function Urgently () {
       }
     }
 
+    const filteredTasks = useList(tasks, filter.sort, filter.query)
 
     return (
-        <div className="TodayPage_wrapper">
-            {isLoading ? 
-                <h1 style={{textAlign: "center"}}>loading...</h1> 
-            :
-                <TaskList 
-                    tasks={tasks}
-                    btnType="До виконаних"
-                    taskDelete={onTaskDelete}
-                    taskReplace={onTaskReplace}
-                />
-            }          
+        <div className="Urgently_wrapper">
+            <div className="Urgently__container">
+              <PageHeader
+                filter={filter}
+                setFilter={setFilter}
+                location={"Термінові"}
+              />
+              {isLoading ? 
+                  Loading.circle({
+                    svgSize: "128px",
+                    svgColor: "#F36D0C"
+                  }) 
+              :
+                  <TaskList 
+                      tasks={filteredTasks}
+                      btnType="До виконаних"
+                      taskDelete={onTaskDelete}
+                      taskReplace={onTaskReplace}
+                  />
+              }          
+            </div>
         </div>
     )
 }

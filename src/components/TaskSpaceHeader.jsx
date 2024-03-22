@@ -2,11 +2,10 @@ import React from "react";
 import Button from "./UI/Button/Button";
 
 
-function TaskSpaceHeader ({completeModalOpen, createModalOpen}) {
+function HeaderButtons ({completeModalOpen, createModalOpen}) {
 
 
     return (
-        <div className="tasks__list_header">
             <div className='header__btns'>
               <Button
                 onClick={completeModalOpen}
@@ -14,15 +13,13 @@ function TaskSpaceHeader ({completeModalOpen, createModalOpen}) {
                 Виконані задачі
               </Button>
               <Button
-                style={{marginLeft: "15px"}}
                 onClick={createModalOpen}
               >
                 Створити задачу
               </Button>
             </div>
-        </div>
     )
 };
 
 
-export default TaskSpaceHeader
+export default HeaderButtons

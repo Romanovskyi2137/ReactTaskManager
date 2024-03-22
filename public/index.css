@@ -2,8 +2,44 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
+    font-family: Inter;
     word-break: break-word;
 }
+body{
+    /* overflow: hidden; */
+  }
+  
+#root{
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    flex: 1 1 auto
+  }
 
 
+
+a {
+    text-decoration: initial;
+    color: initial        
+}
+
+input {
+    border: none;
+    font-size: inherit;
+    font-weight: inherit;
+    background-color: transparent;
+    color: inherit;
+}
+
+input:focus {
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    box-shadow: none;
+    outline: none;
+}

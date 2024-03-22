@@ -2,7 +2,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Current from './pages/Current';
 import StartPage from './pages/StartPage';
 import Layout from "./components/Layout"
-import Authorization from './pages/Authorization';
+import Login from './pages/Login';
 import Registration from './pages/Registration';
 import {RequireAuth} from './hoc/RequireAuth';
 import TodayPage from './pages/TodayPage';
@@ -11,6 +11,7 @@ import Urgently from './pages/Urgently';
 import Major from './pages/Major';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
+import MenuPage from './pages/MenuPage';
 
 
 
@@ -18,7 +19,11 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout/>}>
     <Route index element={<StartPage/>}/>
-    {/* need to make a new route & new page called "menu" */}
+    <Route path="menu" element={
+      <RequireAuth>
+        <MenuPage/>
+      </RequireAuth>
+    }/>
     <Route path="current" element={
       <RequireAuth>
         <Current/>
@@ -44,7 +49,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Major/>
       </RequireAuth>
     }/>
-    <Route path="auth" element={<Authorization/>}/>
+    <Route path="login" element={<Login/>}/>
     <Route path="registration" element={<Registration/>}/>
   </Route>
 ));

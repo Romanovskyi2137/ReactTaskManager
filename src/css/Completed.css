@@ -1,0 +1,12 @@
+.Completed_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.Completed__container{
+    display: flex;
+    flex-direction: column;
+    min-width: 60%; 
+    padding: 50px 25px;
+}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 function PriorPicker (props) {
     const iconClassControl = () => {
@@ -9,32 +9,47 @@ function PriorPicker (props) {
                 }
             }
         )
-    }
-    const iconDeactive = useEffect(iconClassControl, [props.visible]);
-
+    };
+    useEffect(iconClassControl, [props.visible]);
     const  iOnClick = (e, number, iconClass) => {
         e.stopPropagation();
         props.getPrior({number, iconClass})
-        
-
-        const iconBtns = document.querySelectorAll(".chose_prior_btn");
         iconClassControl();
         e.target.classList.add("task_prior_checked");
+    };
+    const prioContainerRef = useRef(null);
+    const onMouseOver = (e) => {
+        prioContainerRef.current.style.left = (e.pageX + 10) + 'px';
+        prioContainerRef.current.style.top = (e.pageY + 10) + 'px';
+        prioContainerRef.current.style.display = "block";
+        console.log(prioContainerRef.current.style.display);
     }
-    return (
-        <div style={{marginLeft: "10px"}}> 
-            <i className="chose_prior_btn fi fi-ss-flame"
+    const onMouseOut = (e) => {
+        prioContainerRef.current.style.display = "none"
+    }
+    return (    
+        <div 
+            className="prio__container"
+            onMouseOver={e => onMouseOver(e)}
+            onMouseOut={e => onMouseOut(e)}
+        > 
+            <div 
+                className="prio_tooltip" 
+                ref={prioContainerRef} 
+            >
+                <p>Оберіть пріоритет задачі</p>
+            </div>
+            <div className="chose_prior_btn _icon-high_prio"
                 onClick={e => iOnClick(e, "1", e.target.className)}
             />
      
-            <i className="chose_prior_btn fi fi-bs-flame" 
+            <div className="chose_prior_btn _icon-medium_prio" 
                 onClick={e => iOnClick(e, "2", e.target.className)}
             />
            
-            <i className="chose_prior_btn fi fi-rs-flame"
+            <div className="chose_prior_btn _icon-low_prio"
                 onClick={e => iOnClick(e, "3", e.target.className)}
             />
-         
         </div>
     )
 }
