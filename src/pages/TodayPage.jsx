@@ -16,6 +16,7 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 export default function TodayPage () {
     const token = useToken();
     const tasks = useSelector(state => state.tasks.todayTasks);
+    const currentTasks = useSelector(state => state.tasks.currentTasks);
     const [filter, setFilter] = useState({sort: "prior", query: ""});
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
@@ -46,7 +47,7 @@ export default function TodayPage () {
           }
         };
         fetchData();
-      }, []);
+      }, [currentTasks]);
     
     const onTaskDelete = async (id) => {
       try {

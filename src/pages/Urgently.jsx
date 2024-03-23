@@ -17,6 +17,7 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 export default function Urgently () {
     const token = useToken();
     const tasks = useSelector(state => state.tasks.urgentlyTasks);
+    const currentTasks = useSelector(state => state.tasks.currentTasks);
     const [isLoading, setIsLoading] = useState(true);
     const [filter, setFilter] = useState({sort: "prior", query: ""});
     const navigate = useNavigate();
@@ -47,7 +48,7 @@ export default function Urgently () {
           }
         };
         fetchData();
-      }, []);
+      }, [currentTasks]);
     
     const onTaskDelete = async (id) => {
       try {
