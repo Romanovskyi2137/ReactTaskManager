@@ -4,8 +4,13 @@
 .current{
   display: flex;
   flex-direction: column;
-  min-width: 60%; 
+  min-width: 80vw;
   padding: 50px 25px;
+}
+@media (max-width: 500px) {
+  .current {
+      min-width: none;
+  }
 }
 
 /* React Transition Group */

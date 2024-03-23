@@ -1,12 +1,16 @@
 .TodayPage_wrapper {
-    width: 100%;
+    min-width: 80vw;
     display: flex;
     justify-content: center;
 }
-
+@media (max-width: 500px) {
+    .TodayPage_wrapper {
+        min-width: none;
+    }
+}
 .TodayPage__container{
     display: flex;
     flex-direction: column;
-    min-width: 60%; 
+    min-width: 100%; 
     padding: 50px 25px;
 }
