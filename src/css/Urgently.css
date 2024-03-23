@@ -1,12 +1,16 @@
 .Urgently_wrapper {
-    width: 100%;
+    min-width: 80vw;
     display: flex;
     justify-content: center;
 }
-
+@media (max-width: 500px) {
+    .Urgently_wrapper {
+        min-width: none;
+    }
+}
 .Urgently__container{
     display: flex;
     flex-direction: column;
-    min-width: 60%; 
+    width: 100%;
     padding: 50px 25px;
 }

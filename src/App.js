@@ -1,4 +1,4 @@
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
+import { createHashRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import Current from './pages/Current';
 import StartPage from './pages/StartPage';
 import Layout from "./components/Layout"
@@ -16,7 +16,7 @@ import MenuPage from './pages/MenuPage';
 
 
 
-const router = createBrowserRouter(createRoutesFromElements(
+const router = createHashRouter(createRoutesFromElements(
   <Route path="/" element={<Layout/>}>
     <Route index element={<StartPage/>}/>
     <Route path="menu" element={
