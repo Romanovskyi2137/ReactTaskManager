@@ -49,7 +49,7 @@
     height: 166px;
     justify-content: center;
     align-items: center;
-    border-radius: 30px;
+    border-radius: 10px;
     border: 2px solid black;
     background: #ede8e8d3;
   }
@@ -189,7 +189,7 @@
      .menu__items_item {
       width: 350px;
       height: 130px;
-      border-radius: 30px;
+      border-radius: 10px;
      }
     .menu__header {
       margin: 0px 0 50px 0 

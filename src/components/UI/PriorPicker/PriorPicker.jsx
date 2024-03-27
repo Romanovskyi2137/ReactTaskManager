@@ -19,10 +19,12 @@ function PriorPicker (props) {
     };
     const prioContainerRef = useRef(null);
     const onMouseOver = (e) => {
+        if (window.innerWidth < 890) {
+            return
+        };
         prioContainerRef.current.style.left = (e.pageX + 10) + 'px';
         prioContainerRef.current.style.top = (e.pageY + 10) + 'px';
         prioContainerRef.current.style.display = "block";
-        console.log(prioContainerRef.current.style.display);
     }
     const onMouseOut = (e) => {
         prioContainerRef.current.style.display = "none"

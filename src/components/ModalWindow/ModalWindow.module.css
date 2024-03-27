@@ -25,7 +25,7 @@
     padding: 25px;
     background: white;
     border: 1px solid black;
-    border-radius: 16px;
+    border-radius: 10px;
     min-width: 650px;
 }
 @media (max-width: 900px) {
