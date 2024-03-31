@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import "../css/MenuPage.css"
 import NavElement from "../components/NavElement";
 import CreateTaskButton from "../components/UI/CreateTaskButton/CreateTaskButton.jsx";
 import CreateTaskModal from "../components/CreateTaskModal";
+import { useDispatch, useSelector } from "react-redux";
+import { showCreateTaskModal } from "../store/modalVisibleReducer.js";
 
 export default function MenuPage () {
     // const avatar = useState("#");
-    const [CTModalVisible, setCTModalVisible] = useState(false);
+    const createTaskModalVisible = useSelector(state => state.modalVisible.createTaskModalVisible);
+    const dispatch = useDispatch();
 
     return (
         <div className="menu__wrapper">
@@ -16,14 +19,11 @@ export default function MenuPage () {
                     <h3>{avatar}</h3>
                 </div> */}
             </div>
-            {CTModalVisible
+            {createTaskModalVisible
                 ?
-                <CreateTaskModal
-                    visible={CTModalVisible}
-                    setVisible={setCTModalVisible}
-                />
+                    <CreateTaskModal/>
                 :
-                <></>
+                    <></>
             }
             <nav className="menu__items">
                 <NavElement
@@ -55,12 +55,12 @@ export default function MenuPage () {
                 <CreateTaskButton
                     className="createTaskBtn_mobile"
                     title=""
-                    onClick={() => setCTModalVisible(true)}
+                    onClick={() => dispatch(showCreateTaskModal())}
                 />
                  <CreateTaskButton
                     className="createTaskBtn"
                     title="Створити задачу"
-                    onClick={() => setCTModalVisible(true)}
+                    onClick={() => dispatch(showCreateTaskModal())}
                 />
             </div> 
 

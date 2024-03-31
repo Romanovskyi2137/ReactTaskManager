@@ -15,11 +15,12 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 
 export default function Urgently () {
-    const token = useToken();
-    const tasks = useSelector(state => state.tasks.urgentlyTasks);
-    const currentTasks = useSelector(state => state.tasks.currentTasks);
     const [isLoading, setIsLoading] = useState(true);
     const [filter, setFilter] = useState({sort: "prior", query: ""});
+    const tasks = useSelector(state => state.tasks.urgentlyTasks);
+    const currentTasks = useSelector(state => state.tasks.currentTasks);
+    const filteredTasks = useList(tasks, filter.sort, filter.query);
+    const token = useToken();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const location = useLocation();
@@ -69,11 +70,9 @@ export default function Urgently () {
         dispatch(removeTodayTask(id));
         dispatch(removeMajorTask(id))
       } catch {
-        Notify.failure("somthing goes wrong...=)")
+        Notify.failure("something goes wrong...=)")
       }
     }
-
-    const filteredTasks = useList(tasks, filter.sort, filter.query)
 
     return (
         <div className="Urgently_wrapper">

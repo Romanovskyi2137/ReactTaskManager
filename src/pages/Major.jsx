@@ -11,10 +11,10 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 
 export default function Major () {
+    const [isLoading, setIsLoading] = useState(true);
     const token = useToken();
     const tasks = useSelector(state => state.tasks.majorTasks);
     const currentTasks = useSelector(state => state.tasks.currentTasks);
-    const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const location = useLocation();
@@ -66,6 +66,9 @@ export default function Major () {
       } catch {
         Notify.failure("something goes wrong...=)")
       }
+    };
+    const onTaskRedact = (task) => {
+      
     }
 
 
@@ -82,6 +85,7 @@ export default function Major () {
                     btnType="До виконаних"
                     taskDelete={onTaskDelete}
                     taskReplace={onTaskReplace}
+                    onTaskRedact={onTaskRedact}
                 />
             }          
         </div>

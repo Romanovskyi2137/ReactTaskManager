@@ -6,11 +6,14 @@ import Button from "../UI/Button/Button.jsx";
 import CreateTaskButton from "../UI/CreateTaskButton/CreateTaskButton.jsx"
 import CreateTaskModal from "../CreateTaskModal";
 import CompletedTasksModal from "../CompletedTasksModal";
+import { useDispatch, useSelector } from "react-redux";
+import { showCompletedTasksModal, showCreateTaskModal } from "../../store/modalVisibleReducer.js";
 
 
 export default function PageHeader ({filter, setFilter, location}) {
-    const [CTModalVisible, setCTModalVisible] = useState(false);
-    const [completedTaskModalVisible, setCompletedTaskModalVisible] = useState(false);
+    const createTaskModalVisible = useSelector(state => state.modalVisible.createTaskModalVisible);
+    const completedTasksModalVisible = useSelector(state => state.modalVisible.completedTasksModalVisible);
+    const dispatch = useDispatch();
 
     return (
         <div className="PageHeader__container">
@@ -23,40 +26,35 @@ export default function PageHeader ({filter, setFilter, location}) {
                         <div className="create__button_container">
                             <CreateTaskButton
                                 className="createTaskBtn_mobile"
-                                onClick={() => setCTModalVisible(true)}
+                                onClick={() => dispatch(showCreateTaskModal())}
                             />
                             <CreateTaskButton
                                 className="createTaskBtn"
                                 title="Створити задачу"
-                                onClick={() => setCTModalVisible(true)}
+                                onClick={() => dispatch(showCreateTaskModal())}
                             />
                         </div>
                         <Button
-                            onClick={() => setCompletedTaskModalVisible(true)}
+                            onClick={() => dispatch(showCompletedTasksModal())}
                         >
                             Виконані
                         </Button> 
                     </div>
                 </div>
             </div>
-                {CTModalVisible
+            {createTaskModalVisible
                 ?
-                    <CreateTaskModal 
-                    visible={CTModalVisible} 
-                    setVisible={setCTModalVisible}
-                    />
+                    <CreateTaskModal/>
                 :
                     <></>
-                }
+            }
 
-                {completedTaskModalVisible ?
-                    <CompletedTasksModal
-                    visible={completedTaskModalVisible}
-                    setVisible={setCompletedTaskModalVisible}
-                    />
+            {completedTasksModalVisible 
+                ?
+                    <CompletedTasksModal/>
                 :
                     <></>
-                } 
+            } 
             <TaskFilter
                 filter={filter}
                 setFilter={setFilter}

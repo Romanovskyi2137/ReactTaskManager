@@ -12,8 +12,6 @@ import useToken from "../myHooks/useToken";
 import { DateTimePicker } from "@mui/x-date-pickers";
 
 function TaskForm ({visible, setVisible}) {
-    const dispatch = useDispatch()
-    const token = useToken();
     const taskSample = {
       title: "", 
       body: "", 
@@ -22,10 +20,14 @@ function TaskForm ({visible, setVisible}) {
       id: uuidv4(),  
       endPoint: null
     }; 
-    const [newTask, setNewTask] = useState(taskSample);
+    const [newTask, setNewTask] = useState(taskSample);  
+    const dispatch = useDispatch()
+    const token = useToken();
+
     const getPrior = ({number, iconClass}) => {
       setNewTask({...newTask, prior: number, iconClassName: iconClass});
     };
+
     const getTime = (millis) => {
       if (newTask.endPoint == null) {
         Notify.failure("Оберіть дату!")
@@ -33,6 +35,7 @@ function TaskForm ({visible, setVisible}) {
       };
       setNewTask({...newTask, endPoint: (newTask.endPoint + millis)})
     };
+
     async function onTaskCreate (e) {
       e.preventDefault();
       if (newTask.title === "") {
@@ -47,12 +50,13 @@ function TaskForm ({visible, setVisible}) {
         const res = await UserService.create(token, newTask);
         dispatch(addOneCurrentTask(newTask))
         setNewTask(taskSample);
-        setVisible(false);
+        setVisible();
       } catch (e) {
         Notify.failure("Щось пішло не так =(");
         return
       }
     }
+
     return (
         <form 
           onSubmit={async e => onTaskCreate(e)}

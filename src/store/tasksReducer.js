@@ -67,6 +67,8 @@ const slice = createSlice({
         toCurrentReplace (state, action) {
             const id = action.payload;
             state.completedTasks.forEach(task => {
+                const oneDay = 1000 * 60 * 60 * 24;
+                const threeDays = 1000 * 60 * 60 * 24 * 3;
                 if (task.id === id) {
                     state.currentTasks = [task, ...state.currentTasks]
                     state.completedTasks = state.completedTasks.filter(task => task.id !== id)
@@ -74,10 +76,10 @@ const slice = createSlice({
                 if (task.prior == 1) {
                     state.major = [task, ...state.majorTasks];
                 };
-                if ((task.endPoint - Date.now()) < (1000 * 60 * 60 * 24)) {
+                if ((task.endPoint - Date.now()) < oneDay) {
                     state.todayTasks = [task, ...state.todayTasks];
                 };
-                if ((task.endPoint - Date.now()) < (1000 * 60 * 60 * 24 * 3)) {
+                if ((task.endPoint - Date.now()) < threeDays) {
                     state.urgentlyTasks = [task, ...state.urgentlyTasks]
                 }
             })

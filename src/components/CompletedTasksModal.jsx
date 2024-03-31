@@ -10,15 +10,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { addManyCompletedTasks, removeCompletedTask, toCurrentReplace } from "../store/tasksReducer";
 import { Notify } from "notiflix";
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { hideCompletedTasksModal } from "../store/modalVisibleReducer";
 
 
-function CompletedTasksModal ({visible, setVisible}) {
+function CompletedTasksModal () {
     const completedTasks = useSelector(state => state.tasks.completedTasks);
-    const dispatch = useDispatch();
+    const completedTaskModalVisible = useSelector(state => state.modalVisible.completedTaskModalVisible);
+    const filtered = useList(completedTasks, "", searchQuery);
     const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setIsLoading] = useState(true);
-    const filtered = useList(completedTasks, "", searchQuery);
     const token = useToken();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -71,8 +73,8 @@ function CompletedTasksModal ({visible, setVisible}) {
 
     return (
         <ModalWindow 
-            visible={visible} 
-            setVisible={setVisible}
+            visible={completedTaskModalVisible} 
+            setVisible={() => dispatch(hideCompletedTasksModal())}
           >
             <Input
               type="text"
