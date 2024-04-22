@@ -1,4 +1,4 @@
-import { createHashRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
+import { createHashRouter, createRoutesFromElements, Route, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Current from './pages/Current';
 import StartPage from './pages/StartPage';
 import Layout from "./components/Layout"

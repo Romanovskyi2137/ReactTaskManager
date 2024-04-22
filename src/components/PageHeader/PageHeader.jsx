@@ -8,11 +8,13 @@ import CreateTaskModal from "../CreateTaskModal";
 import CompletedTasksModal from "../CompletedTasksModal";
 import { useDispatch, useSelector } from "react-redux";
 import { showCompletedTasksModal, showCreateTaskModal } from "../../store/modalVisibleReducer.js";
+import TaskEditModal from "../TaskEditModal.jsx";
 
 
 export default function PageHeader ({filter, setFilter, location}) {
     const createTaskModalVisible = useSelector(state => state.modalVisible.createTaskModalVisible);
     const completedTasksModalVisible = useSelector(state => state.modalVisible.completedTasksModalVisible);
+    const editTaskModalVisible = useSelector(state => state.modalVisible.editTaskModalVisible);
     const dispatch = useDispatch();
 
     return (
@@ -54,7 +56,14 @@ export default function PageHeader ({filter, setFilter, location}) {
                     <CompletedTasksModal/>
                 :
                     <></>
-            } 
+            }
+
+            {editTaskModalVisible
+                ?
+                    <TaskEditModal/>
+                :
+                    <></>
+            }
             <TaskFilter
                 filter={filter}
                 setFilter={setFilter}

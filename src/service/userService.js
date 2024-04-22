@@ -87,6 +87,17 @@ class UserService {
             }
         })
         return res
+    };
+    async change (token, task) {
+        const res = await axios({
+            method: "put",
+            url: `${mainURL}/change`,
+            headers: {
+                "authorization": token
+            },
+            data: task
+        });
+        return res
     }
 };
 

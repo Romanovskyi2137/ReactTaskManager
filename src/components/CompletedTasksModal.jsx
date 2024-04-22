@@ -15,10 +15,10 @@ import { hideCompletedTasksModal } from "../store/modalVisibleReducer";
 
 function CompletedTasksModal () {
     const completedTasks = useSelector(state => state.tasks.completedTasks);
-    const completedTaskModalVisible = useSelector(state => state.modalVisible.completedTaskModalVisible);
-    const filtered = useList(completedTasks, "", searchQuery);
+    const completedTaskModalVisible = useSelector(state => state.modalVisible.completedTasksModalVisible);
     const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setIsLoading] = useState(true);
+    const filtered = useList(completedTasks, "", searchQuery);
     const token = useToken();
     const dispatch = useDispatch();
     const navigate = useNavigate();

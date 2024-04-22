@@ -59,7 +59,7 @@ export default function Urgently () {
         dispatch(removeTodayTask(id));
         dispatch(removeMajorTask(id))
       } catch {
-        Notify.failure("somthing goes wrong...=)")
+        Notify.failure("something goes wrong...=)")
       }
     };
     const onTaskReplace = async (id) => {

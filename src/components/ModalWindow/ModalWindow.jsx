@@ -4,7 +4,7 @@ import cl from './ModalWindow.module.css';
 
 
 function ModalWindow ({children, visible, setVisible}) {
-    const rootClasses = [cl.Modal]
+    const rootClasses = [cl.Modal];
 
     if(visible) {
         rootClasses.push(cl.active);

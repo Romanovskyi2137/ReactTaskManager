@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "./TaskItem.css"
 import TaskTimer from '../UI/TaskTimer/TaskTimer';
 import { Notify } from "notiflix";
 import { IconButton } from '@mui/material';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
-
-
+import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
 
 
 function TaskItem ({task, taskReplace, taskDelete}) {
@@ -26,6 +25,7 @@ function TaskItem ({task, taskReplace, taskDelete}) {
                 Notify.failure("Щось пішло не так =(");
             }
         };
+    
     return (
         <div className='task_item__container'>
             <div className={task__item_className}>
@@ -47,6 +47,13 @@ function TaskItem ({task, taskReplace, taskDelete}) {
                             fontSize='large'
                         />
 
+                    </IconButton>
+                    <IconButton
+                        // onClick={() => onTaskEdit(task)}
+                    >
+                        <CreateRoundedIcon
+                            fontSize='large'
+                        />
                     </IconButton>
                     <IconButton 
                         onClick={() => onTaskDelete(task.id)}

@@ -6,7 +6,8 @@ const slice = createSlice({
     name: 'modalVisible',
     initialState: {
         createTaskModalVisible: false,
-        completedTasksModalVisible: false
+        completedTasksModalVisible: false,
+        editTaskModalVisible: false
     },
     reducers: {
         showCompletedTasksModal (state, action) {
@@ -20,6 +21,12 @@ const slice = createSlice({
         },
         hideCreateTaskModal (state, action) {
             state.createTaskModalVisible = false
+        },
+        showEditTaskModal (state, action) {
+            state.editTaskModalVisible = true
+        },
+        hideEditTaskModal (state, action) {
+            state.editTaskModalVisible = false
         }
     }
 });
@@ -29,5 +36,7 @@ export const {
     showCompletedTasksModal,
     hideCompletedTasksModal,
     showCreateTaskModal,
-    hideCreateTaskModal
+    hideCreateTaskModal,
+    showEditTaskModal,
+    hideEditTaskModal
 } = slice.actions
