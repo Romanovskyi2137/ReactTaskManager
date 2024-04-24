@@ -7,25 +7,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { hideEditTaskModal } from "../store/modalVisibleReducer";
 import { resetEditTask } from "../store/taskEditReducer";
 import useToken from "../myHooks/useToken";
+import { addOneCurrentTask, removeCurrentTask } from "../store/tasksReducer";
 
 function TaskEditModal () {
     const editTaskModalVisible = useSelector(state => state.modalVisible.editTaskModalVisible);
     const newTask = useSelector(state => state.taskEdit.task) 
     const dispatch = useDispatch();
     const token = useToken();
-    async function onTaskEdit (e, task) {
+
+    async function onTaskEdit (e) {
         e.preventDefault();
         if (newTask.title === "") {
           Notify.failure("Вкажіть назву задачі.");
           return
         };
-        if (newTask.prior === ""){
-          Notify.failure("Виберіть пріоритет задачі.");
-          return
-        };
+        // if (newTask.prior === ""){
+        //   Notify.failure("Виберіть пріоритет задачі.");
+        //   return
+        // };
         try {
-          const res = await UserService.create(token, task);
-        //   dispatch(addOneCurrentTask(newTask));
+          const res = await UserService.change(token, newTask);
+          dispatch(removeCurrentTask(newTask.id))
+          dispatch(addOneCurrentTask(newTask));
           dispatch(resetEditTask());
           dispatch(hideEditTaskModal())
         } catch (e) {
@@ -33,14 +36,18 @@ function TaskEditModal () {
           return
         }
       }    
+
     return(
         <ModalWindow 
             visible={editTaskModalVisible} 
-            setVisible={() => dispatch(hideEditTaskModal())}
+            setVisible={() => {
+              dispatch(hideEditTaskModal());
+              dispatch(resetEditTask())
+            }}
         >
             <TaskForm
               visible={editTaskModalVisible}
-                onFormSubmit={() => "#"}
+                onFormSubmit={onTaskEdit}
             />
         </ModalWindow>
     )

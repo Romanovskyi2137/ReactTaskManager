@@ -14,6 +14,7 @@ function CreateTaskModal () {
     const createTaskModalVisible = useSelector(state => state.modalVisible.createTaskModalVisible); 
     const dispatch = useDispatch();
     const token = useToken();  
+
     async function onTaskCreate (e, task) {
         e.preventDefault();
         if (task.title === "") {
@@ -34,6 +35,7 @@ function CreateTaskModal () {
           return
         }
       } 
+      
     return(
         <ModalWindow 
             visible={createTaskModalVisible} 

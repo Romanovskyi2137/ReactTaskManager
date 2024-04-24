@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Input from "./UI/Input/Input";
 import TextArea from "./UI/TextArea/TextArea";
 import Button from "./UI/Button/Button";
@@ -10,6 +10,7 @@ import { editTaskData } from "../store/taskEditReducer";
 
 function TaskForm ({visible, onFormSubmit}) {
     const task = useSelector(state => state.taskEdit.task);
+    const isCreate = useSelector(state => state.modalVisible.createTaskModalVisible);
     const dispatch = useDispatch();
 
     const getTime = (millis) => {
@@ -28,7 +29,7 @@ function TaskForm ({visible, onFormSubmit}) {
             <Input 
               type="text"
               value={task.title}
-              onChange={e => dispatchEvent(editTaskData({...task, title: e.target.value}))}
+              onChange={e => dispatch(editTaskData({...task, title: e.target.value}))}
               placeholder="Назва"  
             />
              <TextArea 
@@ -36,28 +37,29 @@ function TaskForm ({visible, onFormSubmit}) {
               onChange={e => dispatch(editTaskData({...task, body: e.target.value}))}
               placeholder="Опис"  
             />
-            <div className="TaskForm_pickers">
-
-              <PriorPicker 
-                getPrior={(number, iconClass) => dispatch(editTaskData({...task, prior: number, iconClassName: iconClass}))}
-                visible={visible} 
-              />
-
-              <DateTimePicker
-                ampm={false}
-                ampmInClock={true}
-                value={task.endPoint}
-                onChange={value => dispatch(editTaskData({...task, endPoint: value.$d.getTime()}))}
-
-              />
-
-            </div>
+            {isCreate
+              ?
+                <div className="TaskForm_pickers">
+                  <PriorPicker 
+                    getPrior={(number, iconClass) => dispatch(editTaskData({...task, prior: number, iconClassName: iconClass}))}
+                    visible={visible} 
+                  />
+                  <DateTimePicker
+                    ampm={false}
+                    ampmInClock={true}
+                    value={task.endPoint}
+                    onChange={value => dispatch(editTaskData({...task, endPoint: value.$d.getTime()}))}
+                  />
+                </div>   
+              :
+                <></>
+            }
 
             <div style={{display: "flex", justifyContent: "flex-end"}}>
               <Button
                 type= "submit"
               >
-                Створити
+                Завершити
               </Button>
             </div>
 
