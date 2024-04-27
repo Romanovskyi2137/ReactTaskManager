@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-task-manager/static/css/main.f4175a97.css",
-    "main.js": "/react-task-manager/static/js/main.67ef2dd7.js",
+    "main.js": "/react-task-manager/static/js/main.727a2e78.js",
     "static/media/uicons-regular-rounded-QXG46O7V.eot": "/react-task-manager/static/media/uicons-regular-rounded-QXG46O7V.7f3cbccd6c1dad5b5c3d.eot",
     "static/media/uicons-bold-rounded-CJXWQMMG.eot": "/react-task-manager/static/media/uicons-bold-rounded-CJXWQMMG.d839cd24e81b03a3ae73.eot",
     "static/media/uicons-solid-rounded-3CHVJWAY.eot": "/react-task-manager/static/media/uicons-solid-rounded-3CHVJWAY.db4b69f1f366dd7c3690.eot",
@@ -30,10 +30,10 @@
     "index.html": "/react-task-manager/index.html",
     "static/media/arrow-left-long-solid.svg": "/react-task-manager/static/media/arrow-left-long-solid.7cb2f723114fd020839e84c07e39c35a.svg",
     "main.f4175a97.css.map": "/react-task-manager/static/css/main.f4175a97.css.map",
-    "main.67ef2dd7.js.map": "/react-task-manager/static/js/main.67ef2dd7.js.map"
+    "main.727a2e78.js.map": "/react-task-manager/static/js/main.727a2e78.js.map"
   },
   "entrypoints": [
     "static/css/main.f4175a97.css",
-    "static/js/main.67ef2dd7.js"
+    "static/js/main.727a2e78.js"
   ]
 }
