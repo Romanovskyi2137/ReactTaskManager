@@ -13,7 +13,7 @@ function PriorPicker (props) {
     useEffect(iconClassControl, [props.visible]);
     const  iOnClick = (e, number, iconClass) => {
         e.stopPropagation();
-        props.getPrior({number, iconClass})
+        props.getPrior(number, iconClass)
         iconClassControl();
         e.target.classList.add("task_prior_checked");
     };

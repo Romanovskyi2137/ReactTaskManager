@@ -10,13 +10,15 @@ import "../css/Completed.css"
 import PageHeader from "../components/PageHeader/PageHeader";
 import { useList } from "../myHooks/useList";
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { setIsCompletedTasksUpd } from "../store/updMarkersReducer";
 
 
 export default function Completed () {
     const completedTasks = useSelector(state => state.tasks.completedTasks);
+    const updTrigger = useSelector(state => state.isPageUpd.isCompletedTasksUpd);
     const [filter, setFilter] = useState({sort: "prior", query: ""});
-    const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(true);
+    const dispatch = useDispatch();
     const token = useToken();
     const navigate = useNavigate();
     const location = useLocation();
@@ -24,7 +26,7 @@ export default function Completed () {
 
     useEffect(() => {
       const fetchData = async () => {
-        if (completedTasks.length != 0) {
+        if (updTrigger) {
           setIsLoading(false)
           Loading.remove()
           return
@@ -32,7 +34,8 @@ export default function Completed () {
         try {
           const res = await UserService.getComplete(token);
           dispatch(addManyCompletedTasks(res.data));
-          setIsLoading(false)
+          dispatch(setIsCompletedTasksUpd(true));
+          setIsLoading(false);
           Loading.remove()
         } catch (e) {
           if (e.response.status == 400) {

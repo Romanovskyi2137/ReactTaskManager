@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { hideEditTaskModal } from "../store/modalVisibleReducer";
 import { resetEditTask } from "../store/taskEditReducer";
 import useToken from "../myHooks/useToken";
-import { addOneCurrentTask, removeCurrentTask } from "../store/tasksReducer";
+import { addOneCurrentTask, addOneTodayTask, addOneUrgentlyTask, removeCurrentTask } from "../store/tasksReducer";
+import { deployToStateHelper } from "../store/helpers";
 
 function TaskEditModal () {
     const editTaskModalVisible = useSelector(state => state.modalVisible.editTaskModalVisible);
@@ -21,14 +22,17 @@ function TaskEditModal () {
           Notify.failure("Вкажіть назву задачі.");
           return
         };
-        // if (newTask.prior === ""){
-        //   Notify.failure("Виберіть пріоритет задачі.");
-        //   return
-        // };
         try {
           const res = await UserService.change(token, newTask);
-          dispatch(removeCurrentTask(newTask.id))
+          dispatch(removeCurrentTask(newTask.id));
+          const deployDirection = deployToStateHelper(newTask);
           dispatch(addOneCurrentTask(newTask));
+          if (deployDirection.isTodayTasks) {
+              dispatch(addOneTodayTask(newTask))
+          };
+          if (deployDirection.isUrgentlyTasks) {
+              dispatch(addOneUrgentlyTask(newTask))
+          };
           dispatch(resetEditTask());
           dispatch(hideEditTaskModal())
         } catch (e) {

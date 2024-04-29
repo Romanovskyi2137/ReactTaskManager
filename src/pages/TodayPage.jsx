@@ -10,13 +10,14 @@ import "../css/TodayPage.css";
 import PageHeader from "../components/PageHeader/PageHeader.jsx"
 import { useList } from "../myHooks/useList.js";
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { setIsTodayTasksUpd } from "../store/updMarkersReducer.js";
 
 
 
 export default function TodayPage () {
     const token = useToken();
     const tasks = useSelector(state => state.tasks.todayTasks);
-    const currentTasks = useSelector(state => state.tasks.currentTasks);
+    const updTrigger = useSelector(state => state.isPageUpd.isTodayTasksUpd);
     const [filter, setFilter] = useState({sort: "prior", query: ""});
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
@@ -24,7 +25,7 @@ export default function TodayPage () {
     const location = useLocation();
     useEffect(() => {
         const fetchData = async () => {
-          if (tasks.length != 0) {
+          if (updTrigger) {
             setIsLoading(false)
             Loading.remove()
             return
@@ -32,7 +33,8 @@ export default function TodayPage () {
           try {
             const res = await UserService.getToday(token);
             dispatch(addManyToday(res.data));
-            setIsLoading(false)
+            dispatch(setIsTodayTasksUpd(true));
+            setIsLoading(false);
             Loading.remove()
           } catch (e) {
             if (e.response.status === 400) {
@@ -47,7 +49,7 @@ export default function TodayPage () {
           }
         };
         fetchData();
-      }, [currentTasks]);
+      }, []);
     
     const onTaskDelete = async (id) => {
       try {

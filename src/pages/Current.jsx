@@ -9,10 +9,12 @@ import { addManyTasks, removeCurrentTask, removeMajorTask, removeTodayTask, remo
 import { Notify } from 'notiflix';
 import PageHeader from '../components/PageHeader/PageHeader';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { setIsCurrentTasksUpd } from '../store/updMarkersReducer';
 
 
 export default function Current () {
-  const tasks = useSelector(state => state.tasks.currentTasks)
+  const tasks = useSelector(state => state.tasks.currentTasks);
+  const updTrigger = useSelector(state => state.isPageUpd.isCurrentTasksUpd);
   const [filter, setFilter] = useState({sort: "prior", query: ""});
   const [isLoading, setIsLoading] = useState(true);
   const token = useToken();
@@ -21,7 +23,7 @@ export default function Current () {
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchData = async () => {
-      if (tasks.length != 0) {
+      if (updTrigger) {
         setIsLoading(false)
         Loading.remove()
         return
@@ -29,7 +31,8 @@ export default function Current () {
       try {
         const res = await UserService.getCurrent(token);
         dispatch(addManyTasks(res.data));
-        setIsLoading(false)
+        dispatch(setIsCurrentTasksUpd(true));
+        setIsLoading(false);
         Loading.remove()
       } catch (e) {
         if (e.response.status === 400) {

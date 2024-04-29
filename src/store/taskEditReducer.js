@@ -21,7 +21,7 @@ const slice = createSlice({
             state.task = action.payload
         },
         resetEditTask (state, action) {
-            state.task = task
+            state.task = {...task, id: uuidv4()}
         },
         editTaskData (state, action) {
             state.task = action.payload

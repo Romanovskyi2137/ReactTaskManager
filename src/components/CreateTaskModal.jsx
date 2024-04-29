@@ -5,9 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { hideCreateTaskModal } from "../store/modalVisibleReducer";
 import UserService from "../service/userService";
 import {Notify} from "notiflix";
-import { addOneCurrentTask } from "../store/tasksReducer";
+import { deployToStateHelper } from "../store/helpers";
 import { resetEditTask } from "../store/taskEditReducer";
 import useToken from "../myHooks/useToken";
+import { addOneCurrentTask, addOneTodayTask, addOneUrgentlyTask } from "../store/tasksReducer";
+
 
 
 function CreateTaskModal () {
@@ -27,10 +29,18 @@ function CreateTaskModal () {
         };
         try {
           const res = await UserService.create(token, task);
+          const deployDirection = deployToStateHelper(task);
           dispatch(addOneCurrentTask(task));
+          if (deployDirection.isTodayTasks) {
+              dispatch(addOneTodayTask(task))
+          };
+          if (deployDirection.isUrgentlyTasks) {
+              dispatch(addOneUrgentlyTask(task))
+          };
           dispatch(resetEditTask());
           dispatch(hideCreateTaskModal())
         } catch (e) {
+          console.log(e);
           Notify.failure("Щось пішло не так =(");
           return
         }

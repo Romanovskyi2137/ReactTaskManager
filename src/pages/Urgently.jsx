@@ -10,6 +10,7 @@ import { useList } from "../myHooks/useList";
 import PageHeader from "../components/PageHeader/PageHeader";
 import "../css/Urgently.css";
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { setIsUrgentlyTasksUpd } from "../store/updMarkersReducer";
 
 
 
@@ -17,8 +18,8 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 export default function Urgently () {
     const [isLoading, setIsLoading] = useState(true);
     const [filter, setFilter] = useState({sort: "prior", query: ""});
+    const updTrigger = useSelector(state => state.isPageUpd.isUrgentlyTasksUpd);
     const tasks = useSelector(state => state.tasks.urgentlyTasks);
-    const currentTasks = useSelector(state => state.tasks.currentTasks);
     const filteredTasks = useList(tasks, filter.sort, filter.query);
     const token = useToken();
     const navigate = useNavigate();
@@ -26,7 +27,7 @@ export default function Urgently () {
     const location = useLocation();
     useEffect(() => {
         const fetchData = async () => {
-          if (tasks.length !== 0) {
+          if (updTrigger) {
             setIsLoading(false)
             Loading.remove()
             return
@@ -34,7 +35,8 @@ export default function Urgently () {
           try {
             const res = await UserService.getUrgently(token);
             dispatch(addManyUrgently(res.data));
-            setIsLoading(false)
+            dispatch(setIsUrgentlyTasksUpd(true));
+            setIsLoading(false);
             Loading.remove()
           } catch (e) {
             if (e.response.status === 400) {
@@ -49,7 +51,7 @@ export default function Urgently () {
           }
         };
         fetchData();
-      }, [currentTasks]);
+      }, []);
     
     const onTaskDelete = async (id) => {
       try {

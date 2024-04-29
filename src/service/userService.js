@@ -98,7 +98,7 @@ class UserService {
             data: task
         });
         return res
-    }
+    };
 };
 
 export default new UserService

@@ -32,6 +32,12 @@ const slice = createSlice({
         addOneCompletedTask (state, action) {
             state.completedTasks = [action.payload, ...state.completedTasks]
         },
+        addOneTodayTask (state, action) {
+            state.todayTasks = [action.payload, ...state.todayTasks]
+        },
+        addOneUrgentlyTask (state, action) {
+            state.urgentlyTasks = [action.payload, ...state.urgentlyTasks]
+        },
         removeCurrentTask (state, action) {
             const id = action.payload;
             state.currentTasks = state.currentTasks.filter(task => task.id !== id) 
@@ -102,7 +108,9 @@ export const {
     addManyTasks, 
     addManyCompletedTasks,
     addManyToday,
-    addOneCurrentTask, 
+    addOneCurrentTask,
+    addOneTodayTask,
+    addOneUrgentlyTask,
     updateCurrentTasks, 
     addOneCompletedTask, 
     removeCurrentTask, 
