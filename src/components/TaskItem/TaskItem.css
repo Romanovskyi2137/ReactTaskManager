@@ -27,7 +27,7 @@
     word-wrap: break-word;
     padding: 15px 0;
     font-size: 24px;
-
+    max-width: 1000px;
 }
 .timer_component_container {
     font-size: 18px;
