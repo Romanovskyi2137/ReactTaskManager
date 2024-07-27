@@ -6,7 +6,7 @@
     word-break: break-word;
 }
 body{
-    /* overflow: hidden; */
+    overflow-x: hidden;
   }
   
 #root{
@@ -19,7 +19,7 @@ main {
     display: flex;
     justify-content: center;
     flex: 1 1 auto;
-  }
+}
 
 
 
